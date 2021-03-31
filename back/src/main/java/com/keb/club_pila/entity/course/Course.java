@@ -1,16 +1,13 @@
-package com.keb.club_pila.domain.courses;
+package com.keb.club_pila.entity.course;
 
 
-import com.keb.club_pila.domain.BaseTimeEntity;
+import com.keb.club_pila.entity.BaseTimeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 
 @Entity
 @Getter
@@ -29,8 +26,12 @@ public class Course extends BaseTimeEntity {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
+    @ManyToOne
+    private Teacher teachers;
+     Teacher getTeachers(){
+        return teachers;
+    }
     private String teacher;
-
     @Builder
     public Course(String title, String content, String teacher){
         this.title=title;
@@ -43,6 +44,9 @@ public class Course extends BaseTimeEntity {
         this.content=content;
     }
 
-
-
+    @Override
+    public String toString() {
+        System.out.println(getTeachers().getName()+":::"+getTeachers().getName());
+        return null;
+    }
 }

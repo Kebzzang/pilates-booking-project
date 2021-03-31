@@ -1,10 +1,10 @@
 package com.keb.club_pila.dto.course;
 
-import com.keb.club_pila.domain.courses.Course;
-import lombok.Builder;
+import com.keb.club_pila.entity.course.Course;
 import lombok.Getter;
-import lombok.Value;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @Getter
 public class CourseResponseDto {
 
@@ -19,18 +19,6 @@ public class CourseResponseDto {
         this.content = entity.getContent();
         this.teacher = entity.getTeacher();
     }
-    @Builder
-    public CourseResponseDto(String title, String content, String teacher) {
-        this.title=title;
-        this.content=content;
-        this.teacher=teacher;
 
-    }
-    public CourseResponseDto toDto(){
-        return CourseResponseDto.builder()
-                .title(title)
-                .content(content)
-                .teacher(teacher)
-                .build();
-    }
+
 }

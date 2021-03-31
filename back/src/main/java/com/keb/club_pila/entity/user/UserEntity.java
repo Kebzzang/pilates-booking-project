@@ -1,4 +1,4 @@
-package com.keb.club_pila.domain.users;
+package com.keb.club_pila.entity.user;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Builder
 @ToString
-public class User {
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

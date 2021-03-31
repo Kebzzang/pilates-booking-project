@@ -1,6 +1,6 @@
 package com.keb.club_pila.dto.course;
 
-import com.keb.club_pila.domain.courses.Course;
+import com.keb.club_pila.entity.course.Course;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
