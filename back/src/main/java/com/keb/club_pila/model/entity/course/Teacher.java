@@ -1,6 +1,6 @@
-package com.keb.club_pila.entity.course;
+package com.keb.club_pila.model.entity.course;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.keb.club_pila.model.entity.BaseTimeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,7 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Teacher {
+public class Teacher extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

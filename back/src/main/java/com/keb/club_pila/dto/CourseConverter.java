@@ -1,7 +1,7 @@
 package com.keb.club_pila.dto;
 
 import com.keb.club_pila.dto.course.CourseDto;
-import com.keb.club_pila.entity.course.Course;
+import com.keb.club_pila.model.entity.course.Course;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

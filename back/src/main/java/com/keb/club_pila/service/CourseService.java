@@ -1,8 +1,7 @@
 package com.keb.club_pila.service;
 
-import com.keb.club_pila.entity.course.Course;
+import com.keb.club_pila.model.entity.course.Course;
 import com.keb.club_pila.dto.course.CourseUpdateRequestDto;
-import com.keb.club_pila.entity.course.Teacher;
 import com.keb.club_pila.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -35,8 +34,8 @@ public class CourseService {
     }
 
     public Course findById(Long id) {
-        courseRepository.findById(id).toString();
-        return courseRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 수업이 없습니다. id=" + id));
+        System.out.println("No prob here");
+        return courseRepository.findById(id).orElse(null);
 
     }
 

@@ -1,6 +1,6 @@
 package com.keb.club_pila.repository;
 
-import com.keb.club_pila.entity.user.UserEntity;
+import com.keb.club_pila.model.entity.user.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

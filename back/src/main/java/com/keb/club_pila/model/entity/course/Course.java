@@ -1,7 +1,7 @@
-package com.keb.club_pila.entity.course;
+package com.keb.club_pila.model.entity.course;
 
 
-import com.keb.club_pila.entity.BaseTimeEntity;
+import com.keb.club_pila.model.entity.BaseTimeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -44,9 +44,9 @@ public class Course extends BaseTimeEntity {
         this.content=content;
     }
 
-    @Override
+  /*  @Override
     public String toString() {
         System.out.println(getTeachers().getName()+":::"+getTeachers().getName());
         return null;
-    }
+    }*/
 }

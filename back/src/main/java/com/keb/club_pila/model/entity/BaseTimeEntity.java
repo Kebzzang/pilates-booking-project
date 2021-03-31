@@ -1,4 +1,4 @@
-package com.keb.club_pila.entity;
+package com.keb.club_pila.model.entity;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;

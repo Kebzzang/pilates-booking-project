@@ -1,4 +1,4 @@
-package com.keb.club_pila.entity.user;
+package com.keb.club_pila.model.entity.user;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
