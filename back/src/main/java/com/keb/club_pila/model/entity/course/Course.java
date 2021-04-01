@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 
 @Entity
@@ -28,15 +27,11 @@ public class Course extends BaseTimeEntity {
 
     @ManyToOne
     private Teacher teachers;
-     Teacher getTeachers(){
-        return teachers;
-    }
-    private String teacher;
     @Builder
-    public Course(String title, String content, String teacher){
+    public Course(String title, String content, Teacher teacher){
         this.title=title;
         this.content=content;
-        this.teacher=teacher;
+        this.teachers=teacher;
     }
 
     public void update(String title, String content){

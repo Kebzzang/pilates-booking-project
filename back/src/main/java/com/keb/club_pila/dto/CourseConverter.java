@@ -15,7 +15,7 @@ public class CourseConverter {
                 .id(course.getId())
                 .title(course.getTitle())
                 .content(course.getContent())
-                .teacher(course.getTeacher())
+                .teacher(course.getTeachers())
                 .build();
 
         return dto;
@@ -29,7 +29,7 @@ public class CourseConverter {
         return Course.builder()
                 .title(dto.getTitle())
                 .content(dto.getContent())
-                .teacher(dto.getTeacher())
+                .teachers(dto.getTeacher())
                 .build();
     }
 

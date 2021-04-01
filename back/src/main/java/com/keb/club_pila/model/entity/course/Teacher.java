@@ -1,5 +1,6 @@
 package com.keb.club_pila.model.entity.course;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.keb.club_pila.model.entity.BaseTimeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,7 +26,9 @@ public class Teacher extends BaseTimeEntity {
     private String name;
 
     @OneToMany(mappedBy="teachers")
- //   @JsonIgnoreProperties({"teachers"})
-    private Set<Course> courses=new HashSet<>();
+    @JsonIgnoreProperties({"teachers"})
+
+    //   @JsonIgnoreProperties({"teachers"})
+    private List<Course> courses;
 
 }
