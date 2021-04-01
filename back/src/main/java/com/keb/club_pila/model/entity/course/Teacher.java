@@ -27,8 +27,14 @@ public class Teacher extends BaseTimeEntity {
 
     @OneToMany(mappedBy="teachers")
     @JsonIgnoreProperties({"teachers"})
+    private Set<Course> courses=new HashSet<>();
 
-    //   @JsonIgnoreProperties({"teachers"})
-    private List<Course> courses;
-
+    private boolean isWorking;
+    public Teacher(Long id){
+        this.id=id;
+    }
+    public void adding(Course course){
+        course.settingTeacher(this);
+        this.courses.add(course);
+    }
 }

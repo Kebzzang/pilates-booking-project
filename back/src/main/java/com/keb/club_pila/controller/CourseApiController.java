@@ -3,6 +3,7 @@ package com.keb.club_pila.controller;
 import com.keb.club_pila.dto.CourseConverter;
 import com.keb.club_pila.dto.course.CourseDto;
 import com.keb.club_pila.model.entity.course.Course;
+import com.keb.club_pila.model.entity.course.Teacher;
 import com.keb.club_pila.model.response.BasicResponse;
 import com.keb.club_pila.model.response.CommonResponse;
 import com.keb.club_pila.model.response.ErrorResponse;

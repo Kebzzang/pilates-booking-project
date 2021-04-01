@@ -4,11 +4,14 @@ import com.keb.club_pila.model.entity.course.Teacher;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 @Builder
 public class CourseDto {
     private Long id;
     private String title;
     private String content;
-    private Teacher teacher;
+    private Long teacher_id;
+    private LocalDateTime courseTime;
 }

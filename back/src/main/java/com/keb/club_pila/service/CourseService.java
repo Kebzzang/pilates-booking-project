@@ -1,6 +1,7 @@
 package com.keb.club_pila.service;
 
 import com.keb.club_pila.model.entity.course.Course;
+import com.keb.club_pila.model.entity.course.Teacher;
 import com.keb.club_pila.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,9 +14,9 @@ import java.util.List;
 public class CourseService {
 
     private final CourseRepository courseRepository;
-
     @Transactional
     public Long save(Course course) {
+
         return courseRepository.save(course).getId();
     }
 

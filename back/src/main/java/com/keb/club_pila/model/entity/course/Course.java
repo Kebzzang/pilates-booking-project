@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -24,7 +25,7 @@ public class Course extends BaseTimeEntity {
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
-
+//    private LocalDateTime courseTime;
     @ManyToOne
     private Teacher teachers;
     @Builder
@@ -33,6 +34,13 @@ public class Course extends BaseTimeEntity {
         this.content=content;
         this.teachers=teacher;
     }
+
+
+
+    public void settingTeacher(Teacher teacher){
+        this.teachers=teacher;
+    }
+
 
     public void update(String title, String content){
         this.title=title;

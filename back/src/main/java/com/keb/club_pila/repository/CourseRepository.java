@@ -11,8 +11,5 @@ import java.util.Optional;
 
 public interface CourseRepository extends JpaRepository<Course, Long> {
 
-   Optional<Course> findById(Long id);
-   @Query(value = "SELECT * FROM course WHERE id = :iD", nativeQuery = true)
-   Course findById2(@Param("iD")Long iD);
-   /*List<Course> findAllCourses();*/
+   //Optional<Course> findById(Long id);
 }
