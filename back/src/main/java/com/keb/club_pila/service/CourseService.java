@@ -1,43 +1,83 @@
 package com.keb.club_pila.service;
 
+import com.keb.club_pila.dto.course.CourseResponseDto;
+import com.keb.club_pila.dto.course.CourseSaveRequestDto;
+import com.keb.club_pila.dto.course.CourseUpdateDto;
 import com.keb.club_pila.model.entity.course.Course;
 import com.keb.club_pila.model.entity.course.Teacher;
 import com.keb.club_pila.repository.CourseRepository;
+import com.keb.club_pila.repository.TeacherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class CourseService {
-
+    private final TeacherRepository teacherRepository;
     private final CourseRepository courseRepository;
-    @Transactional
-    public Long save(Course course) {
 
-        return courseRepository.save(course).getId();
+    @Transactional
+    public Long courseSave(CourseSaveRequestDto courseSaveRequestDto) {
+        //디티오 받아서 레포지토리에 아이디로 사람 찾고, 그 다음에...
+        Optional<Teacher> teacher = teacherRepository.findById(courseSaveRequestDto.getTeacher_id());
+        //티처 id에 맞는 엔티티를 찾았다면, 다음 진행
+        if (teacher.isPresent()) {
+            Teacher foundTeacher = teacher.get();
+            Course course = courseSaveRequestDto.toEntity(foundTeacher);
+            course.settingTeacher(foundTeacher);
+            foundTeacher.getCourses().add(course);
+
+            courseRepository.save(course);
+            return course.getId();
+        }
+        //티처 id에 맞는 엔티티를 찾지 못했다면 0L 반환.
+        else {
+            return 0L;
+        }
     }
 
- /*   @Transactional
-    public Long update(Long id, CourseUpdateRequestDto requestDto) {
-        Course course = courseRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 수업이 없습니다. id=" + id));
-        course.update(requestDto.getTitle(), requestDto.getContent());
+    @Transactional(readOnly = true)
+    public List<CourseResponseDto> findAllCourses() {
+        System.out.println("prob here");
+        List<Course> courses = courseRepository.findAll();
+        //리스트로 받아온 거 하나하나 이제 디티오로 변환해줘야 함.
+        return courses.stream().map(course ->
+                new CourseResponseDto(course)
+        ).collect(Collectors.toList());
+    }
 
+    @Transactional(readOnly = true)
+    public CourseResponseDto findById(Long id) {
+        Optional<Course> course = courseRepository.findById(id);
+        if (course.isPresent()) {
+            return new CourseResponseDto(course.get());
+        } else return new CourseResponseDto();
+
+
+    }
+    @Transactional
+    public boolean deleteById(Long id) {
+        Optional<Course> course = courseRepository.findById(id);
+        if (!course.isPresent())
+            return false;
+        courseRepository.deleteById(id);
+        return true;
+    }
+    @Transactional
+    public Long updateById(Long id, CourseUpdateDto courseUpdateDto) {
+        Optional<Course> course=courseRepository.findById(id);
+        if(!course.isPresent())
+            return 0L;
+        course.get().update(courseUpdateDto.getTitle(), courseUpdateDto.getContent());
         return id;
 
-    }*/
-
-    public List<Course> findAllCourses() {
-        System.out.println("prob here");
-        return courseRepository.findAll();
     }
 
-    public Course findById(Long id) {
-        return courseRepository.findById(id).orElse(null);
-
-    }
 
     /*public List<Course> findByTeacher(String teacher) {
         List<Course> courses = courseRepository.findByTeacher(teacher);
