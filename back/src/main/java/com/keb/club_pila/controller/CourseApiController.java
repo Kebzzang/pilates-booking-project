@@ -43,7 +43,7 @@ public class CourseApiController {
 
         CourseDto.CourseResponseDto courseResponseDto = courseService.findById(id);
 
-        if (courseResponseDto == null) {
+        if (courseResponseDto.getId()==null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("잘못된 수업 아이디 조회 요청: " + id));
         }
         return ResponseEntity.ok().body(new CommonResponse<CourseDto.CourseResponseDto>(courseResponseDto));
