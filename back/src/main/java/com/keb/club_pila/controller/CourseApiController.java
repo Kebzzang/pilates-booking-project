@@ -1,9 +1,6 @@
 package com.keb.club_pila.controller;
 
-import com.keb.club_pila.dto.course.CourseResponseDto;
-import com.keb.club_pila.dto.course.CourseSaveRequestDto;
-import com.keb.club_pila.dto.course.CourseUpdateDto;
-import com.keb.club_pila.model.entity.course.Course;
+import com.keb.club_pila.dto.course.CourseDto;
 import com.keb.club_pila.model.response.BasicResponse;
 import com.keb.club_pila.model.response.CommonResponse;
 import com.keb.club_pila.model.response.ErrorResponse;
@@ -22,17 +19,17 @@ public class CourseApiController {
     private final CourseService courseService;
 
     @PostMapping("/api/v1/course")
-    public ResponseEntity<? extends BasicResponse> save(@RequestBody CourseSaveRequestDto courseSaveRequestDto) {
+    public ResponseEntity<? extends BasicResponse> save(@RequestBody CourseDto.CourseSaveRequestDto courseSaveRequestDto) {
         Long result = courseService.courseSave(courseSaveRequestDto);
         if (result != 0) {
             return ResponseEntity.created(URI.create("/api/v1/course/" + result)).build();
         } else
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("없는 선생님 수업 추가"));
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("잘못된 선생님 수업 추가 요청"));
     }
 
     @GetMapping("/api/v1/course")
     public ResponseEntity<? extends BasicResponse> findAllCourses() {
-        List<CourseResponseDto> course = courseService.findAllCourses();
+        List<CourseDto.CourseResponseDto> course = courseService.findAllCourses();
 
         if (course.isEmpty()) {
             System.out.println("here1");
@@ -44,16 +41,16 @@ public class CourseApiController {
     @GetMapping("/api/v1/course/{id}")
     public ResponseEntity<? extends BasicResponse> findById(@PathVariable Long id) {
 
-        CourseResponseDto courseResponseDto = courseService.findById(id);
+        CourseDto.CourseResponseDto courseResponseDto = courseService.findById(id);
 
         if (courseResponseDto == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("잘못된 수업 아이디 조회 요청: " + id));
         }
-        return ResponseEntity.ok().body(new CommonResponse<CourseResponseDto>(courseResponseDto));
+        return ResponseEntity.ok().body(new CommonResponse<CourseDto.CourseResponseDto>(courseResponseDto));
     }
 
     @PutMapping("/api/v1/course/{id}")
-    public ResponseEntity<? extends BasicResponse> updateById(@PathVariable Long id, CourseUpdateDto courseUpdateDto) {
+    public ResponseEntity<? extends BasicResponse> updateById(@PathVariable Long id, @RequestBody CourseDto.CourseUpdateDto courseUpdateDto) {
         Long result = courseService.updateById(id, courseUpdateDto);
         if (result==0L) { // 실패시
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("잘못된 수업 아이디 갱신 요청: "+id));

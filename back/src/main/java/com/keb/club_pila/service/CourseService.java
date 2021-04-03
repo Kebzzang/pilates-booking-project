@@ -1,8 +1,6 @@
 package com.keb.club_pila.service;
 
-import com.keb.club_pila.dto.course.CourseResponseDto;
-import com.keb.club_pila.dto.course.CourseSaveRequestDto;
-import com.keb.club_pila.dto.course.CourseUpdateDto;
+import com.keb.club_pila.dto.course.CourseDto;
 import com.keb.club_pila.model.entity.course.Course;
 import com.keb.club_pila.model.entity.course.Teacher;
 import com.keb.club_pila.repository.CourseRepository;
@@ -22,7 +20,7 @@ public class CourseService {
     private final CourseRepository courseRepository;
 
     @Transactional
-    public Long courseSave(CourseSaveRequestDto courseSaveRequestDto) {
+    public Long courseSave(CourseDto.CourseSaveRequestDto courseSaveRequestDto) {
         //디티오 받아서 레포지토리에 아이디로 사람 찾고, 그 다음에...
         Optional<Teacher> teacher = teacherRepository.findById(courseSaveRequestDto.getTeacher_id());
         //티처 id에 맞는 엔티티를 찾았다면, 다음 진행
@@ -42,24 +40,25 @@ public class CourseService {
     }
 
     @Transactional(readOnly = true)
-    public List<CourseResponseDto> findAllCourses() {
-        System.out.println("prob here");
+    public List<CourseDto.CourseResponseDto> findAllCourses() {
+
         List<Course> courses = courseRepository.findAll();
         //리스트로 받아온 거 하나하나 이제 디티오로 변환해줘야 함.
         return courses.stream().map(course ->
-                new CourseResponseDto(course)
+                new CourseDto.CourseResponseDto(course)
         ).collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
-    public CourseResponseDto findById(Long id) {
+    public CourseDto.CourseResponseDto findById(Long id) {
         Optional<Course> course = courseRepository.findById(id);
         if (course.isPresent()) {
-            return new CourseResponseDto(course.get());
-        } else return new CourseResponseDto();
+            return new CourseDto.CourseResponseDto(course.get());
+        } else return new CourseDto.CourseResponseDto();
 
 
     }
+
     @Transactional
     public boolean deleteById(Long id) {
         Optional<Course> course = courseRepository.findById(id);
@@ -68,14 +67,16 @@ public class CourseService {
         courseRepository.deleteById(id);
         return true;
     }
-    @Transactional
-    public Long updateById(Long id, CourseUpdateDto courseUpdateDto) {
-        Optional<Course> course=courseRepository.findById(id);
-        if(!course.isPresent())
-            return 0L;
-        course.get().update(courseUpdateDto.getTitle(), courseUpdateDto.getContent());
-        return id;
 
+    @Transactional
+    public Long updateById(Long id, CourseDto.CourseUpdateDto courseUpdateDto) {
+        Optional<Course> course = courseRepository.findById(id);
+        if (!course.isPresent())
+            return 0L;
+        else {
+            course.get().update(courseUpdateDto.getTitle(), courseUpdateDto.getContent());
+            return id;
+        }
     }
 
 

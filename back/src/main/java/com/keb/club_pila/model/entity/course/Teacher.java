@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -28,7 +29,12 @@ public class Teacher extends BaseTimeEntity {
     @JsonIgnoreProperties({"teachers"})
     private Set<Course> courses = new HashSet<>();
 
-    private boolean isWorking;
+    @ColumnDefault("1")
+    private boolean working;
 
+    public void update(String name, boolean working){
+        this.name=name;
+        this.working=working;
+    }
 
 }
