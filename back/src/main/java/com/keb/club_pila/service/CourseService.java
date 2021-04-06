@@ -22,14 +22,22 @@ public class CourseService {
     @Transactional
     public Long courseSave(CourseDto.CourseSaveRequestDto courseSaveRequestDto) {
         //디티오 받아서 레포지토리에 아이디로 사람 찾고, 그 다음에...
+        //수업 추가하는 로직
         Optional<Teacher> teacher = teacherRepository.findById(courseSaveRequestDto.getTeacher_id());
         //티처 id에 맞는 엔티티를 찾았다면, 다음 진행
         if (teacher.isPresent()) {
-            Teacher foundTeacher = teacher.get();
+            Teacher foundTeacher=teacher.get();
             Course course = courseSaveRequestDto.toEntity(foundTeacher);
-            course.settingTeacher(foundTeacher);
-            foundTeacher.getCourses().add(course);
 
+          //  course.settingTeacher(foundTeacher);
+            foundTeacher.getCourses().add(course);
+           /* Course course2=Course.builder()
+                    .title(courseSaveRequestDto.getTitle())
+                    .content(courseSaveRequestDto.getContent())
+                    .courseDateTime(courseSaveRequestDto.getCourseDateTime())
+                    .equipmentType(courseSaveRequestDto.getEquipmentType())
+                    .teacher(teacher.get())
+                    .build();*/
             courseRepository.save(course);
             return course.getId();
         }

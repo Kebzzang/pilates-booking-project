@@ -14,13 +14,13 @@ public class TeacherDto {
     public static class TeacherResponseDto {
         private Long id;
         private String name;
-        private List<CourseDto.CourseResponseDto> courses;
+        private List<CourseDto.CourseTeacherResponseDto> courses;
         private boolean isWorking;
 
         public TeacherResponseDto(Teacher entity) {
             this.id = entity.getId();
             this.name=entity.getName();
-            this.courses =entity.getCourses().stream().map(course-> new CourseDto.CourseResponseDto(course)).collect(Collectors.toList());
+            this.courses =entity.getCourses().stream().map(course-> new CourseDto.CourseTeacherResponseDto(course)).collect(Collectors.toList());
             this.isWorking = entity.isWorking();
 
         }
@@ -28,7 +28,7 @@ public class TeacherDto {
 
     @Getter
     @NoArgsConstructor
-    @AllArgsConstructor
+    //@AllArgsConstructor
     public static class TeacherSaveRequestDto {
         private String name;
 
@@ -49,6 +49,5 @@ public class TeacherDto {
             this.name = name;
             this.working=working;
         }
-
     }
 }

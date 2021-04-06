@@ -14,7 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString
+
 public class User extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,9 +36,12 @@ public class User extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private RoleType role; //두 가지 롤 : USER, ADMIN
 
-    @OneToMany(mappedBy="user")
+    @OneToMany(mappedBy="user", cascade=CascadeType.ALL)
     @JsonIgnoreProperties({"user"})
     private Set<JoinInfo> joinedCourses=new HashSet<>();
 
+    public void update(RoleType role){
+        this.role=role;
+    }
 
 }

@@ -1,5 +1,6 @@
 package com.keb.club_pila.dto.course;
 
+import com.keb.club_pila.dto.user.UserDto;
 import com.keb.club_pila.model.entity.course.Course;
 import com.keb.club_pila.model.entity.course.EquipmentType;
 import com.keb.club_pila.model.entity.course.Teacher;
@@ -7,6 +8,8 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 
 public class CourseDto {
@@ -18,16 +21,34 @@ public class CourseDto {
         private String content;
         private String teacher_name;
         private EquipmentType equipmentType;
-
+        private Set<UserDto.UserResponseDto> users;
         public CourseResponseDto(Course entity) { //entitiy->dto 로 convert!!
             this.id = entity.getId();
             this.title = entity.getTitle();
             this.content = entity.getContent();
             this.teacher_name = entity.getTeachers().getName();
             this.equipmentType=entity.getEquipmentType();
+            this.users=entity.getJoins().stream().map(joininfo->new UserDto.UserResponseDto(joininfo.getUser().getUsername())).collect(Collectors.toSet());
+
         }
 
 
+    }
+    @Getter
+    @NoArgsConstructor
+    public static class CourseTeacherResponseDto{
+        private Long id;
+        private String title;
+        private String content;
+        private String teacher_name;
+        private EquipmentType equipmentType;
+        public CourseTeacherResponseDto(Course entity){
+            this.id=entity.getId();
+            this.title=entity.getTitle();
+            this.content = entity.getContent();
+            this.teacher_name = entity.getTeachers().getName();
+            this.equipmentType=entity.getEquipmentType();
+        }
     }
 
     @Getter

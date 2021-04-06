@@ -19,6 +19,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+
 public class Course extends BaseTimeEntity {
 
     @Id
@@ -34,9 +35,10 @@ public class Course extends BaseTimeEntity {
     private EquipmentType equipmentType;
 
     @ManyToOne
+    @JoinColumn(name="teacher_id")
     private Teacher teachers;
 
-    @OneToMany(mappedBy="course")
+    @OneToMany(mappedBy="course", cascade=CascadeType.ALL)
     @JsonIgnoreProperties({"course"})
     private Set<JoinInfo> joins=new HashSet<>();
 
@@ -44,14 +46,11 @@ public class Course extends BaseTimeEntity {
 
 
     @Builder
-    public Course(String title, String content, Teacher teacher) {
+    public Course(EquipmentType equipmentType, String title, String content, Teacher teachers, LocalDateTime courseDateTime) {
         this.title = title;
         this.content = content;
-        this.teachers = teacher;
-    }
-
-    public void settingTeacher(Teacher teacher) {
-        this.teachers = teacher;
+        this.teachers = teachers;
+        this.equipmentType=equipmentType;
     }
 
 

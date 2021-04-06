@@ -25,7 +25,7 @@ public class Teacher extends BaseTimeEntity {
     @Column(length = 10, nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "teachers")
+    @OneToMany(mappedBy = "teachers",cascade=CascadeType.ALL)
     @JsonIgnoreProperties({"teachers"})
     private Set<Course> courses = new HashSet<>();
 

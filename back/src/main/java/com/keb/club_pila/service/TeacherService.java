@@ -1,6 +1,5 @@
 package com.keb.club_pila.service;
 
-import com.keb.club_pila.dto.course.CourseDto;
 import com.keb.club_pila.dto.teacher.TeacherDto;
 import com.keb.club_pila.model.entity.course.Teacher;
 import com.keb.club_pila.repository.TeacherRepository;

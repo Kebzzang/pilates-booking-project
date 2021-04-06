@@ -46,7 +46,7 @@ public class CourseApiController {
         if (courseResponseDto.getId()==null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("잘못된 수업 아이디 조회 요청: " + id));
         }
-        return ResponseEntity.ok().body(new CommonResponse<CourseDto.CourseResponseDto>(courseResponseDto));
+        return ResponseEntity.ok().body(new CommonResponse<>(courseResponseDto));
     }
 
     @PutMapping("/api/v1/course/{id}")
