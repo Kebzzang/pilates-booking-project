@@ -25,13 +25,13 @@ public class TeacherApiController {
     4. 선생님 읽기 - 모든 선생님, 특정 아이디 선생님 -> 딸린 수업까지 전부 ?
 
     */
-    @PostMapping("/api/v1/teacher")
+    @PostMapping("/api/v1/admin/teacher")
     public ResponseEntity<? extends BasicResponse> save(@RequestBody TeacherDto.TeacherSaveRequestDto teacherSaveRequestDto) {
         Long result = teacherService.teacherSave(teacherSaveRequestDto);
         return ResponseEntity.created(URI.create("/api/v1/teacher/" + result)).build();
     }
 
-    @DeleteMapping("/api/v1/teacher/{id}")
+    @DeleteMapping("/api/v1/admin/teacher/{id}")
     public ResponseEntity<? extends BasicResponse> delete(@PathVariable Long id) {
         boolean result=teacherService.deleteById(id);
         if (!result) {
@@ -63,7 +63,7 @@ public class TeacherApiController {
 
     }
 
-    @PutMapping("/api/v1/teacher/{id}")
+    @PutMapping("/api/v1/admin/teacher/{id}")
     public ResponseEntity<? extends BasicResponse> update(@PathVariable Long id, @RequestBody TeacherDto.TeacherUpdateDto teacherUpdateDto) {
         Long result = teacherService.updateById(id, teacherUpdateDto);
         if (result==0L) { // 실패시

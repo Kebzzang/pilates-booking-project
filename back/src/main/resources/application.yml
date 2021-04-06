@@ -34,6 +34,13 @@ spring:
   http:
     encoding:
 
-
-cos:
-  key: cos1234
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          google: # /oauth2/authorization/google 이 주소를 동작하게 한다.
+#            client-id: 588000139755-i5inq6jei66hsugf2ilef0bqu4ev7rns.apps.googleusercontent.com
+#            client-secret: 0Vd_EVhplFR1kNfyU7fbZwWU
+#            scope:
+#              - email
+#              - profile

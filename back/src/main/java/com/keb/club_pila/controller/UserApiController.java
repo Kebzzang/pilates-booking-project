@@ -61,7 +61,7 @@ public class UserApiController {
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping("/api/v1/course/{id}")
+    @DeleteMapping("/api/v1/user/{id}")
     public ResponseEntity<? extends BasicResponse> deleteById(@PathVariable Long id) {
         boolean result = userService.deleteById(id);
         if (!result) {

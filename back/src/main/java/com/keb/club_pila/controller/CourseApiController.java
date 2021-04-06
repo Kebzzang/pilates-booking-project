@@ -18,7 +18,7 @@ import java.util.List;
 public class CourseApiController {
     private final CourseService courseService;
 
-    @PostMapping("/api/v1/course")
+    @PostMapping("/api/v1/admin/course")
     public ResponseEntity<? extends BasicResponse> save(@RequestBody CourseDto.CourseSaveRequestDto courseSaveRequestDto) {
         Long result = courseService.courseSave(courseSaveRequestDto);
         if (result != 0) {
@@ -49,7 +49,7 @@ public class CourseApiController {
         return ResponseEntity.ok().body(new CommonResponse<>(courseResponseDto));
     }
 
-    @PutMapping("/api/v1/course/{id}")
+    @PutMapping("/api/v1/admin/course/{id}")
     public ResponseEntity<? extends BasicResponse> updateById(@PathVariable Long id, @RequestBody CourseDto.CourseUpdateDto courseUpdateDto) {
         Long result = courseService.updateById(id, courseUpdateDto);
         if (result==0L) { // 실패시
