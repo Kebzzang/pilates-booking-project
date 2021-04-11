@@ -4,6 +4,8 @@ import com.keb.club_pila.dto.teacher.TeacherDto;
 import com.keb.club_pila.model.entity.course.Teacher;
 import com.keb.club_pila.repository.TeacherRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,7 +18,7 @@ import java.util.stream.Collectors;
 public class TeacherService {
 
     private final TeacherRepository teacherRepository;
-
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @Transactional
     public Long teacherSave(TeacherDto.TeacherSaveRequestDto teacherSaveRequestDto) {
         Teacher teacher = teacherSaveRequestDto.toEntity();

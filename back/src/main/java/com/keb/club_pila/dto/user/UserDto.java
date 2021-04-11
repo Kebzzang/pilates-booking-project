@@ -6,6 +6,7 @@ import com.keb.club_pila.model.entity.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class UserDto {
     @Getter
@@ -31,14 +32,17 @@ public class UserDto {
 
     @Getter
     @NoArgsConstructor
+    @AllArgsConstructor
     public static class UserSaveRequestDto {
         private String username;
-        private RoleType role;
+//        private RoleType role;
+        private String password;
 
-        public User toEntity() {
+        public User toEntity(String encodedPassword) {
             return User.builder()
+                    .password(encodedPassword)
                     .username(username)
-                    .role(role)
+                    .role(RoleType.ROLE_USER)
                     .build();
 
         }

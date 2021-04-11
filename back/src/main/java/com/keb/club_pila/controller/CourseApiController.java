@@ -8,6 +8,9 @@ import com.keb.club_pila.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -17,6 +20,12 @@ import java.util.List;
 @RestController
 public class CourseApiController {
     private final CourseService courseService;
+    @Secured("ROLE_ADMIN")
+    @GetMapping("/hello")
+    public String token(){
+        System.out.println("here working");
+        return "<h1>token</h1>";
+    }
 
     @PostMapping("/api/v1/admin/course")
     public ResponseEntity<? extends BasicResponse> save(@RequestBody CourseDto.CourseSaveRequestDto courseSaveRequestDto) {
@@ -39,6 +48,7 @@ public class CourseApiController {
     }
 
     @GetMapping("/api/v1/course/{id}")
+
     public ResponseEntity<? extends BasicResponse> findById(@PathVariable Long id) {
 
         CourseDto.CourseResponseDto courseResponseDto = courseService.findById(id);
@@ -59,7 +69,7 @@ public class CourseApiController {
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping("/api/v1/course/{id}")
+    @DeleteMapping("/api/v1/admin/course/{id}")
     public ResponseEntity<? extends BasicResponse> deleteById(@PathVariable Long id) {
         boolean result = courseService.deleteById(id);
         if (!result) {

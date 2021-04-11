@@ -36,6 +36,8 @@ public class User extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private RoleType role; //두 가지 롤 : USER, ADMIN
 
+    @Column(nullable = false, length = 100)
+    private String password;
     @OneToMany(mappedBy="user", cascade=CascadeType.ALL)
     @JsonIgnoreProperties({"user"})
     private Set<JoinInfo> joinedCourses=new HashSet<>();

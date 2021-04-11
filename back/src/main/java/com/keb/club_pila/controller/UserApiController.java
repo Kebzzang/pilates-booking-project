@@ -2,6 +2,7 @@ package com.keb.club_pila.controller;
 
 import com.keb.club_pila.dto.joininfo.JoinInfoDto;
 import com.keb.club_pila.dto.user.UserDto;
+import com.keb.club_pila.model.entity.user.User;
 import com.keb.club_pila.model.response.BasicResponse;
 import com.keb.club_pila.model.response.CommonResponse;
 import com.keb.club_pila.model.response.ErrorResponse;
@@ -10,6 +11,7 @@ import com.keb.club_pila.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -22,7 +24,7 @@ public class UserApiController {
     private final JoinInfoService joinInfoService;
     private final UserService userService;
 
-    @PostMapping("/api/v1/course/join") //수업 참여 포스트 매핑
+    @PostMapping("/api/v1/user/course/join") //수업 참여 포스트 매핑 -> 학생만...?
     public ResponseEntity<? extends BasicResponse> joinCourse(@RequestBody JoinInfoDto.JoinInfoSaveRequestDto joinInfoSaveRequestDto) {
         Long result=joinInfoService.joininfoSave(joinInfoSaveRequestDto);
         if(result!=0){
@@ -33,14 +35,22 @@ public class UserApiController {
         }
     }
 
-    @PostMapping("/api/v1/user/join")
-    public ResponseEntity<? extends BasicResponse> joinUser( UserDto.UserSaveRequestDto userSaveRequestDto){
+    @PostMapping("/api/v1/signup")
+    public ResponseEntity<? extends BasicResponse> joinUser(@RequestBody UserDto.UserSaveRequestDto userSaveRequestDto){
+        System.out.println("hello::::::here~~"+userSaveRequestDto.getUsername());
         Long result= userService.userSave(userSaveRequestDto);
         if(result!=0){
             return ResponseEntity.created(URI.create("/api/v1/user/" + result)).build();
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("중복 유저네임 가입 요청"));
     }
+    @GetMapping("/api/v1/user")
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    public ResponseEntity<User> getMyUserInfo(){
+        return ResponseEntity.ok(userService.getMyUser().get());
+
+    }
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/api/v1/user/{id}")
     public ResponseEntity<? extends BasicResponse> findById(@PathVariable Long id) {
 

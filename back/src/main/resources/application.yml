@@ -44,3 +44,7 @@ spring:
 #            scope:
 #              - email
 #              - profile
+jwt:
+  header: Authorization
+  secret: d2VsY29tZS10by1rZWItd29ybGQtZWxsaWV6emFuZy1JLWxvdmUteW91LWhhcHB5LWxpZmUtYmFzZTY0LWVuY29kaW5nLWZvcm1hdC1zcHJpbmdib290LWp3dC10b2tlbi1zZWNyZXQta2V5
+  token-validity: 86400
