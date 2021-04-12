@@ -1,6 +1,9 @@
 package com.keb.club_pila.controller;
 
+import com.keb.club_pila.config.jwt.JwtProvider;
 import com.keb.club_pila.dto.joininfo.JoinInfoDto;
+import com.keb.club_pila.dto.user.LoginDto;
+import com.keb.club_pila.dto.user.TokenDto;
 import com.keb.club_pila.dto.user.UserDto;
 import com.keb.club_pila.model.entity.user.User;
 import com.keb.club_pila.model.response.BasicResponse;
@@ -23,7 +26,7 @@ public class UserApiController {
     //수업 신청 로직!!(create, delete 조회 까지만)
     private final JoinInfoService joinInfoService;
     private final UserService userService;
-
+    private final JwtProvider jwtProvider;
     @PostMapping("/api/v1/user/course/join") //수업 참여 포스트 매핑 -> 학생만...?
     public ResponseEntity<? extends BasicResponse> joinCourse(@RequestBody JoinInfoDto.JoinInfoSaveRequestDto joinInfoSaveRequestDto) {
         Long result=joinInfoService.joininfoSave(joinInfoSaveRequestDto);
@@ -34,7 +37,12 @@ public class UserApiController {
 
         }
     }
-
+    @PostMapping("/api/v1/auth")
+    public TokenDto authUser(@RequestBody LoginDto loginDto){
+        String name=userService.userLogin(loginDto);
+        String token=jwtProvider.generateToken(name);
+                return new TokenDto(token);
+    }
     @PostMapping("/api/v1/signup")
     public ResponseEntity<? extends BasicResponse> joinUser(@RequestBody UserDto.UserSaveRequestDto userSaveRequestDto){
         System.out.println("hello::::::here~~"+userSaveRequestDto.getUsername());
@@ -44,13 +52,7 @@ public class UserApiController {
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("중복 유저네임 가입 요청"));
     }
-    @GetMapping("/api/v1/user")
-//    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-    public ResponseEntity<User> getMyUserInfo(){
-        return ResponseEntity.ok(userService.getMyUser().get());
 
-    }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/api/v1/user/{id}")
     public ResponseEntity<? extends BasicResponse> findById(@PathVariable Long id) {
 

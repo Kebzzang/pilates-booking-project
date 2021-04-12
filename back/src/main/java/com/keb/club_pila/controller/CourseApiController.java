@@ -20,7 +20,7 @@ import java.util.List;
 @RestController
 public class CourseApiController {
     private final CourseService courseService;
-    @Secured("ROLE_ADMIN")
+
     @GetMapping("/hello")
     public String token(){
         System.out.println("here working");

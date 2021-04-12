@@ -8,10 +8,12 @@ import com.keb.club_pila.service.TeacherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.net.URI;
 import java.util.List;
 
@@ -27,8 +29,9 @@ public class TeacherApiController {
     4. 선생님 읽기 - 모든 선생님, 특정 아이디 선생님 -> 딸린 수업까지 전부 ?
 
     */
- //   @PostAuthorize("hasAnyRole('ROLE_ADMIN')")
+
     @PostMapping("/api/v1/admin/teacher")
+   // @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
     public ResponseEntity<? extends BasicResponse> save(@RequestBody TeacherDto.TeacherSaveRequestDto teacherSaveRequestDto) {
         Long result = teacherService.teacherSave(teacherSaveRequestDto);
         System.out.println("hello");
@@ -44,7 +47,7 @@ public class TeacherApiController {
         return ResponseEntity.noContent().build();
 
     }
-
+  //  @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/api/v1/admin/teacher")
     public ResponseEntity<? extends BasicResponse> findAllTeachers() {
         List<TeacherDto.TeacherResponseDto> teachers=teacherService.findAllTeachers();

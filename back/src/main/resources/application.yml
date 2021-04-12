@@ -1,6 +1,6 @@
 
 server:
-  port: 8000
+  port: 8080
   servlet:
     context-path: /
 
@@ -46,5 +46,9 @@ spring:
 #              - profile
 jwt:
   header: Authorization
-  secret: d2VsY29tZS10by1rZWItd29ybGQtZWxsaWV6emFuZy1JLWxvdmUteW91LWhhcHB5LWxpZmUtYmFzZTY0LWVuY29kaW5nLWZvcm1hdC1zcHJpbmdib290LWp3dC10b2tlbi1zZWNyZXQta2V5
+  secret: Ellie-Loge
   token-validity: 86400
+
+logging:
+  level:
+    com.keb: DEBUG

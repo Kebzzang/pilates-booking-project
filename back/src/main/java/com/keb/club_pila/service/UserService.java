@@ -1,13 +1,10 @@
 package com.keb.club_pila.service;
 
-import com.keb.club_pila.dto.teacher.TeacherDto;
+import com.keb.club_pila.dto.user.LoginDto;
 import com.keb.club_pila.dto.user.UserDto;
-import com.keb.club_pila.model.entity.course.Teacher;
 import com.keb.club_pila.model.entity.user.User;
 import com.keb.club_pila.repository.UserRepository;
-import com.keb.club_pila.util.SecurityUtil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,12 +18,10 @@ import java.util.stream.Collectors;
 public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-
     @Transactional
     public Long userSave(UserDto.UserSaveRequestDto userSaveRequestDto){
         Optional<User> user=userRepository.findByUsername(userSaveRequestDto.getUsername());
         if(!user.isPresent()){
-            System.out.println("getPassword::"+userSaveRequestDto.getPassword());
             User entity=userSaveRequestDto.toEntity(passwordEncoder.encode(userSaveRequestDto.getPassword()));
             userRepository.save(entity);
             return entity.getId();
@@ -34,11 +29,15 @@ public class UserService {
         return 0L;
 
     }
-    @Transactional(readOnly=true)
-    public Optional<User> getMyUser(){
-        System.out.println("problem here23");
-        return SecurityUtil.getCurrentUsername().flatMap(userRepository::findUserByUsername);
+
+    public String userLogin(LoginDto loginDto){
+        Optional<User> user=userRepository.findUserByUsername(loginDto.getUsername());
+        if(user.isPresent()&& passwordEncoder.matches(loginDto.getPassword(), user.get().getPassword())){
+            return loginDto.getUsername();
+        }
+        return null;
     }
+
 
     @Transactional
     public boolean deleteById(Long id) {

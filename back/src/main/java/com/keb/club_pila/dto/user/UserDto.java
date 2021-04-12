@@ -6,7 +6,6 @@ import com.keb.club_pila.model.entity.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class UserDto {
     @Getter
