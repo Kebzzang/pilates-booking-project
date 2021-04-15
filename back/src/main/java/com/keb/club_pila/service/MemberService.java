@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.mail.MessagingException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -18,16 +19,16 @@ import java.util.stream.Collectors;
 public class MemberService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-
+    private final EmailService emailService;
     @Transactional
-    public Long userSave(UserDto.UserSaveRequestDto userSaveRequestDto) {
+    public Long userSave(UserDto.UserSaveRequestDto userSaveRequestDto) throws MessagingException {
         Optional<Member> user = userRepository.findByUsername(userSaveRequestDto.getUsername());
         if (!user.isPresent()) {
 
             Member entity = userSaveRequestDto.toEntity(passwordEncoder.encode(userSaveRequestDto.getPassword()));
 
             userRepository.save(entity);
-
+            emailService.sendEmail(entity.getUsername(), entity.getCertified());
             return entity.getId();
         }
         return 0L;

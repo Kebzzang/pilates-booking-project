@@ -21,6 +21,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
 import java.net.URI;
 
 @RequiredArgsConstructor
@@ -59,7 +60,7 @@ public class UserApiController {
 
     }
     @PostMapping("/api/v1/signup")
-    public ResponseEntity<? extends BasicResponse> joinUser(@RequestBody UserDto.UserSaveRequestDto userSaveRequestDto){
+    public ResponseEntity<? extends BasicResponse> joinUser(@RequestBody UserDto.UserSaveRequestDto userSaveRequestDto) throws MessagingException {
          Long result= userService.userSave(userSaveRequestDto);
         if(result!=0){
             return ResponseEntity.created(URI.create("/api/v1/user/" + result)).build();
