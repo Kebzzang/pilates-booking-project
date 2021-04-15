@@ -21,17 +21,17 @@ public class CourseDto {
         private String content;
         private String teacher_name;
         private EquipmentType equipmentType;
-        private Set<UserDto.UserResponseDto> users;
+        private Set<UserDto.UserResponseSimpleDto> users;
         public CourseResponseDto(Course entity) { //entitiy->dto 로 convert!!
             this.id = entity.getId();
             this.title = entity.getTitle();
             this.content = entity.getContent();
             this.teacher_name = entity.getTeachers().getName();
             this.equipmentType=entity.getEquipmentType();
-            this.users=entity.getJoins().stream().map(joininfo->new UserDto.UserResponseDto(joininfo.getUser().getUsername())).collect(Collectors.toSet());
+            this.users=entity.getJoins().stream().map(joininfo->new UserDto.UserResponseSimpleDto(joininfo.getMember())).collect(Collectors.toSet());
 
         }
-
+//new UserDto.UserResponseSimpleDto(joininfo.getMember().getUsername()))
 
     }
     @Getter

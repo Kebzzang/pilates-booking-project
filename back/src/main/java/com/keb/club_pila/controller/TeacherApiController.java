@@ -29,12 +29,12 @@ public class TeacherApiController {
     4. 선생님 읽기 - 모든 선생님, 특정 아이디 선생님 -> 딸린 수업까지 전부 ?
 
     */
-
+// @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/api/v1/admin/teacher")
    // @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
     public ResponseEntity<? extends BasicResponse> save(@RequestBody TeacherDto.TeacherSaveRequestDto teacherSaveRequestDto) {
-        Long result = teacherService.teacherSave(teacherSaveRequestDto);
-        System.out.println("hello");
+     System.out.println("hello ther");Long result = teacherService.teacherSave(teacherSaveRequestDto);
+
         return ResponseEntity.created(URI.create("/api/v1/teacher/" + result)).build();
     }
 
@@ -52,7 +52,7 @@ public class TeacherApiController {
     public ResponseEntity<? extends BasicResponse> findAllTeachers() {
         List<TeacherDto.TeacherResponseDto> teachers=teacherService.findAllTeachers();
         if (teachers.isEmpty()) {
-            System.out.println("here1");
+
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok().body(new CommonResponse<>(teachers));

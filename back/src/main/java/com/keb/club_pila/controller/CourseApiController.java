@@ -22,8 +22,8 @@ public class CourseApiController {
     private final CourseService courseService;
 
     @GetMapping("/hello")
-    public String token(){
-        System.out.println("here working");
+    public String token() {
+
         return "<h1>token</h1>";
     }
 
@@ -41,7 +41,6 @@ public class CourseApiController {
         List<CourseDto.CourseResponseDto> course = courseService.findAllCourses();
 
         if (course.isEmpty()) {
-            System.out.println("here1");
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok().body(new CommonResponse<>(course));
@@ -53,7 +52,7 @@ public class CourseApiController {
 
         CourseDto.CourseResponseDto courseResponseDto = courseService.findById(id);
 
-        if (courseResponseDto.getId()==null) {
+        if (courseResponseDto.getId() == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("잘못된 수업 아이디 조회 요청: " + id));
         }
         return ResponseEntity.ok().body(new CommonResponse<>(courseResponseDto));
@@ -62,8 +61,8 @@ public class CourseApiController {
     @PutMapping("/api/v1/admin/course/{id}")
     public ResponseEntity<? extends BasicResponse> updateById(@PathVariable Long id, @RequestBody CourseDto.CourseUpdateDto courseUpdateDto) {
         Long result = courseService.updateById(id, courseUpdateDto);
-        if (result==0L) { // 실패시
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("잘못된 수업 아이디 갱신 요청: "+id));
+        if (result == 0L) { // 실패시
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("잘못된 수업 아이디 갱신 요청: " + id));
         }
         //성공시
         return ResponseEntity.noContent().build();

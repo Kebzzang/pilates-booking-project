@@ -15,35 +15,42 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 
-public class User extends BaseTimeEntity {
+public class Member extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, length = 30, unique = true)
-    private String username; //id에 해당
-//    @Column(nullable = false, length = 100) //password는 나중에 해쉬함수로 암호화할 예정
-//    private String password;
-//    @Column(nullable = false, length = 50)
-//    private String email;
-//    /* @ColumnDefault("'user'") //문자임을 알리기 위해 "''"    */
-//
+
+    @Column(nullable = false, length = 100, unique = true)
+    private String username; //email로 유저네임 정하겠음!!
+
 //    @Column(nullable = false, length=11)
 //    private String phoneNumber;
 //    private String oauth; //카카오, 구글, 일반 로그인인지 구분함
 //    @Enumerated(EnumType.STRING) //DB에는 RoleType이라는 게 없어서 RoleType이 STRING이라고 명시함함
 //    private RoleType role; //사실 enum을 쓰는 게 좋음. 회원이 회원가입->기본적으로 어드민(관리자), 유저, 매니저 등등 권한을 줄 수 있음
 
+    @Column(nullable=false, length=100)
+    private String certified;
+
     @Enumerated(EnumType.STRING)
     private RoleType role; //두 가지 롤 : USER, ADMIN
 
     @Column(nullable = false, length = 100)
     private String password;
-    @OneToMany(mappedBy="user", cascade=CascadeType.ALL)
-    @JsonIgnoreProperties({"user"})
-    private Set<JoinInfo> joinedCourses=new HashSet<>();
 
-    public void update(RoleType role){
-        this.role=role;
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"member"})
+    private Set<JoinInfo> joinedCourses = new HashSet<>();
+
+    public void updatePassword(String password) {
+        this.password = password;
     }
+
+    public Long updateCertified(String y){
+        this.certified=y;
+        System.out.println("certified"+certified+":::"+username);
+        return 1L;
+    }
+
 
 }

@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class TeacherService {
 
     private final TeacherRepository teacherRepository;
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
     @Transactional
     public Long teacherSave(TeacherDto.TeacherSaveRequestDto teacherSaveRequestDto) {
         Teacher teacher = teacherSaveRequestDto.toEntity();

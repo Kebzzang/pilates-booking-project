@@ -2,7 +2,7 @@ package com.keb.club_pila.model.entity.join;
 
 import com.keb.club_pila.model.entity.BaseTimeEntity;
 import com.keb.club_pila.model.entity.course.Course;
-import com.keb.club_pila.model.entity.user.User;
+import com.keb.club_pila.model.entity.user.Member;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -26,11 +26,11 @@ public class JoinInfo extends BaseTimeEntity {
 
     @ManyToOne
     @JoinColumn(name="user_id")
-    private User user;
+    private Member member;
     @Builder
-    public JoinInfo(Course course, User user){
+    public JoinInfo(Course course, Member member){
         this.course = course;
-        this.user = user;
+        this.member = member;
     }
 
     public JoinInfo(JoinInfo joins) {

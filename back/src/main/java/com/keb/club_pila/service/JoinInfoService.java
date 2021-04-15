@@ -3,7 +3,7 @@ package com.keb.club_pila.service;
 import com.keb.club_pila.dto.joininfo.JoinInfoDto;
 import com.keb.club_pila.model.entity.course.Course;
 import com.keb.club_pila.model.entity.join.JoinInfo;
-import com.keb.club_pila.model.entity.user.User;
+import com.keb.club_pila.model.entity.user.Member;
 import com.keb.club_pila.repository.CourseRepository;
 import com.keb.club_pila.repository.JoinInfoRepository;
 import com.keb.club_pila.repository.UserRepository;
@@ -21,14 +21,14 @@ public class JoinInfoService {
     private final JoinInfoRepository joinInfoRepository;
     @Transactional
     public Long joininfoSave(JoinInfoDto.JoinInfoSaveRequestDto joinInfoSaveRequestDto){
-        Optional<User> user=userRepository.findById(joinInfoSaveRequestDto.getUser_id());
+        Optional<Member> user=userRepository.findById(joinInfoSaveRequestDto.getUser_id());
         Optional<Course> course=courseRepository.findById(joinInfoSaveRequestDto.getCourse_id());
 
         if(user.isPresent() && course.isPresent())
         {
             JoinInfo joinInfo=JoinInfo.builder()
                     .course(course.get())
-                    .user(user.get())
+                    .member(user.get())
                     .build();
             //유
             joinInfoRepository.save(joinInfo);

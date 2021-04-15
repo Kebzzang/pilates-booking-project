@@ -1,13 +1,12 @@
 package com.keb.club_pila.repository;
 
-import com.keb.club_pila.model.entity.user.User;
+import com.keb.club_pila.model.entity.user.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<User, Long> {
-    Optional<User> findByUsername(String username);
+public interface UserRepository extends JpaRepository<Member, Long> {
+    Optional<Member> findByUsername(String username);
 
-    Optional<User> findUserByUsername(String username);
+    Optional<Member> findUserByUsername(String username);
 }
