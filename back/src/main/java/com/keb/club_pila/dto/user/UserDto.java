@@ -15,22 +15,15 @@ public class UserDto {
     @NoArgsConstructor
     public static class UserResponseSimpleDto {
         private String username;
+
         public UserResponseSimpleDto(Member member) {
-            this.username=member.getUsername();
+            this.username = member.getUsername();
         }
 
     }
-    @Getter
-    @NoArgsConstructor
-    public static class UserEmailDto{
-        private String username;
-        private String certified;
 
-        public UserEmailDto(String username, String certified) {
-            this.username = username;
-            this.certified = certified;
-        }
-    }
+
+
     @Getter
     @NoArgsConstructor
     public static class UserResponseDto {
@@ -39,34 +32,35 @@ public class UserDto {
         private RoleType role;
 
 
-
         public UserResponseDto(Member entity) {
-            this.id=entity.getId();
-            this.username=entity.getUsername();
-            this.role=entity.getRole();
+            this.id = entity.getId();
+            this.username = entity.getUsername();
+            this.role = entity.getRole();
         }
 
 
     }
-
+    //일반 가입 시 dto
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
     public static class UserSaveRequestDto {
         private String username;
-//        private RoleType role;
+        //        private RoleType role;
         private String password;
-
+        private String email;
 
         public Member toEntity(String encodedPassword) {
             return Member.builder()
-                    .certified(certified_key())
+                    .certified(certified_key()) //임의의 키 삽입
                     .password(encodedPassword)
                     .username(username)
+                    .email(email)
                     .role(RoleType.ROLE_USER)
                     .build();
 
         }
+
         private String certified_key() {
             Random random = new Random();
             StringBuffer sb = new StringBuffer();
@@ -85,6 +79,7 @@ public class UserDto {
         }
 
     }
+
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor

@@ -2,6 +2,7 @@ package com.keb.club_pila.config.jwt;
 
 import com.keb.club_pila.config.CustomUserDetails;
 import com.keb.club_pila.config.CustomUserDetailsService;
+import com.keb.club_pila.model.entity.user.Member;
 import io.jsonwebtoken.security.Keys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,6 +44,16 @@ public class JwtProvider implements InitializingBean {
         byte[] keyBytes = Decoders.BASE64.decode(secret);
         this.key = Keys.hmacShaKeyFor(keyBytes);
     }
+    public String generateTokenforOAuth(Member user){
+        long now = (new Date()).getTime();
+        Date validity = new Date(now + this.tokenValidityInMilliseconds);
+        return Jwts.builder()
+                .setSubject(user.getUsername()) //authentication.getName();
+                .claim(AUTHORITIES_KEY, "ROLE_USER")  //하나짜리 role
+                .setExpiration(validity)
+                .signWith(key, SignatureAlgorithm.HS512)
+                .compact();
+    }
 
     public String generateToken(Authentication authentication) { //Authentication authentication으로 해보기
         long now = (new Date()).getTime();
@@ -56,7 +67,6 @@ public class JwtProvider implements InitializingBean {
                 .claim(AUTHORITIES_KEY, authorities)  //하나짜리 role
                 .setExpiration(validity)
                 .signWith(key, SignatureAlgorithm.HS512)
-              //  .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
     }
 

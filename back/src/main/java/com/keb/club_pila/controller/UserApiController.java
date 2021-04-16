@@ -12,16 +12,10 @@ import com.keb.club_pila.model.response.ErrorResponse;
 import com.keb.club_pila.service.JoinInfoService;
 import com.keb.club_pila.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.mail.MessagingException;
 import java.net.URI;
 
 @RequiredArgsConstructor
@@ -30,9 +24,7 @@ public class UserApiController {
     //회원가입 로직 (CRUD)
     //수업 신청 로직!!(create, delete 조회 까지만)
     private final JoinInfoService joinInfoService;
-    private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final MemberService userService;
-    private final JwtProvider jwtProvider;
 
 
     @PostMapping("/api/v1/user/course/join") //수업 참여 포스트 매핑 -> 학생만...?
@@ -45,28 +37,7 @@ public class UserApiController {
 
         }
     }
-    @PostMapping("/api/v1/auth")
-    public ResponseEntity<? extends BasicResponse> authUser(@RequestBody LoginDto loginDto){
-        UsernamePasswordAuthenticationToken authenticationToken=new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
-        Authentication authentication=authenticationManagerBuilder.getObject().authenticate(authenticationToken);
-        SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        String jwt=jwtProvider.generateToken(authentication);
-
-        HttpHeaders headers=new HttpHeaders();
-        headers.add(JwtFilter.AUTHORIZATION_HEADER, "Bearer "+jwt);
-
-        return ResponseEntity.ok().body(new CommonResponse<>(new TokenDto(jwt)));
-
-    }
-    @PostMapping("/api/v1/signup")
-    public ResponseEntity<? extends BasicResponse> joinUser(@RequestBody UserDto.UserSaveRequestDto userSaveRequestDto) throws MessagingException {
-         Long result= userService.userSave(userSaveRequestDto);
-        if(result!=0){
-            return ResponseEntity.created(URI.create("/api/v1/user/" + result)).build();
-        }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("중복 유저네임 가입 요청"));
-    }
    // @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/api/v1/user/me")
     public ResponseEntity<? extends BasicResponse> getMyUserInfo(){

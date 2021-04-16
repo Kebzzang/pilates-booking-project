@@ -25,7 +25,8 @@ public class MailApiController {
 
 
     @GetMapping("/api/v1/user/email/certified")
-    public ResponseEntity<? extends BasicResponse> updateCertified(@RequestParam("username") String username,@RequestParam("certified") String certified) {
+    public ResponseEntity<? extends BasicResponse> updateCertified
+            (@RequestParam("username") String username,@RequestParam("certified") String certified) {
         //찾아서 맞으면 이제 certified를 Y으로 변경시켜줌
         if (emailService.updateCertified(username, certified) == 0) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("잘못된 인증 요청"));

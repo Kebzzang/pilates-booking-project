@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-     //   http.requestMatcher(new AntPathRequestMatcher("/api/**")).csrf().disable();
+
         http
                 .httpBasic().disable()
                 .csrf().disable()
@@ -43,11 +43,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/api/v1/admin/**").hasRole("ADMIN")
                 .antMatchers("/api/v1/user/me").hasAnyRole( "USER", "ADMIN")
-                .antMatchers("/api/v1/signup", "/api/v1/auth", "/api/v1/user/email/certified").permitAll()
+                .antMatchers("/api/v1/signup", "/api/v1/auth", "/api/v1/user/email/certified", "/api/v1/oauth/google"
+    ).permitAll()
                 .anyRequest().authenticated()
 
-
-        .and()
+                .and()
                 .apply(new JwtSecurityFilter(jwtProvider));
 
     }

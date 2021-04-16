@@ -14,14 +14,13 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
 public class Member extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, length = 100, unique = true)
-    private String username; //email로 유저네임 정하겠음!!
+    private String username; //일반 유저네임
 
 //    @Column(nullable = false, length=11)
 //    private String phoneNumber;
@@ -32,6 +31,8 @@ public class Member extends BaseTimeEntity {
     @Column(nullable=false, length=100)
     private String certified;
 
+    private String email;
+
     @Enumerated(EnumType.STRING)
     private RoleType role; //두 가지 롤 : USER, ADMIN
 
@@ -41,6 +42,9 @@ public class Member extends BaseTimeEntity {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"member"})
     private Set<JoinInfo> joinedCourses = new HashSet<>();
+
+    private String providerId;
+    private String provider;
 
     public void updatePassword(String password) {
         this.password = password;
