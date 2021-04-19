@@ -46,6 +46,7 @@ public class JwtProvider implements InitializingBean {
     }
     public String generateTokenforOAuth(Member user){
         long now = (new Date()).getTime();
+        System.out.println(user.getUsername()+"generateTokenForOAuth");
         Date validity = new Date(now + this.tokenValidityInMilliseconds);
         return Jwts.builder()
                 .setSubject(user.getUsername()) //authentication.getName();
@@ -75,6 +76,7 @@ public class JwtProvider implements InitializingBean {
             Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
             return true;
         } catch (io.jsonwebtoken.security.SecurityException | MalformedJwtException e) {
+            logger.info("JWT"+token);
             logger.info("잘못된 JWT 서명입니다.");
         } catch (ExpiredJwtException e) {
             logger.info("만료된 JWT 토큰입니다.");
@@ -89,7 +91,7 @@ public class JwtProvider implements InitializingBean {
 
     public Authentication getAuthentication(String accessToken) {
         Claims claims = parseClaims(accessToken);
-
+        System.out.println(accessToken+" token info\n"+claims);
         if(claims.get(AUTHORITIES_KEY)==null){
             throw new RuntimeException("권한 정보가 없는 토큰입니다.");
         }
@@ -97,7 +99,7 @@ public class JwtProvider implements InitializingBean {
                 Arrays.stream(claims.get(AUTHORITIES_KEY).toString().split(","))
                         .map(SimpleGrantedAuthority::new)
                         .collect(Collectors.toList());
-
+        System.out.println("claim here jwt get"+claims.getSubject());
         CustomUserDetails principal = new CustomUserDetails(claims.getSubject(), "", authorities);
         return new UsernamePasswordAuthenticationToken(principal, "", authorities);
     }

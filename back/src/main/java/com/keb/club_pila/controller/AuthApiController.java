@@ -38,28 +38,35 @@ public class AuthApiController {
 
     //일반 로그인 요청
     @PostMapping("/api/v1/auth")
-    public ResponseEntity<? extends BasicResponse> authUser(@RequestBody LoginDto loginDto) {
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
-        Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+    public ResponseEntity<TokenDto> authUser(@RequestBody LoginDto loginDto) {
 
-        String jwt = jwtProvider.generateToken(authentication);
+        if(userService.findByUsername(loginDto.getUsername())!=null) {
+            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
+            Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.add(JwtFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
+            String jwt = jwtProvider.generateToken(authentication);
+            System.out.println(jwt);
+            HttpHeaders headers = new HttpHeaders();
+            headers.add(JwtFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
+            System.out.println(headers);
 
-        return ResponseEntity.ok()
-                .headers(headers)
-                .body(new CommonResponse<>(new TokenDto(jwt)));
+            return new ResponseEntity<>(new TokenDto(jwt), headers, HttpStatus.OK);
+        }
+        else{
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
 
     }
+
     //구글 소셜 로그인 요청 시
     @PostMapping("/api/v1/oauth/google")
-    public ResponseEntity<? extends  BasicResponse> oauth(@RequestBody Map<String, Object>data){
+    public ResponseEntity<? extends BasicResponse> oauth(@RequestBody Map<String, Object> data) {
         System.out.println("jwt oauth");
         System.out.println(data.get("profileObj"));
-        OAuthUserInfo googleUser=new GoogleUser((Map<String, Object>)data.get("profileObj"));
-         String jwt=   userService.oauthUserSave(googleUser);
+        OAuthUserInfo googleUser = new GoogleUser((Map<String, Object>) data.get("profileObj"));
+        System.out.println(googleUser.getName());
+        String jwt = userService.oauthUserSave(googleUser);
 
         HttpHeaders headers = new HttpHeaders();
         headers.add(JwtFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
@@ -68,6 +75,7 @@ public class AuthApiController {
                 .headers(headers)
                 .body(new CommonResponse<>(new TokenDto(jwt)));
     }
+
     //일반 회원가입 요청
     @PostMapping("/api/v1/signup")
     public ResponseEntity<? extends BasicResponse> joinUser(@RequestBody UserDto.UserSaveRequestDto userSaveRequestDto) throws MessagingException {
@@ -77,7 +85,6 @@ public class AuthApiController {
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("중복 유저네임 가입 요청"));
     }
-
 
 
 }

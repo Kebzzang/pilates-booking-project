@@ -36,7 +36,7 @@ public class MemberService {
             userRepository.save(entity).getId();
 
             //회원 가입 시 입력한 이메일로 인증메일 보냄
-            emailService.sendEmail(entity.getEmail(), entity.getCertified());
+            emailService.sendEmail(entity.getEmail(), entity.getUsername(), entity.getCertified());
             return entity.getId();
         }
         return 0L;
@@ -44,11 +44,14 @@ public class MemberService {
 
     @Transactional
     public String oauthUserSave(OAuthUserInfo oauthUser) {
+
         Optional<Member> user = userRepository.findByUsername(oauthUser.getProvider() + "_" + oauthUser.getProviderId());
-        Member member=new Member();
-        if (!user.isPresent()) //처음 로그인이라면 회원가입시켜줌
+       // Member oauthuser=userRepository.findByUsername(oauthUser.getProvider() + "_" + oauthUser.getProviderId()).orElse(null);
+
+
+        if (!user.isPresent()) //처음 로그인이라면 회원가입시켜주고, 토큰 발행해줌
         {
-           member = Member.builder()
+            Member member = Member.builder()
                     .username(oauthUser.getProvider() + "_" + oauthUser.getProviderId())
                     .password(passwordEncoder.encode("dsf2aA!qf"))
                     .email(oauthUser.getEmail())
@@ -57,11 +60,17 @@ public class MemberService {
                     .role(RoleType.ROLE_USER)
                     .certified("Y")
                     .build();
-           userRepository.save(member);
+            userRepository.save(member);
+            String jwtToken = jwtProvider.generateTokenforOAuth(member);
+            return jwtToken;
         }
-        String jwtToken=jwtProvider.generateTokenforOAuth(member);
+        else{ //한번 로그인 해봤다면 DB에 저장되어 있음 -> 토큰만 발행시켜주면 된다.
+            String jwtToken = jwtProvider.generateTokenforOAuth(user.get());
+            return jwtToken;
+        }
 
-        return jwtToken;
+
+
     }
 
 
@@ -105,6 +114,11 @@ public class MemberService {
         if (users.isPresent()) {
             return new UserDto.UserResponseDto(users.get());
         } else return new UserDto.UserResponseDto();
+    }
+
+    @Transactional(readOnly=true)
+    public UserDto.UserResponseDto findByUsername(String username){
+        return userRepository.findByUsername(username).map(UserDto.UserResponseDto::new).orElse(new UserDto.UserResponseDto());
     }
 
     @Transactional //이건 뭐...음...ㅎㅎ...

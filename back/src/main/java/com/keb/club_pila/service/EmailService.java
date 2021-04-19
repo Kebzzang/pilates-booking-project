@@ -19,7 +19,7 @@ public class EmailService {
     private final JavaMailSender javaMailSender;
     private final UserRepository userRepository;
 
-    public void sendEmail(String email, String certified) throws MessagingException {
+    public void sendEmail(String email, String username, String certified) throws MessagingException {
         StringBuffer emailcontent = new StringBuffer();
         emailcontent.append("<!DOCTYPE html>");
         emailcontent.append("<html>");
@@ -41,7 +41,7 @@ public class EmailService {
                         "		감사합니다." +
                         "	</p>" +
                         "	<a style=\"color: #FFF; text-decoration: none; text-align: center;\"" +
-                        "	href=\"http://localhost:8080/api/v1/user/email/certified?username=" + email + "&certified=" + certified + "\" target=\"_blank\">" +
+                        "	href=\"http://localhost:8080/api/v1/user/email/certified?username=" + username + "&certified=" + certified + "\" target=\"_blank\">" +
                         "		<p" +
                         "			style=\"display: inline-block; width: 210px; height: 45px; margin: 30px 5px 40px; background: #02b875; line-height: 45px; vertical-align: middle; font-size: 16px;\">" +
                         "			메일 인증</p>" +
@@ -51,10 +51,10 @@ public class EmailService {
         );
         emailcontent.append("</body>");
         emailcontent.append("</html>");
-        sendMail(email, "[Pilas 이메일 인증]", emailcontent.toString());
+        send(email, "[Pilas 이메일 인증]", emailcontent.toString());
     }
 
-    public void sendMail(String toEmail, String subject, String message) throws MessagingException {
+    public void send(String toEmail, String subject, String message) throws MessagingException {
         MimeMessage mimeMessage=javaMailSender.createMimeMessage();
         MimeMessageHelper helper=new MimeMessageHelper(mimeMessage, "UTF-8");
 
