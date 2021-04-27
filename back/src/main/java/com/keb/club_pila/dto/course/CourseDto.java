@@ -58,11 +58,14 @@ public class CourseDto {
         private String title;
         private String content;
         private Long teacher_id;
+        private Long maxStudent;
         @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
         private LocalDateTime courseDateTime;
         private EquipmentType equipmentType;
         public Course toEntity(Teacher teacher) {
             return Course.builder()
+                    .isLocked(false)
+                    .maxStudent(maxStudent)
                     .title(title)
                     .content(content)
                     .courseDateTime(courseDateTime)

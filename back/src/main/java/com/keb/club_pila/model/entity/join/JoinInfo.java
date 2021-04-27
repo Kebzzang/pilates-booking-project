@@ -27,13 +27,5 @@ public class JoinInfo extends BaseTimeEntity {
     @ManyToOne
     @JoinColumn(name="user_id")
     private Member member;
-    @Builder
-    public JoinInfo(Course course, Member member){
-        this.course = course;
-        this.member = member;
-    }
 
-    public JoinInfo(JoinInfo joins) {
-        super();
-    }
 }

@@ -31,6 +31,7 @@ public class Member extends BaseTimeEntity {
     @Column(nullable=false, length=100)
     private String certified;
 
+    @Column(nullable = false, length = 100, unique = true)
     private String email;
 
     @Enumerated(EnumType.STRING)

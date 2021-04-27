@@ -30,12 +30,15 @@ public class UserDto {
         private Long id;
         private String username;
         private RoleType role;
-
+        private String certified;
+        private String email;
 
         public UserResponseDto(Member entity) {
             this.id = entity.getId();
             this.username = entity.getUsername();
             this.role = entity.getRole();
+            this.email=entity.getEmail();
+            this.certified=entity.getCertified();
         }
 
 

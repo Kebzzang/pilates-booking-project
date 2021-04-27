@@ -1,5 +1,6 @@
 package com.keb.club_pila.controller;
 
+import com.keb.club_pila.config.jwt.CookieUtil;
 import com.keb.club_pila.config.jwt.JwtFilter;
 import com.keb.club_pila.config.jwt.JwtProvider;
 import com.keb.club_pila.config.oauth.provider.GoogleUser;
@@ -20,11 +21,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
 import java.util.Map;
 
@@ -35,33 +36,49 @@ public class AuthApiController {
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final MemberService userService;
     private final JwtProvider jwtProvider;
+    private final CookieUtil cookieUtil;
 
     //일반 로그인 요청
     @PostMapping("/api/v1/auth")
-    public ResponseEntity<TokenDto> authUser(@RequestBody LoginDto loginDto) {
-
-        if(userService.findByUsername(loginDto.getUsername())!=null) {
+    public ResponseEntity<? extends BasicResponse> authUser(@RequestBody LoginDto loginDto, HttpServletResponse res) {
+        UserDto.UserResponseDto user=userService.findByUsername(loginDto.getUsername());
+        if ( user!= null) {
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
             Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
             String jwt = jwtProvider.generateToken(authentication);
             System.out.println(jwt);
-            HttpHeaders headers = new HttpHeaders();
-            headers.add(JwtFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
-            System.out.println(headers);
+            Cookie cookie = cookieUtil.generateCookie("accessToken", jwt);
+            res.setHeader("Access-Control-Allow-Credentials", "true");
+            res.addCookie(cookie);
 
-            return new ResponseEntity<>(new TokenDto(jwt), headers, HttpStatus.OK);
-        }
-        else{
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return  ResponseEntity.ok().body(new CommonResponse<>(user));
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("유저 정보가 없습니다"));
         }
 
     }
 
+
+    @PostMapping("/api/v1/logout")
+    public ResponseEntity<? extends BasicResponse> logout(HttpServletResponse res) {
+        Cookie cookie = new Cookie("accessToken", "abcd");
+        System.out.println("here logout");
+        cookie.setPath("/");
+        cookie.setSecure(true);
+        cookie.setMaxAge(0);
+        cookie.setHttpOnly(true);
+        res.setHeader("Access-Control-Allow-Credentials", "true");
+        res.addCookie(cookie);
+        SecurityContextHolder.clearContext();
+         return ResponseEntity.ok().body(new CommonResponse<>(false));
+    }
+
+
     //구글 소셜 로그인 요청 시
     @PostMapping("/api/v1/oauth/google")
-    public ResponseEntity<? extends BasicResponse> oauth(@RequestBody Map<String, Object> data) {
+    public ResponseEntity<? extends BasicResponse> oauth(@RequestBody Map<String, Object> data, HttpServletResponse res) {
         System.out.println("jwt oauth");
         System.out.println(data.get("profileObj"));
         OAuthUserInfo googleUser = new GoogleUser((Map<String, Object>) data.get("profileObj"));
@@ -70,7 +87,10 @@ public class AuthApiController {
 
         HttpHeaders headers = new HttpHeaders();
         headers.add(JwtFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
-
+        System.out.println(headers);
+        Cookie cookie = cookieUtil.generateCookie("accessToken", jwt);
+        res.setHeader("Access-Control-Allow-Credentials", "true");
+        res.addCookie(cookie);
         return ResponseEntity.ok()
                 .headers(headers)
                 .body(new CommonResponse<>(new TokenDto(jwt)));
@@ -83,7 +103,7 @@ public class AuthApiController {
         if (result != 0) {
             return ResponseEntity.created(URI.create("/api/v1/user/" + result)).build();
         }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("중복 유저네임 가입 요청"));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("이미 사용 중인 유저네임입니다."));
     }
 
 

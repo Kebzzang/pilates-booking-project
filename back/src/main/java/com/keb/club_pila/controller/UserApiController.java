@@ -27,13 +27,15 @@ public class UserApiController {
     private final MemberService userService;
 
 
-    @PostMapping("/api/v1/user/course/join") //수업 참여 포스트 매핑 -> 학생만...?
+    @PostMapping("/api/v1/user/course/join") //수업 참여 포스트 매핑 -> 학생만 가능. 가능한 학생 수 넘어서면
     public ResponseEntity<? extends BasicResponse> joinCourse(@RequestBody JoinInfoDto.JoinInfoSaveRequestDto joinInfoSaveRequestDto) {
+
+
         Long result=joinInfoService.joininfoSave(joinInfoSaveRequestDto);
         if(result!=0){
-            return ResponseEntity.created(URI.create("/api/v1/course/" + result)).build();
+            return ResponseEntity.ok().body(new CommonResponse<>("신청 완료"));
         }else{
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("잘못된 수업 혹은 유저 수강 요청"));
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("잘못된 요청"));
 
         }
     }
@@ -41,8 +43,11 @@ public class UserApiController {
    // @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/api/v1/user/me")
     public ResponseEntity<? extends BasicResponse> getMyUserInfo(){
-
-        return ResponseEntity.ok().body(new CommonResponse<>(userService.getMyUserInfo()));
+        UserDto.UserResponseDto result=userService.getMyUserInfo();
+        if(result!=null)
+        { return ResponseEntity.ok().body(new CommonResponse<>(result));}
+        else
+        { return ResponseEntity.ok().body(new CommonResponse<>(false));}
     }
     @GetMapping("/api/v1/admin/user/{id}")
     public ResponseEntity<? extends BasicResponse> findById(@PathVariable Long id) {

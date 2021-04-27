@@ -87,8 +87,14 @@ public class MemberService {
     public UserDto.UserResponseDto getMyUserInfo() {
         return userRepository.findUserByUsername(SecurityUtil.getCurrentMemberUsername())
                 .map(UserDto.UserResponseDto::new)
-                .orElseThrow(() -> new RuntimeException("로그인 유저 정보 없음"));
+                .orElse(null);
     }
+//    @Transactional(readOnly=true)
+//    public boolean isLoggedIn(){
+//        if(userRepository.findUserByUsername(SecurityUtil.getCurrentMemberUsername());
+//        return true;
+//        return false;
+//    }
 
     @Transactional
     public boolean deleteById(Long id) {

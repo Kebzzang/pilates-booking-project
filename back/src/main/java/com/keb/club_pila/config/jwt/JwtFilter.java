@@ -12,6 +12,7 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class JwtFilter extends GenericFilterBean {
     public static final String AUTHORIZATION_HEADER = "Authorization";
 
     private final JwtProvider jwtProvider;
-
+    private final CookieUtil cookieUtil;
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -42,18 +43,23 @@ public class JwtFilter extends GenericFilterBean {
         } else {
             logger.debug("유효한 JWT 토큰이 없음, uri: {}", requestURI);
         }*/
+
+        System.out.println("here2");
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
-        String jwt = resolveToken(httpServletRequest);
+        String jwt = null;
+        System.out.println(httpServletRequest+":::Request!!!");
+        Cookie cookie = cookieUtil.getCookie(httpServletRequest, "accessToken");
+        System.out.println(cookie+":::Cookie!!");
+        //쿠키에 토큰 정보를 들고 온다면 => 이미 로그인한 사람이니까까
+       if (cookie != null && jwtProvider.validateToken(cookie.getValue())) {
+            jwt = cookie.getValue();
 
-
-
-        if (hasText(jwt) && jwtProvider.validateToken(jwt)) {
             Authentication authentication = jwtProvider.getAuthentication(jwt);
-             SecurityContextHolder.getContext().setAuthentication(authentication);
-            System.out.println("here JwtFilter  :::: "+authentication);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            System.out.println("here JwtFilter  :::: " + authentication);
 
-          }
+        }
 
         filterChain.doFilter(servletRequest, servletResponse);
 //        boolean a=httpServletRequest.authenticate(response);
@@ -68,12 +74,15 @@ public class JwtFilter extends GenericFilterBean {
 //        }
     }
 
-    private String resolveToken(HttpServletRequest request) {
-        String bearerToken = request.getHeader(AUTHORIZATION_HEADER);
-        if (hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
-            return bearerToken.substring(7); //앞에 베어러를 제거하고 리턴함
-        }
-        return null;
-    }
+//    private String resolveToken(HttpServletRequest request) {
+//        System.out.println("here1");
+//
+//
+//        String bearerToken = request.getHeader(AUTHORIZATION_HEADER);
+//        if (hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
+//            return bearerToken.substring(7); //앞에 베어러를 제거하고 리턴함
+//        }
+//        return null;
+//    }
 
 }

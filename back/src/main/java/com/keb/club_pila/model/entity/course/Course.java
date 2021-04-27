@@ -31,9 +31,15 @@ public class Course extends BaseTimeEntity {
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
+
     @Enumerated(EnumType.STRING)
     private EquipmentType equipmentType;
 
+    @Column( nullable = false)
+    private Long maxStudent; //학생 수 제한
+
+    @Column(nullable=false)
+    private boolean isLocked;
     @ManyToOne
     @JoinColumn(name="teacher_id")
     private Teacher teachers;
@@ -45,18 +51,15 @@ public class Course extends BaseTimeEntity {
     private LocalDateTime courseDateTime;
 
 
-    @Builder
-    public Course(EquipmentType equipmentType, String title, String content, Teacher teachers, LocalDateTime courseDateTime) {
-        this.title = title;
-        this.content = content;
-        this.teachers = teachers;
-        this.equipmentType=equipmentType;
+
+
+    public void isLocked(){
+        this.isLocked=true;
     }
-
-
     public void update(String title, String content) {
         this.title = title;
         this.content = content;
     }
+
 
 }
