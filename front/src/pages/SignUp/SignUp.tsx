@@ -7,6 +7,8 @@ import { Redirect, Link } from 'react-router-dom';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
+import useSWR from 'swr';
+import fetcher from '../../utils/fetcher';
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -17,15 +19,18 @@ const useStyles = makeStyles((theme) => ({
 
 const SignUp = () => {
   const classes = useStyles();
+  const { data } = useSWR('http://localhost:8080/api/v1/user/me', fetcher);
 
   const [username, onChangeUsername] = useInput('');
   const [email, onChangeEmail] = useInput('');
   const [password, , setPassword] = useInput('');
   const [passwordCheck, , setPasswordCheck] = useInput('');
+
   const [mismatchError, setMismatchError] = useState(false);
   const [signUpError, setSignUpError] = useState('');
   const [signUpSuccess, setSignUpSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+
   const onChangePassword = useCallback(
     (e) => {
       setPassword(e.target.value);
@@ -75,6 +80,10 @@ const SignUp = () => {
   );
   if (signUpSuccess) {
     return <Redirect to="/" />;
+  }
+
+  if (data) {
+    return <Redirect to="/main" />;
   }
   return (
     <div id="container">

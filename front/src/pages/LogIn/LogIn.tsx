@@ -7,9 +7,7 @@ import useSWR from 'swr';
 import fetcher from '../../utils/fetcher';
 
 const LogIn = () => {
-  const { data, error, revalidate } = useSWR('http://localhost:8080/api/v1/user/me', fetcher, {
-    dedupingInterval: 100000, //주기적으로 호출은 되지만, 이 기간 내에는 캐시에서 불러오게 한다.
-  }); //내가 원할 때 요청하기!!
+  const { data, error, revalidate } = useSWR('http://localhost:8080/api/v1/user/me', fetcher);
   const [logInError, setLogInError] = useState(false);
   const [username, onChangeUsername] = useInput('');
   const [password, onChangePassword] = useInput('');
