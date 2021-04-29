@@ -2,23 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a6ddd42-9593-4d59-8dde-fcbe674fa081" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/jwt/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/jwt/JwtFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/jwt/JwtSecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/jwt/JwtSecurityFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/AuthApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/AuthApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/UserApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/UserApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/dto/course/CourseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/dto/course/CourseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/dto/user/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/dto/user/UserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/course/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/course/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/join/JoinInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/join/JoinInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/user/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/user/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/repository/JoinInfoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/repository/JoinInfoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/JoinInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/JoinInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/MainBar/MainBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Course.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Course.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/LogIn/LogIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LogIn/LogIn.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/SignUp/SignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SignUp/SignUp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/fetcher.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/fetcher.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,9 +50,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\h\IdeaProjects\club_pila\front\node_modules\prettier" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
     <property name="ts.external.directory.path" value="C:\Users\h\IdeaProjects\club_pila\front\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\h\IdeaProjects\club_pila\front\src\layouts\Main" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -77,6 +74,13 @@
       <workItem from="1619500383429" duration="55000" />
       <workItem from="1619533171478" duration="2059000" />
       <workItem from="1619535825767" duration="3029000" />
+      <workItem from="1619583594298" duration="2051000" />
+      <workItem from="1619585698970" duration="91000" />
+      <workItem from="1619585815203" duration="3894000" />
+      <workItem from="1619620180311" duration="597000" />
+      <workItem from="1619715329485" duration="823000" />
+      <workItem from="1619716231294" duration="426000" />
+      <workItem from="1619716704753" duration="746000" />
     </task>
     <servers />
   </component>

@@ -4,21 +4,11 @@ import useInput from '../../hooks/useInput';
 import axios from 'axios';
 import { Redirect, Link } from 'react-router-dom';
 
-import Backdrop from '@material-ui/core/Backdrop';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import { makeStyles } from '@material-ui/core/styles';
 import useSWR from 'swr';
 import fetcher from '../../utils/fetcher';
-
-const useStyles = makeStyles((theme) => ({
-  backdrop: {
-    zIndex: theme.zIndex.drawer + 1,
-    color: '#fff',
-  },
-}));
+import Loading from '../../layouts/Loading';
 
 const SignUp = () => {
-  const classes = useStyles();
   const { data } = useSWR('http://localhost:8080/api/v1/user/me', fetcher);
 
   const [username, onChangeUsername] = useInput('');
@@ -131,13 +121,7 @@ const SignUp = () => {
         Already have an account?&nbsp;
         <Link to="/login">Log In</Link>
       </LinkContainer>
-      {loading ? (
-        <Backdrop className={classes.backdrop} open>
-          <CircularProgress color="inherit" />
-        </Backdrop>
-      ) : (
-        ''
-      )}
+      {loading ? <Loading /> : ''}
     </div>
   );
 };

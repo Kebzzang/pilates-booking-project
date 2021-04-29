@@ -5,9 +5,10 @@ import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
 import useSWR from 'swr';
 import fetcher from '../../utils/fetcher';
+import Loading from '../../layouts/Loading';
 
 const LogIn = () => {
-  const { data, error, revalidate } = useSWR('http://localhost:8080/api/v1/user/me', fetcher);
+  const { data, error, mutate } = useSWR('http://localhost:8080/api/v1/user/me', fetcher);
   const [logInError, setLogInError] = useState(false);
   const [username, onChangeUsername] = useInput('');
   const [password, onChangePassword] = useInput('');
@@ -25,8 +26,7 @@ const LogIn = () => {
           { withCredentials: true },
         )
         .then((response) => {
-          console.log(response.data);
-          revalidate();
+          mutate(response.data.data, false); //true면 optimistic ui
           //로그인 성공시
         })
         .catch((error) => {
@@ -37,8 +37,11 @@ const LogIn = () => {
     },
     [username, password],
   );
+  if (data === undefined) {
+    return <Loading />;
+  }
   if (!error && data) {
-    console.log('로그인됨', data);
+    console.log('로그인됨@@', data);
     return <Redirect to="/main" />;
   }
   return (

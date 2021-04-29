@@ -1,11 +1,11 @@
 import React from 'react';
-import Main from '../layouts/Main';
+import MainBar from '../layouts/MainBar/MainBar';
 
 const Course = () => {
   return (
-    <Main>
+    <MainBar>
       <div>로그인하신 것을 축하드려용홍홍</div>
-    </Main>
+    </MainBar>
   );
 };
 
