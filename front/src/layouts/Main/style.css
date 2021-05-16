@@ -1,0 +1,16 @@
+.main-nav-active{
+    color: #14a0a0;
+    font-weight: bolder;
+    text-decoration: underline;
+}
+a {
+    color: black;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-right: 20px;
+}
+
+.main-nav:hover {
+    color: #14a0a0;
+
+}

@@ -26,7 +26,8 @@ const LogIn = () => {
           { withCredentials: true },
         )
         .then((response) => {
-          mutate(response.data.data, false); //true면 optimistic ui
+          mutate(response.data.data, false); //true면 optimistic ui - 다시 fetch 요청
+          //나는 그냥 로그인 후 받아온 사용자 데이터를 저장하겠다. 어차피 페치해서 받아올 데이터도 똑같을 것이다.
           //로그인 성공시
         })
         .catch((error) => {
@@ -41,8 +42,8 @@ const LogIn = () => {
     return <Loading />;
   }
   if (!error && data) {
-    console.log('로그인됨@@', data);
-    return <Redirect to="/main" />;
+    console.log('로그인됨!!여기 때문에', data);
+    return <Redirect to="/home/booking" />;
   }
   return (
     <div id="container">

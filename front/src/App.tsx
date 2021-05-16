@@ -5,14 +5,20 @@ import loadable from '@loadable/component';
 
 const LogIn = loadable(() => import('./pages/login/LogIn'));
 const SignUp = loadable(() => import('./pages/signup/SignUp'));
-const Course = loadable(() => import('./pages/Course'));
+const Main = loadable(() => import('./layouts/Main/Main'));
+
 const App = () => {
   return (
     <Switch>
-      <Redirect exact path="/" to="/login" />
-      <Route path="/main" component={Course} />
+      <Route exact path="/">
+        <Redirect to="/login" />
+      </Route>
+      <Route path="/home" component={Main} />
+
       <Route path="/login" component={LogIn} />
       <Route path="/signup" component={SignUp} />
+      {/*<Route path="/main/dm" component={DM} />*/}
+      {/*<Route path="/main/channel" component={Calendar} />*/}
     </Switch>
   );
 };

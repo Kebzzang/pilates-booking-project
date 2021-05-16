@@ -73,7 +73,7 @@ const SignUp = () => {
   }
 
   if (data) {
-    return <Redirect to="/main" />;
+    return <Redirect to="/home" />;
   }
   return (
     <div id="container">

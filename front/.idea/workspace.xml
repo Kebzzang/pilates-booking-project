@@ -2,15 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a6ddd42-9593-4d59-8dde-fcbe674fa081" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/jwt/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/jwt/JwtFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/AuthApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/AuthApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/CourseApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/CourseApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/MailApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/MailApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/dto/course/CourseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/dto/course/CourseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/repository/CourseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/repository/CourseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/CourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/MemberService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/MainBar/MainBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Course.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Course.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/MainBar/MainBar.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/MainBar/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/Main/style.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Course.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/LogIn/LogIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LogIn/LogIn.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/SignUp/SignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SignUp/SignUp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/fetcher.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/fetcher.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +33,7 @@
       <list>
         <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -48,6 +60,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\h\IdeaProjects\club_pila\front\node_modules\prettier" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
@@ -56,6 +69,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\h\IdeaProjects\club_pila\front\src\font" />
       <recent name="C:\Users\h\IdeaProjects\club_pila\front\src\layouts\Main" />
     </key>
   </component>
@@ -81,6 +95,31 @@
       <workItem from="1619715329485" duration="823000" />
       <workItem from="1619716231294" duration="426000" />
       <workItem from="1619716704753" duration="746000" />
+      <workItem from="1619767973598" duration="5214000" />
+      <workItem from="1620105789445" duration="19608000" />
+      <workItem from="1620137217424" duration="1211000" />
+      <workItem from="1620201019619" duration="8556000" />
+      <workItem from="1620212352828" duration="49000" />
+      <workItem from="1620223037272" duration="595000" />
+      <workItem from="1620233058566" duration="2248000" />
+      <workItem from="1620283114260" duration="4237000" />
+      <workItem from="1620295091824" duration="512000" />
+      <workItem from="1620317722173" duration="3818000" />
+      <workItem from="1620366513924" duration="438000" />
+      <workItem from="1620558849752" duration="903000" />
+      <workItem from="1620616715571" duration="4692000" />
+      <workItem from="1620707942619" duration="2186000" />
+      <workItem from="1620737566033" duration="4725000" />
+      <workItem from="1620743168541" duration="6739000" />
+      <workItem from="1620810230939" duration="6191000" />
+      <workItem from="1620826709563" duration="3484000" />
+      <workItem from="1620830712547" duration="227000" />
+      <workItem from="1620891123527" duration="507000" />
+      <workItem from="1621070224566" duration="2674000" />
+      <workItem from="1621073966012" duration="9776000" />
+      <workItem from="1621097712508" duration="1266000" />
+      <workItem from="1621131528068" duration="3024000" />
+      <workItem from="1621143270579" duration="596000" />
     </task>
     <servers />
   </component>

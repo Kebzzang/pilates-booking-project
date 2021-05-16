@@ -3,10 +3,15 @@ import styled from '@emotion/styled';
 export const RightMenu = styled.div`
   float: right;
 `;
-
+export const LeftMenu = styled.div`
+  float: left;
+  cursor: pointer;
+  font-size: 24px;
+  padding-right: 30px;
+`;
 export const Header = styled.header`
-  height: 38px;
-  background: #350d36;
+  height: 28px;
+  background: #14a0a0;
   color: #ffffff;
   box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
   padding: 5px;
@@ -68,9 +73,9 @@ export const Workspaces = styled.div`
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  background: #3f0e40;
-  border-top: 1px solid rgb(82, 38, 83);
-  border-right: 1px solid rgb(82, 38, 83);
+  background: #14a0a0;
+  border-top: 1px solid rgb(20, 160, 160);
+  border-right: 1px solid rgb(20, 160, 160);
   vertical-align: top;
   text-align: center;
   padding: 15px 0 0;
@@ -80,7 +85,7 @@ export const Channels = styled.nav`
   width: 260px;
   display: inline-flex;
   flex-direction: column;
-  background: #3f0e40;
+  background: #14a0a0;
   color: rgb(188, 171, 188);
   vertical-align: top;
 
@@ -134,8 +139,8 @@ export const WorkspaceName = styled.button`
   border: none;
   width: 100%;
   text-align: left;
-  border-top: 1px solid rgb(82, 38, 83);
-  border-bottom: 1px solid rgb(82, 38, 83);
+  border-top: 1px solid rgb(65, 187, 187);
+  border-bottom: 1px solid rgb(65, 187, 187);
   font-weight: 900;
   font-size: 24px;
   background: transparent;
