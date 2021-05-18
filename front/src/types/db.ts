@@ -13,6 +13,8 @@ export interface IClass {
   courseDateTime: string;
   date: string;
   teacher_name: string;
+  maxStudent: number;
+  nowStudent: number;
 }
 
 export interface IClasses {

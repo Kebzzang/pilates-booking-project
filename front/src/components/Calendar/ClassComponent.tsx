@@ -1,30 +1,52 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { FC, PropsWithChildren, useEffect } from 'react';
 import { IClass, IClasses } from '../../types/db';
-import { Card } from 'react-bootstrap';
-//각 카드에 버튼 추가 -> 수업 신청하기 신청하면 신청됏다고 추가 메시지 표시.
+import { Button, Card } from 'react-bootstrap';
+import defaultProfile from '../../img/defaultProfile.png';
+import './style.css';
+import { CardHeaders } from './style';
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css';
+import axios from 'axios';
+import useSWR from 'swr';
+import fetcher from '../../utils/fetcher';
 interface ClassInfoProps {
   props: IClasses;
 }
 const ClassComponent: FC<ClassInfoProps> = ({ props, children }) => {
+  const { data: userData, error, revalidate, mutate } = useSWR('http://localhost:8080/api/v1/user/me', fetcher, {
+    dedupingInterval: 2000,
+  }); //내가 원할 때 요청하기!!
   const { count, data } = props;
-  //
+  const redStyles = { background: '#05495e', height: '10px', width: '10px' };
+  const showJoinButton = () => {};
+  //useEffect로 일단 얘가 해당 수업에 있는지 이걸 체크하는 백엔드 서버를 만들어야할듯??
+  //수업 아이디 쫙 보내서 join 테이블에 얘 있는지??
+  useEffect(() => {
+    data.map((element) => {
+      axios.get('http://localhost:8080/api/v1/user/joininfo');
+    });
+  }, []);
+
   return (
-    <div>
+    <div style={{ width: '441px', marginLeft: 'auto', marginRight: 'auto' }}>
       {count !== 0 ? (
-        <>
-          {children} : {count} classes can be booked.
-          {data.map((d) => (
-            <Card border="info" style={{ width: '10rem', height: '5rem' }}>
-              <Card.Header style={{ height: '1rem', textAlign: 'center' }}>{d.teacher_name}</Card.Header>
-              <Card.Body>
-                <Card.Subtitle>{d.equipmentType}</Card.Subtitle>
-                <footer className="blockquote-footer">{d.courseDateTime.slice(10, 14)}</footer>
-              </Card.Body>
-            </Card>
-          ))}
-        </>
+        <div>
+          <div>
+            {children} : {count} {count === 1 ? <>class is</> : <>classes are</>} available.
+          </div>
+
+          <VerticalTimeline layout={'1-column'}>
+            {data.map((element) => (
+              <VerticalTimelineElement key={element.id} date={element.equipmentType} iconStyle={redStyles}>
+                <h6 className="vertical-timeline-element-title">{element.title}</h6>
+                <h6 className="vertical-timeline-element-subtitle">Ms.{element.teacher_name}</h6>
+                <p id="description">{element.maxStudent}</p>
+              </VerticalTimelineElement>
+            ))}
+          </VerticalTimeline>
+        </div>
       ) : (
-        <h2>{children} No Class</h2>
+        <div>{children} No Class</div>
       )}
     </div>
   );

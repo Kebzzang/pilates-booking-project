@@ -8,6 +8,8 @@
       <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/CourseApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/CourseApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/MailApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/MailApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/dto/course/CourseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/dto/course/CourseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/course/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/course/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/course/EquipmentType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/course/EquipmentType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/repository/CourseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/repository/CourseRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/CourseService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/EmailService.java" afterDir="false" />
@@ -15,13 +17,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/MainBar/MainBar.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/MainBar/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/Main/style.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Course.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/LogIn/LogIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LogIn/LogIn.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/SignUp/SignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SignUp/SignUp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Calendar/Calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar/Calendar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Calendar/ClassComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar/ClassComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Calendar/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Calendar/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar/style.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useClassesSave.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useClassesSave.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/Main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/Main/Main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/db.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/db.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,6 +123,12 @@
       <workItem from="1621097712508" duration="1266000" />
       <workItem from="1621131528068" duration="3024000" />
       <workItem from="1621143270579" duration="596000" />
+      <workItem from="1621158283793" duration="3196000" />
+      <workItem from="1621227464918" duration="14726000" />
+      <workItem from="1621248198411" duration="909000" />
+      <workItem from="1621259526693" duration="16052000" />
+      <workItem from="1621304229361" duration="15406000" />
+      <workItem from="1621345393659" duration="4333000" />
     </task>
     <servers />
   </component>

@@ -28,8 +28,6 @@ const useClassesSave = (startDate: string, endDate: string) => {
         }
       });
   }, []);
-
   return value;
 };
-
 export default useClassesSave;

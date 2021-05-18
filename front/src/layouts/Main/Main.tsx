@@ -9,6 +9,7 @@ import { Nav, Navbar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import loadable from '@loadable/component';
+import { Global } from '@emotion/react';
 
 const Calendar = loadable(() => import('../../components/Calendar/Calendar'));
 const Teachers = loadable(() => import('../../components/Teachers'));
@@ -29,7 +30,7 @@ const Main: FC = ({ children }) => {
         mutate(false);
       });
   }, []);
-  const onInfos = useCallback(() => {
+  const onInfos = useCallback((e) => {
     axios
       .get('http://localhost:8080/api/v1/course/me/{id}', { withCredentials: true, params: { id: data.id } })
       .then((response) => {
@@ -93,7 +94,6 @@ const Main: FC = ({ children }) => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-
       <Switch>
         <Route exact path="/home" component={Home} />
         <Route exact path="/home/booking" component={Calendar} />
