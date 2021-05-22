@@ -4,3 +4,17 @@
     width: 25px;
     margin-right: 7px;
 }
+
+
+.container{
+width: 450px;
+    overflow-x: scroll;
+    margin: auto;
+    padding: 0;
+}
+
+.items{
+    align-items: flex-start;
+    display: inline-flex;
+}
+

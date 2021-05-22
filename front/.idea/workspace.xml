@@ -2,29 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a6ddd42-9593-4d59-8dde-fcbe674fa081" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/jwt/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/jwt/JwtFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/AuthApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/AuthApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/CourseApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/CourseApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/MailApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/MailApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/UserApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/UserApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/dto/course/CourseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/dto/course/CourseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/dto/joininfo/JoinInfoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/dto/joininfo/JoinInfoDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/course/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/course/Course.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/course/EquipmentType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/course/EquipmentType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/repository/CourseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/repository/CourseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/repository/JoinInfoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/repository/JoinInfoRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/CourseService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/JoinInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/JoinInfoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/MemberService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Calendar/Calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar/Calendar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Calendar/ClassComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar/ClassComponent.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Calendar/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Calendar/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar/style.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useClassesSave.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useClassesSave.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/Main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/Main/Main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/db.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/db.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Me.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Me.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +66,7 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\h\IdeaProjects\club_pila\front\node_modules\prettier" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="ts.external.directory.path" value="C:\Users\h\IdeaProjects\club_pila\front\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -129,6 +129,15 @@
       <workItem from="1621259526693" duration="16052000" />
       <workItem from="1621304229361" duration="15406000" />
       <workItem from="1621345393659" duration="4333000" />
+      <workItem from="1621388143132" duration="7949000" />
+      <workItem from="1621402911568" duration="8293000" />
+      <workItem from="1621436267980" duration="5066000" />
+      <workItem from="1621441391449" duration="1626000" />
+      <workItem from="1621470582609" duration="20861000" />
+      <workItem from="1621516206517" duration="4376000" />
+      <workItem from="1621573351726" duration="8440000" />
+      <workItem from="1621652270012" duration="5772000" />
+      <workItem from="1621675426736" duration="24507000" />
     </task>
     <servers />
   </component>

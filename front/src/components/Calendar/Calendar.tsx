@@ -1,37 +1,75 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import moment, { Moment } from 'moment';
-import { CalendarWrapper, HR, YearMonth, YoilButton, YoilButtonNalzza } from './style';
+import React, { useEffect, useState } from 'react';
+import moment from 'moment';
+import { CalendarWrapper } from './style';
 import axios from 'axios';
 import { IClasses } from '../../types/db';
 import ClassComponent from './ClassComponent';
+import useSWR from 'swr';
+import fetcher from '../../utils/fetcher';
+import Loading from '../../layouts/Loading';
 
+import './style.css';
+import DatePicker from './DatePicker';
 const Calendar = () => {
-  const [today, setToday] = useState(moment());
-  const startOfWeek = today.clone().startOf('isoWeek');
+  const { data: userData } = useSWR('http://localhost:8080/api/v1/user/me', fetcher, {
+    dedupingInterval: 2000,
+  }); //내가 원할 때 요청하기!!
+  const [selectedDate, setSelectedDate] = useState(moment());
+  const [myJoins, setMyJoins] = useState<number[]>([]);
+  const [joinPost, setJoinPost] = useState(false);
 
-  const daysList = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
-  const weekInfo: { [index: string]: moment.Moment } = {
-    mon: startOfWeek,
-    tue: startOfWeek.clone().add(1, 'days'),
-    wed: startOfWeek.clone().add(2, 'days'),
-    thu: startOfWeek.clone().add(3, 'days'),
-    fri: startOfWeek.clone().add(4, 'days'),
-    sat: startOfWeek.clone().add(5, 'days'),
-    sun: startOfWeek.clone().add(6, 'days'),
-  };
+  const [loading, setLoading] = useState(true);
 
-  const [pick, setPicked] = useState(today.format('ddd').toLowerCase());
   const [classes, setClasses] = useState<IClasses>({
     count: 0,
     data: [],
   });
 
+  const fetchMyJoin = () => {
+    axios
+      .get(`http://localhost:8080/api/v1/course/me/${userData.id}`, {
+        withCredentials: true,
+      })
+      .then((r) => {
+        setMyJoins([]);
+        if (r.status !== 204) {
+          return r.data;
+        } else {
+          return { count: 0, data: [] };
+        }
+      })
+      .then((data: IClasses) => {
+        if (data.count !== 0) {
+          data.data.map((element) => {
+            setMyJoins((prevState) => [...prevState, element.id]);
+          });
+        }
+      });
+  };
+  const joinRequest = (course_id: number, user_id: number) => {
+    axios
+      .post('http://localhost:8080/api/v1/user/course/join', { course_id, user_id }, { withCredentials: true })
+      .then((response) => {
+        console.log('성공: ');
+        fetchMyJoin();
+        setJoinPost(!joinPost);
+      })
+      .catch((error) => {
+        alert('problem');
+      });
+  };
+
   useEffect(() => {
-    const endDate = weekInfo[pick].clone().add(1, 'days');
+    fetchMyJoin();
+  }, [selectedDate]);
+
+  useEffect(() => {
+    const endDate = selectedDate.clone().add(1, 'days');
     axios
       .get('http://localhost:8080/api/v1/course/search', {
+        withCredentials: true,
         params: {
-          start: weekInfo[pick].format('YYYY-MM-DDT00:00:00'),
+          start: selectedDate.format('YYYY-MM-DDT00:00:00'),
           end: endDate.format('YYYY-MM-DDT00:00:00'),
         },
       })
@@ -45,44 +83,17 @@ const Calendar = () => {
           });
           console.log('수업없어서 204뜸');
         }
+        setLoading(false);
       });
-  }, [pick]);
+  }, [selectedDate, joinPost]);
 
-  const clickedButtonHandler = (key: string) => {
-    setPicked(key);
-  };
-
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <CalendarWrapper>
-      <div className="row" style={{ margin: '5px' }}>
-        <div className="col mb-3 col-12 text-center">
-          <YearMonth>{today.format('MMMM').toUpperCase()}</YearMonth>
-          <HR />{' '}
-          <div className="btn-group" role="group" aria-label="Basic example">
-            {daysList.map((y) => (
-              <YoilButton
-                selected={pick}
-                day={y}
-                key={y}
-                onClick={() => {
-                  clickedButtonHandler(y);
-                }}
-              >
-                <YoilButtonNalzza>{y.toUpperCase()}</YoilButtonNalzza>
-                {weekInfo[y].format('DD')}
-              </YoilButton>
-            ))}
-          </div>
-        </div>
-
-        {pick === 'mon' && <ClassComponent props={classes}>MON </ClassComponent>}
-        {pick === 'tue' && <ClassComponent props={classes}>TUE </ClassComponent>}
-        {pick === 'wed' && <ClassComponent props={classes}>WED </ClassComponent>}
-        {pick === 'thu' && <ClassComponent props={classes}>THU </ClassComponent>}
-        {pick === 'fri' && <ClassComponent props={classes}>FRI </ClassComponent>}
-        {pick === 'sat' && <ClassComponent props={classes}>SAT </ClassComponent>}
-        {pick === 'sun' && <ClassComponent props={classes}>SUN </ClassComponent>}
-      </div>
+      <DatePicker onChange={setSelectedDate} value={selectedDate} />
+      <ClassComponent props={classes} myJoins={myJoins} joinRequest={joinRequest} />
     </CalendarWrapper>
   );
 };

@@ -4,6 +4,9 @@ interface selected {
   day: string;
   selected: string;
 }
+interface dayStyle {
+  dayStyle: string;
+}
 export const CalendarWrapper = styled.div`
   //text-align: center;
   margin-left: auto;
@@ -24,32 +27,31 @@ export const HR = styled.hr`
   margin-bottom: 0.8rem;
   height: 1px;
 `;
-
-export const YoilButton = styled.button<selected>`
+export const DayPicker = styled.button<dayStyle>`
   width: 60px;
   font-family: 'Segoe UI', sans-serif;
 
-  border-color: white;
   border-radius: 100%;
-  background: ${(props) => (props.selected === props.day ? '#05495e' : 'white')};
+  background-color: ${(props) => props.dayStyle === 'selected' && '#05495e'};
+  color: ${(props) => (props.dayStyle === 'selected' ? 'white' : '#282c34')};
   height: 60px;
-  border-style: solid;
+  border-style: none;
+  margin-bottom: 10px;
   margin-left: 3px;
   font-size: 17px;
   font-weight: bold;
-  &:hover {
+  :disabled {
+    background-color: white;
+    color: darkgray;
+  }
+  &:hover:enabled {
     background-color: #1e5b6e;
     color: white;
+    border-style: none;
   }
-  color: ${(props) => (props.selected === props.day ? 'white' : 'black')};
 `;
 
-export const SelectedYoilButton = styled(YoilButton)`
-  background: #14a0a0;
-  color: white;
-`;
-
-export const YoilButtonNalzza = styled.div`
+export const DateInfo = styled.div`
   font-size: 10px;
   font-family: 'Segoe UI', serif;
   font-weight: lighter;
@@ -62,4 +64,9 @@ export const CardHeaders = styled.div`
   margin-top: 10px;
 `;
 
-export const MonthHeader = styled.h3();
+export const NoClass = styled.div`
+  color: #c80004;
+  font-family: 'Segoe UI', serif;
+  font-size: 20px;
+  text-align: center;
+`;
