@@ -8,11 +8,6 @@ const calc = (value: moment.Moment) => {
 
   const calendar: moment.Moment[] = [];
   while (_day.isBefore(endOfWeek2, 'day')) {
-    // calendar.push(
-    //   Array(7)
-    //     .fill(0)
-    //     .map(() => _day.add(1, 'day').clone()),
-    // );
     calendar.push(_day.add(1, 'day').clone());
   }
   return calendar;

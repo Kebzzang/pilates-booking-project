@@ -1,32 +1,8 @@
 import styled from '@emotion/styled';
-import css from '@emotion/styled';
-interface selected {
-  day: string;
-  selected: string;
-}
+
 interface dayStyle {
   dayStyle: string;
 }
-export const CalendarWrapper = styled.div`
-  //text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-export const YearMonth = styled.div`
-  font-family: 'Segoe UI', serif;
-  font-weight: bold;
-  color: #05495e;
-  font-size: 40px;
-  height: 50px;
-  text-align: center;
-`;
-export const HR = styled.hr`
-  background-color: #05495e;
-  margin-top: 0.3rem;
-  margin-bottom: 0.8rem;
-  height: 1px;
-`;
 export const DayPicker = styled.button<dayStyle>`
   width: 60px;
   font-family: 'Segoe UI', sans-serif;
@@ -49,6 +25,27 @@ export const DayPicker = styled.button<dayStyle>`
     color: white;
     border-style: none;
   }
+`;
+
+export const CalendarWrapper = styled.div`
+  //text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+export const YearMonth = styled.div`
+  font-family: 'Segoe UI', serif;
+  font-weight: bold;
+  color: #05495e;
+  font-size: 40px;
+  height: 50px;
+  text-align: center;
+`;
+export const HR = styled.hr`
+  background-color: #05495e;
+  margin-top: 0.3rem;
+  margin-bottom: 0.8rem;
+  height: 1px;
 `;
 
 export const DateInfo = styled.div`

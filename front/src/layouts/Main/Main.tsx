@@ -5,16 +5,15 @@ import axios from 'axios';
 import { Redirect, Link, NavLink, Route, Router, Switch } from 'react-router-dom';
 import { ProfileModal, LogOutButton } from './style';
 import Menu from '../../components/Menu/Menu';
-import { Nav, Navbar } from 'react-bootstrap';
+import { Button, Nav, Navbar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import loadable from '@loadable/component';
-import { Global } from '@emotion/react';
 
 const Calendar = loadable(() => import('../../components/Calendar/Calendar'));
-const Teachers = loadable(() => import('../../components/Teachers'));
 const Home = loadable(() => import('../../components/Home'));
-const Me = loadable(() => import('../../components/Me'));
+const Teachers = loadable(() => import('../../components/Teachers/Teachers'));
+const MyClass = loadable(() => import('../../components/BookedClasses/MyClass'));
 const Main: FC = ({ children }) => {
   const [showUserMenu, setShowUserMenu] = useState(false);
 
@@ -28,13 +27,6 @@ const Main: FC = ({ children }) => {
       })
       .then((response) => {
         mutate(false);
-      });
-  }, []);
-  const onInfos = useCallback((e) => {
-    axios
-      .get('http://localhost:8080/api/v1/course/me/{id}', { withCredentials: true, params: { id: data.id } })
-      .then((response) => {
-        console.log(response);
       });
   }, []);
 
@@ -69,15 +61,18 @@ const Main: FC = ({ children }) => {
             <NavLink className="main-nav" activeClassName="main-nav-active" exact to="/home/booking">
               Booking
             </NavLink>{' '}
-            <NavLink className="main-nav" activeClassName="main-nav-active" exact to="/home/teachers">
-              Teachers
+            <NavLink className="main-nav" activeClassName="main-nav-active" exact to="/home/myclass">
+              My Class
             </NavLink>{' '}
-            <NavLink className="main-nav" activeClassName="main-nav-active" exact to="/home/me">
-              My Info
+            <NavLink className="main-nav" activeClassName="main-nav-active" exact to="/home/teachers">
+              Instructors
             </NavLink>
           </Nav>
           <Nav>
-            <div onClick={onClickUserProfile}>
+            <button
+              style={{ paddingLeft: '0px', width: '50px', border: 'none', backgroundColor: 'transparent' }}
+              onClick={onClickUserProfile}
+            >
               {data.username}
               {showUserMenu && (
                 <Menu style={{ right: 0, top: 38 }} show={showUserMenu} onCloseModal={onClickUserProfile}>
@@ -90,15 +85,15 @@ const Main: FC = ({ children }) => {
                   <LogOutButton onClick={onLogout}>Logout</LogOutButton>
                 </Menu>
               )}
-            </div>
+            </button>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
       <Switch>
         <Route exact path="/home" component={Home} />
         <Route exact path="/home/booking" component={Calendar} />
+        <Route exact path="/home/myclass" component={MyClass} />
         <Route exact path="/home/teachers" component={Teachers} />
-        <Route exact path="/home/me" component={Me} />
       </Switch>
     </div>
   );

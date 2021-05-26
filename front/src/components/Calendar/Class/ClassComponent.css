@@ -23,19 +23,19 @@ h6 {
 
 
 .date {
-    color: #05495e;
+    color:#282c34; font-family: 'Segoe UI', sans-serif;
     font-weight: bolder;
     margin-top: 5px;
-font-family: "Arial Black";
+    font-size: 17px;
 }
 .teacher{
-    color: #05495e;
+    color: #282c34;
     font-weight: bolder;
     float: right;
 }
 .description {
-    font-family: "Yu Gothic UI";
-    font-weight: bold;
+    font-family: 'Segoe UI', sans-serif;;
+
 }
 
 @media only screen and (min-width: 1170px) {

@@ -1,36 +1,34 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import moment from 'moment';
 import calc from './calc';
-import { CalendarWrapper, HR, DayPicker, YearMonth, DateInfo } from './style';
-
+import { HR, DayPicker, YearMonth, DateInfo } from './style';
+//value 선택한 날짜
 function DatePicker({ value, onChange }: { value: moment.Moment; onChange: any }) {
   const today = moment();
-  const [allowNextWeek, setAllowNextWeek] = useState(0);
+  const [allowNextWeek, setAllowNextWeek] = useState(true);
   const [calendar, setCalendar] = useState<moment.Moment[]>([]);
   useEffect(() => {
+    console.log(value);
     setCalendar(calc(value));
     if (today.weekday() <= 6) {
-      setAllowNextWeek(1);
+      setAllowNextWeek(false);
     }
-    console.log(value);
+    console.log('오늘', today.weekday());
   }, []);
 
-  function isSelected(day: moment.Moment) {
-    return value.isSame(day, 'day');
-  }
-  function beforeToday(day: moment.Moment) {
-    return moment(day).isBefore(new Date(), 'day');
-  }
+  const dayStyles = useCallback(
+    (day: moment.Moment) => {
+      if (day.isBefore(new Date(), 'day')) {
+        return 'before';
+      }
 
-  function dayStyles(day: moment.Moment) {
-    if (beforeToday(day)) {
-      return 'before';
-    }
-    if (isSelected(day)) {
-      return 'selected';
-    }
-    return 'noStyle';
-  }
+      if (value.isSame(day, 'day')) {
+        return 'selected';
+      }
+      return 'noStyle';
+    },
+    [value],
+  );
 
   return (
     <div className="row" style={{ margin: '5px' }}>
@@ -40,7 +38,7 @@ function DatePicker({ value, onChange }: { value: moment.Moment; onChange: any }
         <div className="container">
           <div className="items">
             {!allowNextWeek //토요일 일요일이면 이제 두 주 것 반환 가능.
-              ? calendar.slice(7).map((date) => (
+              ? calendar.slice(0, 7).map((date) => (
                   <DayPicker
                     key={date.toString()}
                     dayStyle={dayStyles(date)}
