@@ -1,16 +1,13 @@
 package com.keb.club_pila.service;
-
-import com.keb.club_pila.model.entity.user.Member;
 import com.keb.club_pila.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import java.util.Optional;
+
 
 @Service
 @RequiredArgsConstructor

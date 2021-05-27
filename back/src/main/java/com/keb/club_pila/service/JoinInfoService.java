@@ -19,25 +19,37 @@ public class JoinInfoService {
     private final CourseRepository courseRepository;
     private final UserRepository userRepository;
     private final JoinInfoRepository joinInfoRepository;
-
     @Transactional
-    public Long joininfoSave(JoinInfoDto.JoinInfoSaveRequestDto joinInfoSaveRequestDto){
-        Optional<Member> user=userRepository.findById(joinInfoSaveRequestDto.getUser_id());
-        Optional<Course> course=courseRepository.findById(joinInfoSaveRequestDto.getCourse_id());
-        //등록된 학생 수 몇 명인지 확인하기
-        //joininfod에서...
-        Long students=joinInfoRepository.countAllByCourse_id(joinInfoSaveRequestDto.getCourse_id());
-        System.out.println(":::students"+students);
-        if(user.isPresent() && course.isPresent())
+    public boolean joininfoDelete(Long user_id, Long course_id){
+        boolean check=joinInfoRepository.existsByCourse_IdAndMember_Id(course_id, user_id);
+        Optional<Course> course=courseRepository.findById(course_id);
+        if(check){
+            joinInfoRepository.deleteByCourse_IdAndMember_Id(course_id, user_id);
+            course.get().courseCancel();
+            return true;
+        }
+        return false;
+
+    }
+    @Transactional
+    public Long joininfoSave(JoinInfoDto.JoinInfoSaveCancelRequestDto joinInfoSaveCancelRequestDto){
+
+        Optional<Member> user=userRepository.findById(joinInfoSaveCancelRequestDto.getUser_id());
+
+        Optional<Course> course=courseRepository.findById(joinInfoSaveCancelRequestDto.getCourse_id());
+
+        boolean check=joinInfoRepository.existsByCourse_IdAndMember_Id(joinInfoSaveCancelRequestDto.getCourse_id(), joinInfoSaveCancelRequestDto.getUser_id());
+
+        if(!check &&user.isPresent() && course.isPresent())
         {
-            if(students<course.get().getMaxStudent()){
+            if(course.get().getNowStudent()<=course.get().getMaxStudent()){
                 JoinInfo joinInfo=JoinInfo.builder()
                     .course(course.get())
                     .member(user.get())
                     .build();
-
+                course.get().courseJoin();
                 joinInfoRepository.save(joinInfo);
-                if(students==(course.get().getMaxStudent()-1))
+                if(course.get().getNowStudent()==(course.get().getMaxStudent()))
                 {
                     //then..
                     course.get().isLocked();

@@ -37,7 +37,8 @@ public class Course extends BaseTimeEntity {
 
     @Column( nullable = false)
     private Long maxStudent; //학생 수 제한
-
+    @Column(columnDefinition = "BIGINT default 0")
+    private Long nowStudent;
     @Column(nullable=false)
     private boolean isLocked;
     @ManyToOne
@@ -55,6 +56,12 @@ public class Course extends BaseTimeEntity {
 
     public void isLocked(){
         this.isLocked=true;
+    }
+    public void courseJoin(){
+        this.nowStudent++;
+    }
+    public void courseCancel(){
+        this.nowStudent--;
     }
     public void update(String title, String content) {
         this.title = title;

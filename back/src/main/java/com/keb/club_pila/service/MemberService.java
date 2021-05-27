@@ -3,7 +3,9 @@ package com.keb.club_pila.service;
 import com.keb.club_pila.config.jwt.JwtProvider;
 import com.keb.club_pila.config.jwt.SecurityUtil;
 import com.keb.club_pila.config.oauth.provider.OAuthUserInfo;
+import com.keb.club_pila.dto.course.CourseDto;
 import com.keb.club_pila.dto.user.UserDto;
+import com.keb.club_pila.model.entity.join.JoinInfo;
 import com.keb.club_pila.model.entity.user.Member;
 import com.keb.club_pila.model.entity.user.RoleType;
 import com.keb.club_pila.repository.UserRepository;
@@ -14,6 +16,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.mail.MessagingException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -120,6 +124,25 @@ public class MemberService {
         if (users.isPresent()) {
             return new UserDto.UserResponseDto(users.get());
         } else return new UserDto.UserResponseDto();
+    }
+
+    @Transactional(readOnly = true)
+    public List<CourseDto.CourseTeacherResponseDto> findCoursesById(Long id){
+        Optional<Member> users=userRepository.findById(id);
+        List<CourseDto.CourseTeacherResponseDto> result=new ArrayList<>();
+        if(users.isPresent())
+        {
+            Member user=users.get();
+            Iterator<JoinInfo> iterator=user.getJoinedCourses().iterator();
+            while(iterator.hasNext()){
+                JoinInfo join=iterator.next();
+              result.add(new CourseDto.CourseTeacherResponseDto(join.getCourse()));
+            }
+            return result;
+        }
+        else{
+            return null;
+        }
     }
 
     @Transactional(readOnly=true)

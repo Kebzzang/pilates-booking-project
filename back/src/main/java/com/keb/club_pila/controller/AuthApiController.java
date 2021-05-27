@@ -63,7 +63,7 @@ public class AuthApiController {
 
     @PostMapping("/api/v1/logout")
     public ResponseEntity<? extends BasicResponse> logout(HttpServletResponse res) {
-        Cookie cookie = new Cookie("accessToken", "abcd");
+        Cookie cookie = new Cookie("accessToken", "");
         System.out.println("here logout");
         cookie.setPath("/");
         cookie.setSecure(true);

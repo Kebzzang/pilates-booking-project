@@ -8,6 +8,8 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -22,6 +24,9 @@ public class CourseDto {
         private String teacher_name;
         private EquipmentType equipmentType;
         private Set<UserDto.UserResponseSimpleDto> users;
+        @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+        private LocalDateTime courseDateTime;
+        private String date;
         public CourseResponseDto(Course entity) { //entitiy->dto 로 convert!!
             this.id = entity.getId();
             this.title = entity.getTitle();
@@ -29,7 +34,9 @@ public class CourseDto {
             this.teacher_name = entity.getTeachers().getName();
             this.equipmentType=entity.getEquipmentType();
             this.users=entity.getJoins().stream().map(joininfo->new UserDto.UserResponseSimpleDto(joininfo.getMember())).collect(Collectors.toSet());
-
+            this.courseDateTime=entity.getCourseDateTime();
+       //     this.date=courseDateTime.format(DateTimeFormatter.ofPattern("E").withLocale(Locale.forLanguageTag("en")));
+            this.date= String.valueOf(courseDateTime.getDayOfWeek());
         }
 //new UserDto.UserResponseSimpleDto(joininfo.getMember().getUsername()))
 
@@ -42,14 +49,24 @@ public class CourseDto {
         private String content;
         private String teacher_name;
         private EquipmentType equipmentType;
+        @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+        private LocalDateTime courseDateTime;
+        private Long maxStudent;
+        private Long nowStudent;
+        private String date;
         public CourseTeacherResponseDto(Course entity){
             this.id=entity.getId();
+            this.nowStudent= entity.getNowStudent();
+            this.maxStudent= entity.getMaxStudent();
             this.title=entity.getTitle();
             this.content = entity.getContent();
             this.teacher_name = entity.getTeachers().getName();
             this.equipmentType=entity.getEquipmentType();
+            this.courseDateTime=entity.getCourseDateTime();
+            this.date= String.valueOf(courseDateTime.getDayOfWeek());
         }
     }
+
 
     @Getter
     @NoArgsConstructor
@@ -91,4 +108,14 @@ public class CourseDto {
             this.equipmentType=equipmentType;
         }
     }
+    @Getter
+    @NoArgsConstructor
+    public static class CourseSearchByStartEndDateDto {
+       @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+        private LocalDateTime start;
+       private LocalDateTime end;
+
+    }
+
+
 }

@@ -1,10 +1,6 @@
 package com.keb.club_pila.controller;
 
-import com.keb.club_pila.config.jwt.JwtFilter;
-import com.keb.club_pila.config.jwt.JwtProvider;
 import com.keb.club_pila.dto.joininfo.JoinInfoDto;
-import com.keb.club_pila.dto.user.LoginDto;
-import com.keb.club_pila.dto.user.TokenDto;
 import com.keb.club_pila.dto.user.UserDto;
 import com.keb.club_pila.model.response.BasicResponse;
 import com.keb.club_pila.model.response.CommonResponse;
@@ -16,8 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
-
 @RequiredArgsConstructor
 @RestController
 public class UserApiController {
@@ -28,19 +22,28 @@ public class UserApiController {
 
 
     @PostMapping("/api/v1/user/course/join") //수업 참여 포스트 매핑 -> 학생만 가능. 가능한 학생 수 넘어서면
-    public ResponseEntity<? extends BasicResponse> joinCourse(@RequestBody JoinInfoDto.JoinInfoSaveRequestDto joinInfoSaveRequestDto) {
+    public ResponseEntity<? extends BasicResponse> joinCourse(@RequestBody JoinInfoDto.JoinInfoSaveCancelRequestDto joinInfoSaveCancelRequestDto) {
 
-
-        Long result=joinInfoService.joininfoSave(joinInfoSaveRequestDto);
+        System.out.println("JoinInfo problem here1");
+        Long result=joinInfoService.joininfoSave(joinInfoSaveCancelRequestDto);
         if(result!=0){
             return ResponseEntity.ok().body(new CommonResponse<>("신청 완료"));
         }else{
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("잘못된 요청"));
-
         }
     }
+    @DeleteMapping("/api/v1/user/course/cancel")
+    public ResponseEntity<? extends BasicResponse> cancelJoin(@RequestParam("user_id") Long user_id, @RequestParam("course_id") Long course_id) {
+        System.out.println("user_id"+user_id);
+        boolean result=joinInfoService.joininfoDelete(user_id, course_id);
+        if(result){return ResponseEntity.noContent().build();}
+        else{
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("잘못된 요청"));
+        }
 
-   // @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    }
+
+        // @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/api/v1/user/me")
     public ResponseEntity<? extends BasicResponse> getMyUserInfo(){
         UserDto.UserResponseDto result=userService.getMyUserInfo();

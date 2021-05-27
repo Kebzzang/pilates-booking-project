@@ -5,27 +5,23 @@ import com.keb.club_pila.model.response.BasicResponse;
 import com.keb.club_pila.model.response.CommonResponse;
 import com.keb.club_pila.model.response.ErrorResponse;
 import com.keb.club_pila.service.CourseService;
+import com.keb.club_pila.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PostAuthorize;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @RestController
 public class CourseApiController {
     private final CourseService courseService;
-
-    @GetMapping("/hello")
-    public String token() {
-
-        return "<h1>token</h1>";
-    }
+    private final MemberService memberService;
 
     @PostMapping("/api/v1/admin/course")
     public ResponseEntity<? extends BasicResponse> save(@RequestBody CourseDto.CourseSaveRequestDto courseSaveRequestDto) {
@@ -46,8 +42,40 @@ public class CourseApiController {
         return ResponseEntity.ok().body(new CommonResponse<>(course));
     }
 
-    @GetMapping("/api/v1/course/{id}")
 
+    @GetMapping("/api/v1/course/me/{id}") //내가 들은 수업 리스트 쫙..
+    public ResponseEntity<? extends BasicResponse> findMyCourses(@PathVariable Long id){
+           List<CourseDto.CourseTeacherResponseDto> result= memberService.findCoursesById(id);
+           if(!result.isEmpty()){
+               System.out.println("here"+result.toString());
+               return ResponseEntity.ok().body(new CommonResponse<>(result));
+           }
+           else {
+               return ResponseEntity.noContent().build();
+           }
+
+    }
+
+    @GetMapping("/api/v1/course/search")
+    public ResponseEntity<? extends BasicResponse> findCourseBetween(@RequestParam("start")
+                                                                         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+                                                                                 LocalDateTime start, @RequestParam("end")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+            LocalDateTime end){
+        System.out.println("start:: "+ start);
+        System.out.println("end:: "+ end);
+        List<CourseDto.CourseTeacherResponseDto> result=courseService.findCourseBetween(start, end);
+
+        if(!result.isEmpty()){
+            return ResponseEntity.ok().body(new CommonResponse<>(result));
+        }else{
+            System.out.println("수업 없어용!!!");
+            return ResponseEntity.noContent().build();
+        }
+    }
+
+
+    @GetMapping("/api/v1/course/{id}")
     public ResponseEntity<? extends BasicResponse> findById(@PathVariable Long id) {
 
         CourseDto.CourseResponseDto courseResponseDto = courseService.findById(id);

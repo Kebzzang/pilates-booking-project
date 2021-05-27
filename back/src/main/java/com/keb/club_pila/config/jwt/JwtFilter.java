@@ -22,7 +22,7 @@ import static org.springframework.util.StringUtils.hasText;
 @RequiredArgsConstructor
 @Component
 public class JwtFilter extends GenericFilterBean {
-    private static final Logger logger = LoggerFactory.getLogger(JwtFilter.class);
+ //   private static final Logger logger = LoggerFactory.getLogger(JwtFilter.class);
     public static final String AUTHORIZATION_HEADER = "Authorization";
 
     private final JwtProvider jwtProvider;
@@ -30,6 +30,21 @@ public class JwtFilter extends GenericFilterBean {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+
+        HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
+        String jwt = null;
+        Cookie cookie = cookieUtil.getCookie(httpServletRequest, "accessToken");
+        //쿠키에 토큰 정보를 들고 온다면 => 이미 로그인한 사람이니까
+       if (cookie != null && jwtProvider.validateToken(cookie.getValue())) {
+            jwt = cookie.getValue();
+
+            Authentication authentication = jwtProvider.getAuthentication(jwt);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        }
+
+        filterChain.doFilter(servletRequest, servletResponse);
+
        /* logger.debug("do filter...");
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         String jwt = resolveToken(httpServletRequest);
@@ -44,24 +59,7 @@ public class JwtFilter extends GenericFilterBean {
             logger.debug("유효한 JWT 토큰이 없음, uri: {}", requestURI);
         }*/
 
-        System.out.println("here2");
-        HttpServletResponse response = (HttpServletResponse) servletResponse;
-        HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
-        String jwt = null;
-        System.out.println(httpServletRequest+":::Request!!!");
-        Cookie cookie = cookieUtil.getCookie(httpServletRequest, "accessToken");
-        System.out.println(cookie+":::Cookie!!");
-        //쿠키에 토큰 정보를 들고 온다면 => 이미 로그인한 사람이니까까
-       if (cookie != null && jwtProvider.validateToken(cookie.getValue())) {
-            jwt = cookie.getValue();
-
-            Authentication authentication = jwtProvider.getAuthentication(jwt);
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            System.out.println("here JwtFilter  :::: " + authentication);
-
-        }
-
-        filterChain.doFilter(servletRequest, servletResponse);
+        // HttpServletResponse response = (HttpServletResponse) servletResponse;
 //        boolean a=httpServletRequest.authenticate(response);
 //        System.out.println(":::"+a);
 //        if (httpServletRequest.isUserInRole("ADMIN"))

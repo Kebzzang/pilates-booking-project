@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -29,15 +30,8 @@ public class CourseService {
             Teacher foundTeacher=teacher.get();
             Course course = courseSaveRequestDto.toEntity(foundTeacher);
 
-          //  course.settingTeacher(foundTeacher);
             foundTeacher.getCourses().add(course);
-           /* Course course2=Course.builder()
-                    .title(courseSaveRequestDto.getTitle())
-                    .content(courseSaveRequestDto.getContent())
-                    .courseDateTime(courseSaveRequestDto.getCourseDateTime())
-                    .equipmentType(courseSaveRequestDto.getEquipmentType())
-                    .teacher(teacher.get())
-                    .build();*/
+
             courseRepository.save(course);
             return course.getId();
         }
@@ -46,6 +40,14 @@ public class CourseService {
             return 0L;
         }
     }
+
+    @Transactional(readOnly = true)
+    public List<CourseDto.CourseTeacherResponseDto> findCourseBetween(LocalDateTime start, LocalDateTime end){
+        List<Course> courses=courseRepository.findAllByCourseDateTimeBetween(start, end);
+        System.out.println("list 개수::"+courses.size());
+        return courses.stream().map(course->new CourseDto.CourseTeacherResponseDto(course)).collect(Collectors.toList());
+    }
+
 
     @Transactional(readOnly = true)
     public List<CourseDto.CourseResponseDto> findAllCourses() {
