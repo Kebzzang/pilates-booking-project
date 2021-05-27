@@ -12,7 +12,6 @@ export default function useFetchMyInfo(userId: number, cancel: boolean) {
       .then((r) => {
         setData(r.data);
       });
-  }, [cancel]);
-
+  }, [cancel, userId]);
   return data;
 }

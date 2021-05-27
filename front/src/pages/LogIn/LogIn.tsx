@@ -49,10 +49,10 @@ const LogIn = () => {
     <div id="container">
       <Header>Pilas</Header>
       <Form onSubmit={onSubmit}>
-        <Label id="email-label">
+        <Label id="username-label">
           <span>Username</span>
           <div>
-            <Input type="text" id="email" name="email" value={username} onChange={onChangeUsername} />
+            <Input type="text" id="username" name="username" value={username} onChange={onChangeUsername} />
           </div>
         </Label>
         <Label id="password-label">
