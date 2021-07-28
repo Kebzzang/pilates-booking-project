@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum RoleType {
-    ROLE_USER, ROLE_ADMIN;
+    ROLE_USER, ROLE_ADMIN, ROLE_TEACHER;
 
     @Override
     public String toString() {

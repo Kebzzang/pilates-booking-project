@@ -38,11 +38,11 @@ public class AuthApiController {
     private final JwtProvider jwtProvider;
     private final CookieUtil cookieUtil;
 
-    //일반 로그인 요청
+    //일반 회원 로그인 요청
     @PostMapping("/api/v1/auth")
     public ResponseEntity<? extends BasicResponse> authUser(@RequestBody LoginDto loginDto, HttpServletResponse res) {
         UserDto.UserResponseDto user=userService.findByUsername(loginDto.getUsername());
-        if ( user!= null) {
+        if (user!= null) {
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
             Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
             SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -59,7 +59,25 @@ public class AuthApiController {
         }
 
     }
+    @PostMapping("/api/v1/authadmin")
+    public  ResponseEntity<? extends BasicResponse> authAdmin(@RequestBody LoginDto loginDto, HttpServletResponse res){
+        UserDto.UserResponseDto user=userService.findByUsername(loginDto.getUsername());
+        if (user!= null&&user.getRole().toString().equals("ROLE_ADMIN")) {
+            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
+            Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
 
+            String jwt = jwtProvider.generateToken(authentication);
+            System.out.println(jwt);
+            Cookie cookie = cookieUtil.generateCookie("accessToken", jwt);
+            res.setHeader("Access-Control-Allow-Credentials", "true");
+            res.addCookie(cookie);
+
+            return  ResponseEntity.ok().body(new CommonResponse<>(user));
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("관리자 계정 정보가 없습니다"));
+        }
+    }
 
     @PostMapping("/api/v1/logout")
     public ResponseEntity<? extends BasicResponse> logout(HttpServletResponse res) {
