@@ -62,6 +62,7 @@ public class AuthApiController {
     @PostMapping("/api/v1/authadmin")
     public  ResponseEntity<? extends BasicResponse> authAdmin(@RequestBody LoginDto loginDto, HttpServletResponse res){
         UserDto.UserResponseDto user=userService.findByUsername(loginDto.getUsername());
+        //orElse
         if (user!= null&&user.getRole().toString().equals("ROLE_ADMIN")) {
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
             Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
