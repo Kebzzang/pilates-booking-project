@@ -85,7 +85,7 @@ public class AuthApiController {
         Cookie cookie = new Cookie("accessToken", "");
         System.out.println("here logout");
         cookie.setPath("/");
-        cookie.setSecure(true);
+        cookie.setSecure(false);
         cookie.setMaxAge(0);
         cookie.setHttpOnly(true);
         res.setHeader("Access-Control-Allow-Credentials", "true");
