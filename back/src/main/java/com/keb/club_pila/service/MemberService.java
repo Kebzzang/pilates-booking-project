@@ -40,7 +40,7 @@ public class MemberService {
             userRepository.save(entity).getId();
 
             //회원 가입 시 입력한 이메일로 인증메일 보냄
-            emailService.sendEmail(entity.getEmail(), entity.getUsername(), entity.getCertified());
+        //    emailService.sendEmail(entity.getEmail(), entity.getUsername(), entity.getCertified());
             return entity.getId();
         }
         return 0L;
