@@ -18,7 +18,7 @@ const LogIn = () => {
       e.preventDefault();
       axios
         .post(
-          'http://3.38.35.2108080/api/v1/auth',
+          'http://3.38.35.210:8080/api/v1/auth',
           {
             username,
             password,

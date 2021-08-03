@@ -3,72 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="7a6ddd42-9593-4d59-8dde-fcbe674fa081" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/10.312e5b90.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/10.312e5b90.chunk.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/11.2aa38b9c.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/11.2aa38b9c.chunk.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/12.199bb130.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/12.199bb130.chunk.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/6.4c97ca4f.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/6.4c97ca4f.chunk.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/7.44b47210.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/7.44b47210.chunk.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/main.988ba363.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/main.988ba363.chunk.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/0.e6592540.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/0.e6592540.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/1.23d3585f.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/1.23d3585f.chunk.js.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/1.23d3585f.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/10.250c2827.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/10.250c2827.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/11.d2c0e458.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/11.d2c0e458.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/12.cb574f24.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/12.cb574f24.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/13.455d8189.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/13.455d8189.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/14.0e22ec35.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/14.0e22ec35.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/15.2f0e6dc4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/15.2f0e6dc4.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/16.61799553.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/16.61799553.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/2.5c05efc5.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/2.5c05efc5.chunk.js.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/2.5c05efc5.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/5.ef894484.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/5.ef894484.chunk.js.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/5.ef894484.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/6.e29456b8.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/6.e29456b8.chunk.js.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/6.e29456b8.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/7.5a709dc3.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/7.5a709dc3.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/8.ab3c9cc3.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/8.ab3c9cc3.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/9.e789dba9.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/9.e789dba9.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/main.f18fe44e.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/main.f18fe44e.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/runtime-main.a9655bad.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/runtime-main.a9655bad.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/1KxqO6r.13cef47e.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/Lobster-Regular.9535d77e.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/t1.f6ec6512.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/t2.73a6ceeb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/t3.f60b0373.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BookedClasses/MyClass.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BookedClasses/MyClass.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Calendar/Calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar/Calendar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Calendar/Class/ClassComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar/Class/ClassComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/UseFetchMyJoinSimple.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/UseFetchMyJoinSimple.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useClassFetch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useClassFetch.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/13.dc32467c.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/13.dc32467c.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/runtime-main.e0cb201b.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/runtime-main.e0cb201b.js.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hooks/useFetchMyInfo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useFetchMyInfo.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/Main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/Main/Main.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/login/LogIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/LogIn.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/signup/SignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/signup/SignUp.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,6 +145,7 @@
       <workItem from="1627655607046" duration="2571000" />
       <workItem from="1627985329906" duration="1602000" />
       <workItem from="1628003385986" duration="298000" />
+      <workItem from="1628004423220" duration="1690000" />
     </task>
     <servers />
   </component>

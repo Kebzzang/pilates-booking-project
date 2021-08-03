@@ -10,7 +10,15 @@ export default function useFetchMyInfo(userId: number, cancel: boolean) {
         withCredentials: true,
       })
       .then((r) => {
-        setData(r.data);
+        if (r.status !== 204) {
+          setData(r.data);
+        } else {
+          setData({
+            count: 0,
+            data: [],
+          });
+          console.log('신청한 수업이 없어서 204뜸');
+        }
       });
   }, [cancel, userId]);
   return data;
