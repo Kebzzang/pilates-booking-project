@@ -3,16 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7a6ddd42-9593-4d59-8dde-fcbe674fa081" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BookedClasses/MyClass.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BookedClasses/MyClass.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Calendar/Calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar/Calendar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Calendar/Class/ClassComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar/Class/ClassComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/UseFetchMyJoinSimple.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/UseFetchMyJoinSimple.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useClassFetch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useClassFetch.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useFetchMyInfo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useFetchMyInfo.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/Main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/Main/Main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/login/LogIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/LogIn.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/signup/SignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/signup/SignUp.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,6 +135,7 @@
       <workItem from="1627642295013" duration="417000" />
       <workItem from="1627643227538" duration="2035000" />
       <workItem from="1627655607046" duration="2571000" />
+      <workItem from="1627985329906" duration="995000" />
     </task>
     <servers />
   </component>
