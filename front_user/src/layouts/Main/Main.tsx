@@ -17,16 +17,12 @@ const MyClass = loadable(() => import('../../components/BookedClasses/MyClass'))
 const Main: FC = ({ children }) => {
   const [showUserMenu, setShowUserMenu] = useState(false);
 
-  const { data, error, revalidate, mutate } = useSWR(
-    'http://ec2-3-38-35-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/user/me',
-    fetcher,
-    {
-      dedupingInterval: 2000,
-    },
-  ); //내가 원할 때 요청하기!!
+  const { data, error, revalidate, mutate } = useSWR('http://3.38.35.210:8080/api/v1/user/me', fetcher, {
+    dedupingInterval: 2000,
+  }); //내가 원할 때 요청하기!!
   const onLogout = useCallback(() => {
     axios
-      .post('http://ec2-3-38-35-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/logout', null, {
+      .post('http://3.38.35.210:8080/api/v1/logout', null, {
         withCredentials: true,
       })
       .then((response) => {

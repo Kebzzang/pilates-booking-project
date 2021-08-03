@@ -8,10 +8,7 @@ import fetcher from '../../utils/fetcher';
 import Loading from '../../layouts/Loading';
 
 const LogIn = () => {
-  const { data, error, mutate } = useSWR(
-    'http://ec2-3-38-35-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/user/me',
-    fetcher,
-  );
+  const { data, error, mutate } = useSWR('http://3.38.35.210:8080/api/v1/user/me', fetcher);
   const [logInError, setLogInError] = useState(false);
   const [username, onChangeUsername] = useInput('');
   const [password, onChangePassword] = useInput('');
@@ -21,7 +18,7 @@ const LogIn = () => {
       e.preventDefault();
       axios
         .post(
-          'http://ec2-3-38-35-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/auth',
+          'http://3.38.35.2108080/api/v1/auth',
           {
             username,
             password,

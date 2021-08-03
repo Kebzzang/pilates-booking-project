@@ -12,13 +12,9 @@ import './style.css';
 import DatePicker from './DatePicker';
 import useClassFetch from '../../hooks/useClassFetch';
 const Calendar = () => {
-  const { data: userData } = useSWR(
-    'http://ec2-3-38-35-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/user/me',
-    fetcher,
-    {
-      dedupingInterval: 2000,
-    },
-  ); //내가 원할 때 요청하기!!
+  const { data: userData } = useSWR('http://3.38.35.210:8080/api/v1/user/me', fetcher, {
+    dedupingInterval: 2000,
+  }); //내가 원할 때 요청하기!!
   const [selectedDate, setSelectedDate] = useState(moment());
   const [joinPost, setJoinPost] = useState(false);
 
@@ -27,11 +23,7 @@ const Calendar = () => {
 
   const joinRequest = (course_id: number, user_id: number) => {
     axios
-      .post(
-        'http://ec2-3-38-35-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/user/course/join',
-        { course_id, user_id },
-        { withCredentials: true },
-      )
+      .post('http://3.38.35.210:8080/api/v1/user/course/join', { course_id, user_id }, { withCredentials: true })
       .then((response) => {
         console.log('성공: ');
         setJoinPost(!joinPost);
