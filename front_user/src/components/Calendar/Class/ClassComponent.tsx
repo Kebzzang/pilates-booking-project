@@ -16,9 +16,13 @@ interface ClassInfoProps {
   joinRequest: Function;
 }
 const ClassComponent: FC<ClassInfoProps> = ({ joinRequest, myJoins, props }) => {
-  const { data: userData, error, revalidate, mutate } = useSWR('http://localhost:8080/api/v1/user/me', fetcher, {
-    dedupingInterval: 20000,
-  }); //내가 원할 때 요청하기!!
+  const { data: userData, error, revalidate, mutate } = useSWR(
+    'http://ec2-3-38-35-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/user/me',
+    fetcher,
+    {
+      dedupingInterval: 20000,
+    },
+  ); //내가 원할 때 요청하기!!
   const today = moment();
 
   const joinStyles = { background: '#05495e', width: '13px', height: '13px' };

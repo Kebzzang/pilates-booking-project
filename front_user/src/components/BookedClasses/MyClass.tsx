@@ -12,9 +12,13 @@ import Select from 'react-select';
 import { IClass } from '../../types/db';
 //정렬 함수 만들어서 두 정렬? 아니면 선생님 별로 저열ㄹ 한 것들 모아서 모음 함수를 만들어주고 ...ㅠㅠ
 const MyClass = () => {
-  const { data: userData } = useSWR('http://localhost:8080/api/v1/user/me', fetcher, {
-    dedupingInterval: 40000,
-  });
+  const { data: userData } = useSWR(
+    'http://ec2-3-38-35-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/user/me',
+    fetcher,
+    {
+      dedupingInterval: 40000,
+    },
+  );
   const options = [
     { value: 'ascending', label: 'Ascending' },
     { value: 'descending', label: 'Descending' },
@@ -54,7 +58,7 @@ const MyClass = () => {
 
   const cancelJoin = (course_id: number) => {
     axios
-      .delete('http://localhost:8080/api/v1/user/course/cancel', {
+      .delete('http://ec2-3-38-35-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/user/course/cancel', {
         withCredentials: true,
         params: { course_id: course_id, user_id: userData.id },
       })

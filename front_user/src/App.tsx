@@ -17,8 +17,6 @@ const App = () => {
 
       <Route path="/login" component={LogIn} />
       <Route path="/signup" component={SignUp} />
-      {/*<Route path="/main/dm" component={DM} />*/}
-      {/*<Route path="/main/channel" component={Calendar} />*/}
     </Switch>
   );
 };

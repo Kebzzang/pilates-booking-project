@@ -7,7 +7,7 @@ export default function useFetchMyJoinSimple(joinPost: boolean, selectedDate: mo
   const [data, setData] = useState<number[]>([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/api/v1/course/me/${userId}`, {
+      .get(`http://ec2-3-38-35-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/course/me/${userId}`, {
         withCredentials: true,
       })
       .then((r) => {
