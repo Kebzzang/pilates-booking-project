@@ -5,7 +5,8 @@ jdk:
 branches:
   only:
     - main
-
+addons:
+  mariadb: '10.0'
 before_install:
   - cd back
   - chmod +x mvnw
