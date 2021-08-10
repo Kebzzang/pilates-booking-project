@@ -17,12 +17,12 @@ const MyClass = loadable(() => import('../../components/BookedClasses/MyClass'))
 const Main: FC = ({ children }) => {
   const [showUserMenu, setShowUserMenu] = useState(false);
 
-  const { data, error, revalidate, mutate } = useSWR('http://3.38.35.210:8080/api/v1/user/me', fetcher, {
+  const { data, error, revalidate, mutate } = useSWR('http://localhost:8000/api/v1/user/me', fetcher, {
     dedupingInterval: 2000,
   }); //내가 원할 때 요청하기!!
   const onLogout = useCallback(() => {
     axios
-      .post('http://3.38.35.210:8080/api/v1/logout', null, {
+      .post('http://localhost:8000/api/v1/logout', null, {
         withCredentials: true,
       })
       .then((response) => {
@@ -44,7 +44,7 @@ const Main: FC = ({ children }) => {
         <Navbar.Brand>
           <NavLink
             className="main-nav"
-            to="/home"
+            to="/"
             style={{
               color: '#05495e',
               fontSize: '110%',
@@ -58,13 +58,13 @@ const Main: FC = ({ children }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="m-auto">
-            <NavLink className="main-nav" activeClassName="main-nav-active" exact to="/home/booking">
+            <NavLink className="main-nav" activeClassName="main-nav-active" exact to="/book">
               Booking
             </NavLink>{' '}
-            <NavLink className="main-nav" activeClassName="main-nav-active" exact to="/home/myclass">
+            <NavLink className="main-nav" activeClassName="main-nav-active" exact to="/myclass">
               My Class
             </NavLink>{' '}
-            <NavLink className="main-nav" activeClassName="main-nav-active" exact to="/home/teachers">
+            <NavLink className="main-nav" activeClassName="main-nav-active" exact to="/teachers">
               Instructors
             </NavLink>
           </Nav>
@@ -89,11 +89,15 @@ const Main: FC = ({ children }) => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+      {/*<Switch>*/}
+      {/*  /!*<Route exact path="/booking" component={Main} />*!/*/}
+      {/*  /!*<Route exact path="/home/booking" component={Calendar} />*!/*/}
+      {/*  /!*<Route exact path="/home/myclass" component={MyClass} />*!/*/}
+      {/*  /!*<Route exact path="/home/teachers" component={Teachers} />*!/*/}
       <Switch>
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/home/booking" component={Calendar} />
-        <Route exact path="/home/myclass" component={MyClass} />
-        <Route exact path="/home/teachers" component={Teachers} />
+        <Route exact path="/book" component={Calendar} />
+        <Route exact path="/myclass" component={MyClass} />
+        <Route exact path="/teachers" component={Teachers} />
       </Switch>
     </div>
   );

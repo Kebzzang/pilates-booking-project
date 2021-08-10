@@ -58,6 +58,15 @@ public class TeacherApiController {
         return ResponseEntity.ok().body(new CommonResponse<>(teachers));
 
     }
+    @GetMapping("/api/v1/user/teacher")
+    public ResponseEntity<? extends BasicResponse> findAllTeachersSimple(){
+        List<TeacherDto.TeacherResponseSimpleDto> teachers=teacherService.findAllTeachersSimple();
+        if (teachers.isEmpty()) {
+
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok().body(new CommonResponse<>(teachers));
+    }
 
     @GetMapping("/api/v1/teacher/{id}")
     public ResponseEntity<? extends BasicResponse> findById(@PathVariable Long id) {

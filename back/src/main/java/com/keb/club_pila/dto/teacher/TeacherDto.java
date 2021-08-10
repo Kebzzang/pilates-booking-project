@@ -25,6 +25,18 @@ public class TeacherDto {
 
         }
     }
+    @Getter
+    @NoArgsConstructor
+    public static class TeacherResponseSimpleDto{
+        private Long id;
+        private String name;
+
+        public TeacherResponseSimpleDto(Teacher entity){
+            this.id=entity.getId();
+            this.name=entity.getName();
+        }
+
+    }
    
 
     @Getter

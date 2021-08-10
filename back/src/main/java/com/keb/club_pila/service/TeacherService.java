@@ -44,6 +44,12 @@ public class TeacherService {
     }
 
     @Transactional(readOnly=true)
+    public List<TeacherDto.TeacherResponseSimpleDto> findAllTeachersSimple(){
+        List <Teacher> teachers=teacherRepository.findAll();
+        return teachers.stream().map(teacher->new TeacherDto.TeacherResponseSimpleDto(teacher)).collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly=true)
     public TeacherDto.TeacherResponseDto findById(Long id){
         Optional<Teacher> teacher=teacherRepository.findById(id);
         if (teacher.isPresent()) {
