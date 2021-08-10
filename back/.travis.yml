@@ -6,7 +6,6 @@ branches:
     - main
 
 before_install:
-  - cd back
   - chmod +x mvnw
 
 #travis ci server home
