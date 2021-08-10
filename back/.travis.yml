@@ -1,8 +1,7 @@
 language: java
 jdk:
   - openjdk11
-before_install:
-  - chmod +x mvnw
+
 branches:
   only:
     - master
@@ -11,5 +10,10 @@ branches:
 #travis ci server home
 cache:
   directories:
-    - '$HOME/.m2/repository'
-    - '$HOME/.
+    - '$HOME/.m2'
+
+
+notifications:
+  email:
+    recipients:
+      - kebinkorea@gmail.com
