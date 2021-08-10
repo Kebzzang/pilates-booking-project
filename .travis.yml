@@ -2,7 +2,6 @@ language: java
 jdk:
   - openjdk11
 before_install:
-  - cd back
   - chmod +x mvnw
 branches:
   only:
@@ -13,8 +12,11 @@ branches:
 cache:
   directories:
     - $HOME/.m2/repository
-
-script: mvn clean verify
+script:
+  - java --version
+  - cd back
+  - ./mvnw clean install
+  - ./mvnw test
 notifications:
   email:
     recipients:
