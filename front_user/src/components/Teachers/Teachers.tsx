@@ -1,18 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TeacherCard from './TeacherCard';
+import axios from 'axios';
 import t1 from '../../img/t1.jpg';
 import t2 from '../../img/t2.jpg';
 import t3 from '../../img/t3.jpg';
+import { ITeacher } from '../../types/db';
 const Teachers = () => {
-  const [profile, setProfile] = useState([
-    { name: 'Sammie Que', image: t1, email: 'SammieQue@email.com' },
-    { name: 'Ellie Kang', image: t2, email: 'EllieKang@email.com' },
-    { name: 'Yun Kim', image: t3, email: 'YunKim@email.com' },
-  ]);
+  const [profiles, setProfiles] = useState<ITeacher[]>([]);
+  useEffect(() => {
+    axios
+      .get('http://localhost:8000/api/v1/user/teacher', {
+        withCredentials: true,
+      })
+      .then((r) => {
+        if(r.status!==204){
+          r.data.map((el: ITeacher)=>{
+            setProfiles
+          })
+        }
+      });
+  }, []);
+
   return (
     <div className="row Card-Container">
-      {profile.map((profile) => (
-        <TeacherCard key={profile.name} name={profile.name} image={profile.image} email={profile.email} />
+      {profiles.map((profile) => (
+        <TeacherCard key={profile.id} name={profile.name} image={tprofile} />
       ))}
     </div>
   );

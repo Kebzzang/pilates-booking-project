@@ -11,7 +11,7 @@ function useClassFetch(startDate: moment.Moment, joinPost: boolean) {
   const endDate = startDate.clone().add(1, 'days');
   useEffect(() => {
     axios
-      .get('http://3.38.35.210:8080/api/v1/course/search', {
+      .get('http://localhost:8000/api/v1/course/search', {
         params: {
           start: startDate.format('YYYY-MM-DDT00:00:00'),
           end: endDate.format('YYYY-MM-DDT00:00:00'),

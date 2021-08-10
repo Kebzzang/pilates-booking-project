@@ -14,13 +14,10 @@ interface ClassInfoProps {
   props: IClasses;
   myJoins: number[];
   joinRequest: Function;
+  userData: number;
 }
-const ClassComponent: FC<ClassInfoProps> = ({ joinRequest, myJoins, props }) => {
-  const { data: userData, error, revalidate, mutate } = useSWR('http://3.38.35.210:8080/api/v1/user/me', fetcher, {
-    dedupingInterval: 20000,
-  }); //내가 원할 때 요청하기!!
+const ClassComponent: FC<ClassInfoProps> = ({ userData, joinRequest, myJoins, props }) => {
   const today = moment();
-
   const joinStyles = { background: '#05495e', width: '13px', height: '13px' };
   const greyStyles = { background: 'lightgray', height: '13px', width: '13px' };
   const { count, data } = props;
@@ -83,7 +80,7 @@ const ClassComponent: FC<ClassInfoProps> = ({ joinRequest, myJoins, props }) => 
                       block
                       style={{ float: 'right' }}
                       variant="outline-info"
-                      onClick={() => onClickJoins(element.id, userData.id)}
+                      onClick={() => onClickJoins(element.id, userData)}
                     >
                       Join
                     </Button>

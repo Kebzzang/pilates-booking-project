@@ -9,7 +9,7 @@ import fetcher from '../../utils/fetcher';
 import Loading from '../../layouts/Loading';
 
 const SignUp = () => {
-  const { data } = useSWR('http://3.38.35.210:8080/api/v1/user/me', fetcher);
+  const { data } = useSWR('http://localhost::8000/api/v1/user/me', fetcher);
 
   const [username, onChangeUsername] = useInput('');
   const [email, onChangeEmail] = useInput('');
@@ -47,7 +47,7 @@ const SignUp = () => {
         setSignUpError('');
         setSignUpSuccess(false); //전에 했던 요청 데이터가 남아있지 않게 초기화해줌
         axios
-          .post('http://3.38.35.210:8080/api/v1/signup', {
+          .post('http://localhost::8000/api/v1/signup', {
             username,
             email,
             password,

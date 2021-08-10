@@ -8,7 +8,7 @@ import fetcher from '../../utils/fetcher';
 import Loading from '../../layouts/Loading';
 
 const LogIn = () => {
-  const { data, error, mutate } = useSWR('http://3.38.35.210:8080/api/v1/user/me', fetcher);
+  const { data, error, mutate } = useSWR('http://localhost:8000/api/v1/user/me', fetcher);
   const [logInError, setLogInError] = useState(false);
   const [username, onChangeUsername] = useInput('');
   const [password, onChangePassword] = useInput('');
@@ -18,7 +18,7 @@ const LogIn = () => {
       e.preventDefault();
       axios
         .post(
-          'http://3.38.35.210:8080/api/v1/auth',
+          'http://localhost:8000/api/v1/auth',
           {
             username,
             password,
@@ -43,7 +43,7 @@ const LogIn = () => {
   }
   if (!error && data) {
     console.log('로그인됨!!여기 때문에', data);
-    return <Redirect to="/home/booking" />;
+    return <Redirect to="/book" />;
   }
   return (
     <div id="container">

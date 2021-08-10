@@ -2,15 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a6ddd42-9593-4d59-8dde-fcbe674fa081" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/CorsConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/13.dc32467c.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/13.dc32467c.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/runtime-main.e0cb201b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/runtime-main.e0cb201b.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useFetchMyInfo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useFetchMyInfo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BookedClasses/MyClass.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BookedClasses/MyClass.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Calendar/Calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar/Calendar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Calendar/Class/ClassComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar/Class/ClassComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Teachers/Teachers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teachers/Teachers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/UseFetchMyJoinSimple.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/UseFetchMyJoinSimple.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useClassFetch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useClassFetch.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useFetchMyInfo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useFetchMyClasses.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/Main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/Main/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/Main/NavBar.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/login/LogIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/LogIn.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/signup/SignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/signup/SignUp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/signup/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/signup/style.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/db.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/db.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +152,11 @@
       <workItem from="1627655607046" duration="2571000" />
       <workItem from="1627985329906" duration="1602000" />
       <workItem from="1628003385986" duration="298000" />
-      <workItem from="1628004423220" duration="1690000" />
+      <workItem from="1628004423220" duration="3528000" />
+      <workItem from="1628070446934" duration="1991000" />
+      <workItem from="1628131936058" duration="14560000" />
+      <workItem from="1628230975164" duration="595000" />
+      <workItem from="1628577939491" duration="9965000" />
     </task>
     <servers />
   </component>
@@ -163,6 +174,16 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/index.tsx</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -12,7 +12,7 @@ import './style.css';
 import DatePicker from './DatePicker';
 import useClassFetch from '../../hooks/useClassFetch';
 const Calendar = () => {
-  const { data: userData } = useSWR('http://3.38.35.210:8080/api/v1/user/me', fetcher, {
+  const { data: userData } = useSWR('http://localhost:8000/api/v1/user/me', fetcher, {
     dedupingInterval: 2000,
   }); //내가 원할 때 요청하기!!
   const [selectedDate, setSelectedDate] = useState(moment());
@@ -23,9 +23,8 @@ const Calendar = () => {
 
   const joinRequest = (course_id: number, user_id: number) => {
     axios
-      .post('http://3.38.35.210:8080/api/v1/user/course/join', { course_id, user_id }, { withCredentials: true })
+      .post('http://localhost:8000/api/v1/user/course/join', { course_id, user_id }, { withCredentials: true })
       .then((response) => {
-        console.log('성공: ');
         setJoinPost(!joinPost);
       })
       .catch((error) => {
@@ -36,7 +35,7 @@ const Calendar = () => {
   return (
     <CalendarWrapper>
       <DatePicker onChange={setSelectedDate} value={selectedDate} />
-      <ClassComponent props={classes} myJoins={myJoins} joinRequest={joinRequest} />
+      <ClassComponent userData={userData.id} props={classes} myJoins={myJoins} joinRequest={joinRequest} />
     </CalendarWrapper>
   );
 };

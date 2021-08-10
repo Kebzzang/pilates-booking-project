@@ -14,7 +14,7 @@ const Calendar = loadable(() => import('../../components/Calendar/Calendar'));
 const Home = loadable(() => import('../../components/Home'));
 const Teachers = loadable(() => import('../../components/Teachers/Teachers'));
 const MyClass = loadable(() => import('../../components/BookedClasses/MyClass'));
-const Main: FC = ({ children }) => {
+const Header: FC = ({ children }) => {
   const [showUserMenu, setShowUserMenu] = useState(false);
 
   const { data, error, revalidate, mutate } = useSWR('http://localhost:8000/api/v1/user/me', fetcher, {
@@ -90,7 +90,7 @@ const Main: FC = ({ children }) => {
         </Navbar.Collapse>
       </Navbar>
       {/*<Switch>*/}
-      {/*  /!*<Route exact path="/booking" component={Main} />*!/*/}
+      {/*  /!*<Route exact path="/booking" component={Header} />*!/*/}
       {/*  /!*<Route exact path="/home/booking" component={Calendar} />*!/*/}
       {/*  /!*<Route exact path="/home/myclass" component={MyClass} />*!/*/}
       {/*  /!*<Route exact path="/home/teachers" component={Teachers} />*!/*/}
@@ -102,4 +102,4 @@ const Main: FC = ({ children }) => {
     </div>
   );
 };
-export default Main;
+export default Header;

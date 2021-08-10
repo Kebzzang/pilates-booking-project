@@ -16,7 +16,11 @@ export interface IClass {
   maxStudent: number;
   nowStudent: number;
 }
-
+export interface ITeacher {
+  id: number;
+  name: string;
+  image: string;
+}
 export interface IClasses {
   count: number;
   data: IClass[];
