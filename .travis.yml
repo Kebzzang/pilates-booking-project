@@ -1,0 +1,19 @@
+language: java
+jdk:
+  - openjdk11
+branches:
+  only:
+    - main
+
+before_install:
+  - cd back
+  - chmod +x mvnw
+
+#travis ci server home
+cache:
+  directories:
+    - $HOME/.m2
+notifications:
+  email:
+    recipients:
+      - kebinkorea@gmail.com
