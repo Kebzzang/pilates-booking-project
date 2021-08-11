@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a6ddd42-9593-4d59-8dde-fcbe674fa081" name="Default Changelist" comment="" />
+    <list default="true" id="7a6ddd42-9593-4d59-8dde-fcbe674fa081" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/login/LogIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/LogIn.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +30,9 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1rewOkd3W1WW40bkKTtQU0cT91r" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -140,7 +147,7 @@
       <workItem from="1628131936058" duration="14560000" />
       <workItem from="1628230975164" duration="595000" />
       <workItem from="1628577939491" duration="9965000" />
-      <workItem from="1628660166060" duration="1261000" />
+      <workItem from="1628660166060" duration="2456000" />
     </task>
     <servers />
   </component>

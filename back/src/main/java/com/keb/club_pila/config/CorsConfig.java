@@ -25,7 +25,8 @@ public class CorsConfig {
         config.setAllowCredentials(true);
         List<String> allowOrigins = Arrays.asList(
                 "http://210.99.231.107:3000/**",
-                "http://210.99.231.107",
+                "http://210.99.231.107:3000",
+                "http://210.99.231.107:3000/",
                 "http://3.38.35.210:80/**","http://3.38.35.210:80","http://3.38.35.210/**","http://3.38.35.210",
                 "http://localhost:80/**", "http://localhost:80","http://localhost:3000", "http://localhost:3000/**");
         config.setAllowedOriginPatterns(allowOrigins);
