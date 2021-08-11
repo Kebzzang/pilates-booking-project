@@ -23,7 +23,8 @@ spring:
 
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/pila
+   # url: jdbc:mariadb://localhost:3306/pila
+    url: jdbc:mariadb://pilas-webservice-springboot.ctq1affhd18k.ap-northeast-2.rds.amazonaws.com:3306/pilas_webservice_springboot
     username: root
     password: root
 
