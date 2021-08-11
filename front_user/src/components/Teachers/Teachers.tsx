@@ -13,19 +13,19 @@ const Teachers = () => {
         withCredentials: true,
       })
       .then((r) => {
-        if(r.status!==204){
-          r.data.map((el: ITeacher)=>{
-            setProfiles
-          })
+        if (r.status !== 204) {
+          r.data.map((el: ITeacher) => {
+            setProfiles;
+          });
         }
       });
   }, []);
 
   return (
     <div className="row Card-Container">
-      {profiles.map((profile) => (
-        <TeacherCard key={profile.id} name={profile.name} image={tprofile} />
-      ))}
+      {/*{profiles.map((profile) => (*/}
+      {/*  <TeacherCard key={profile.id} name={profile.name} image={tprofile} />*/}
+      {/*))}*/}
     </div>
   );
 };
