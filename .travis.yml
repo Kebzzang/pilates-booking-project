@@ -9,13 +9,12 @@ addons:
 before_install:
   - cd back
   - chmod +x mvnw
-  - mvn clean
+
 
 #travis ci server home
 cache:
   directories:
     - $HOME/.m2
-script: mvn clean verify
 
 before_deploy:
   - zip -r pilas-springboot-webservice ./*
