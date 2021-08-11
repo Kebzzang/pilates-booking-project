@@ -15,7 +15,7 @@ before_install:
 cache:
   directories:
     - $HOME/.m2
-script: mvn clean build
+script: mvn clean verify
 
 before_deploy:
   - zip -r pilas-springboot-webservice
