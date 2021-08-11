@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a6ddd42-9593-4d59-8dde-fcbe674fa081" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/CorsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BookedClasses/MyClass.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BookedClasses/MyClass.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Calendar/Calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar/Calendar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Calendar/Class/ClassComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar/Class/ClassComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Teachers/Teachers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teachers/Teachers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/UseFetchMyJoinSimple.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/UseFetchMyJoinSimple.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useClassFetch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useClassFetch.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useFetchMyInfo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useFetchMyClasses.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/Main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/Main/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/Main/NavBar.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/login/LogIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/LogIn.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/signup/SignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/signup/SignUp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/signup/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/signup/style.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/db.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/db.ts" afterDir="false" />
-    </list>
+    <list default="true" id="7a6ddd42-9593-4d59-8dde-fcbe674fa081" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -157,6 +140,7 @@
       <workItem from="1628131936058" duration="14560000" />
       <workItem from="1628230975164" duration="595000" />
       <workItem from="1628577939491" duration="9965000" />
+      <workItem from="1628660166060" duration="603000" />
     </task>
     <servers />
   </component>
