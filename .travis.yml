@@ -18,7 +18,7 @@ cache:
 script: mvn clean verify
 
 before_deploy:
-  - zip -r pilas-springboot-webservice back
+  - zip -r pilas-springboot-webservice ./*
   - mkdir -p deploy
   - mv pilas-springboot-webservice.zip deploy/pilas-springboot-webservice.zip
 
