@@ -7,6 +7,7 @@ branches:
 addons:
   mariadb: '10.0'
 before_install:
+  - cd back
   - chmod +x mvnw
   - mvn clean
 
@@ -35,6 +36,19 @@ deploy:
     wait-until-deployed: true
     on:
       all_branches: true
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+
+    bucket: pilas-springboot-build
+    key: pilas-springboot-webservice.zip
+    bundle_type: zip
+    application: pilas-springboot-webservice
+
+    deployment_group: pilas-springboot-webservice-group
+
+    region: ap-northeast-2
+    wait-until-deployed: true
 notifications:
   email:
     recipients:
