@@ -7,7 +7,6 @@ branches:
 addons:
   mariadb: '10.0'
 before_install:
-  - cd back
   - chmod +x mvnw
   - mvn clean
 
