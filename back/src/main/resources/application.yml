@@ -3,6 +3,8 @@ server:
   port: 8000
   servlet:
     context-path: /
+    encoding:
+      charset: UTF-8
 
 spring:
 #  mvc:
@@ -22,12 +24,16 @@ spring:
             enable: true
 
   datasource:
-    driver-class-name: org.mariadb.jdbc.Driver
-   # url: jdbc:mariadb://localhost:3306/pila
-    url: jdbc:mariadb://pilas-webservice-springboot.ctq1affhd18k.ap-northeast-2.rds.amazonaws.com:3306/pilas_webservice_springboot
-    username: admin
-  #  password: root
-    password: adminadmin
+    driver-class-name: ENC(iGyaTZG85xqxwqhxqRxT4gL7Jq1+D7bzSGAghLmsZoBHFRvPJ/G06aOYGNWHKJNg0esDwOTHaQgC8xXpkBSIaw==)
+    #url: jdbc:mariadb://localhost:3306/pila
+#    username: root
+#    password: root
+   # url: jdbc:mariadb://pilas-webservice-springboot.ctq1affhd18k.ap-northeast-2.rds.amazonaws.com:3306/pilas_webservice_springboot
+    url: ENC(OWBdThpM8VDnvYrngDJWm72DrPRatNCZlgbMmxjkyCa25a0CEfDDCJxmq3J9qU+FR4m263z2tOxRg4+zK8M6xPY86ZKfPBmqACKQVpCUkeyjjlKhX+Uxpw+abpBTG53T1Z0HRJvkPYEUp92bweDZdrShwIRLdrmCjBa7qNQSoXUqYHWi8lP2vanmUmTAMbzZTVt9rSfTFtpez3rQAkBUrA==)
+    username: ENC(ptdeuL9DR2tUX7GrklXLmyYcBVwIW8eeMDMHdutnR2Ag/AUTULnwhojlTWICdU52)
+    password: ENC(X5PD7M1/OExZYRohhOcTQqP7ao6+lOF3TNc/l787RDWNJ6/EZUukY+Yt7iIe2Xpv)
+
+
 
   jpa:
     open-in-view: true
@@ -47,11 +53,12 @@ spring:
   http:
     encoding:
 
+
 #  security:
 #    oauth2:
 #      client:
 #        registration:
-#          google: # /oauth2/authorization/google ??주소�??�작?�게 ?�다.
+#          google: # /oauth2/authorization/google
 #            client-id: 588000139755-i5inq6jei66hsugf2ilef0bqu4ev7rns.apps.googleusercontent.com
 #            client-secret: 0Vd_EVhplFR1kNfyU7fbZwWU
 #            scope:

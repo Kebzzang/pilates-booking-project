@@ -24,7 +24,7 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
         List<String> allowOrigins = Arrays.asList(
-
+//스카 로컬호스트
                 "http://210.99.231.107:3000/**",
                 "http://210.99.231.107:3000",
                 "http://210.99.231.107:3000/",

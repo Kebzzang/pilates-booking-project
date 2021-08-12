@@ -47,7 +47,7 @@ const SignUp = () => {
         setSignUpError('');
         setSignUpSuccess(false); //전에 했던 요청 데이터가 남아있지 않게 초기화해줌
         axios
-          .post('http://localhost::8000/api/v1/signup', {
+          .post('http://localhost:8000/api/v1/signup', {
             username,
             email,
             password,
@@ -59,14 +59,15 @@ const SignUp = () => {
             alert('SignUp Success! Login Please');
           }) //성공
           .catch((error) => {
-            console.log(error.response);
-            setSignUpError(error.response.data.errorMsg);
+            // console.log(username, email, password);
+            // console.log(error.response);
+            setSignUpError(error.response);
             setLoading(false); //에러 발생, 로딩 끝
           }) //실패
           .finally(() => {}); //무조건 실행
       }
     },
-    [username, email, password, mismatchError],
+    [username, email, password, passwordCheck, mismatchError],
   );
   if (signUpSuccess) {
     return <Redirect to="/" />;

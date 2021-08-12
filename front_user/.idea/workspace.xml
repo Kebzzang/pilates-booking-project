@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a6ddd42-9593-4d59-8dde-fcbe674fa081" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../back/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../back/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/login/LogIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/LogIn.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/signup/SignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/signup/SignUp.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +150,8 @@
       <workItem from="1628131936058" duration="14560000" />
       <workItem from="1628230975164" duration="595000" />
       <workItem from="1628577939491" duration="9965000" />
-      <workItem from="1628660166060" duration="3121000" />
+      <workItem from="1628660166060" duration="6222000" />
+      <workItem from="1628744620529" duration="10000" />
     </task>
     <servers />
   </component>
