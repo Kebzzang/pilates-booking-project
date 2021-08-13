@@ -5,6 +5,7 @@ server:
     context-path: /
     encoding:
       charset: UTF-8
+
 cloud:
   aws:
     s3:
@@ -17,7 +18,10 @@ cloud:
       accessKey: ENC(4iEszH9mtpefYOxkZsMod5m0zcA4/a3Sx/1cGxzsiCASAT+nmmSEGWT08OQ6joUa3k54dJRDnko1N3hZmB7QBQ==)
       secretKey: ENC(LYaNJAjqw/hG7j4/JvCa7zaV/nbzmTBepTzOGBZCS5GUd/W03ruDqmBYzSPu9j9NRWk/pNkNPAHpFzAauexVf+Ib6fUoBhabIb/HkY5uepc=)
 spring:
-#  mvc:
+  servlet:
+    multipart:
+      max-file-size: 50MB
+  #  mvc:
 #    view:
 #      prefix: /WEB-INF/views/
 #      suffix: .jsp

@@ -89,10 +89,16 @@ public class TeacherApiController {
         //성공시
         return ResponseEntity.noContent().build();
     }
+    //선생님 이미지 업로드용
     @PostMapping(
-            path = "/api/v1/teacher/{id}/image/upload",consumes = MediaType.MULTIPART_FORM_DATA_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
+            path = "/api/v1/admin/teacher/{id}/image/upload",consumes = MediaType.MULTIPART_FORM_DATA_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<? extends BasicResponse> uploadTeacherProfileImage(@PathVariable("id") Long id, @RequestParam("file") MultipartFile file){
         teacherService.uploadTeacherProfileImage(id, file);
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/api/v1/teacher/{id}/download")
+    public byte[] downloadTeacherProfileImage(@PathVariable("id") Long id){
+
+  return  teacherService.downloadTeacherProfileImage(id);
     }
 }

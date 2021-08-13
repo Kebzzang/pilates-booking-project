@@ -7,6 +7,7 @@ import t3 from '../../img/t3.jpg';
 import { ITeacher } from '../../types/db';
 const Teachers = () => {
   const [profiles, setProfiles] = useState<ITeacher[]>([]);
+
   useEffect(() => {
     axios
       .get('http://localhost:8000/api/v1/user/teacher', {
@@ -14,18 +15,16 @@ const Teachers = () => {
       })
       .then((r) => {
         if (r.status !== 204) {
-          r.data.map((el: ITeacher) => {
-            setProfiles;
-          });
+          setProfiles(r.data.data);
         }
       });
   }, []);
 
   return (
     <div className="row Card-Container">
-      {/*{profiles.map((profile) => (*/}
-      {/*  <TeacherCard key={profile.id} name={profile.name} image={tprofile} />*/}
-      {/*))}*/}
+      {profiles.map((profile) => (
+        <TeacherCard key={profile.id} teacherData={profile} />
+      ))}
     </div>
   );
 };

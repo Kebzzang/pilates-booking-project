@@ -72,31 +72,42 @@ public class TeacherService {
         }
     }
 
+    @Transactional
     public void uploadTeacherProfileImage(Long id, MultipartFile file) {
         //1. check if imge is not empty
         isFileEmpty(file);
         //2. if file is an image
         isImage(file);
         //3. this teacher exists in our db
-        Optional<Teacher> teacher=teacherRepository.findById(id);
-        if (teacher.isPresent()) {
+        Teacher teacher=teacherRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 선생님이 존재하지 않습니다"));
+
             //4. Grap some metadata from file if any
             Map<String, String> metadata = extractMetadata(file);
             //5. Store the iamge in s3 and update db with s3 image link
-            System.out.println("techer id: " +teacher.get().getId());
+            System.out.println("techer id: " +teacher.getId());
             System.out.println("bucekt name: " +BucketName.PROFILE_IMAGE.getBucketName());
-            String path= String.format("%s/%s", BucketName.PROFILE_IMAGE.getBucketName(), teacher.get().getId());
+            String path= String.format("%s/%s", BucketName.PROFILE_IMAGE.getBucketName(), teacher.getId());
             System.out.println("path: "+path);
             String filename=String.format("%s-%s", file.getOriginalFilename(), UUID.randomUUID());
             try {
                 fileStore.save(path, filename, Optional.of(metadata), file.getInputStream());
+                teacher.updateTeacherProfileImageLink(filename);
+                System.out.println("updated Profile Image Link"+ " "+ filename);
+                System.out.println(":::"+teacher.getUserProfileImageLink());
             } catch (IOException e) {
                 throw new IllegalStateException(e);
             }
-        }
+    }
+    public byte[] downloadTeacherProfileImage(Long id) {
+        Teacher teacher=teacherRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 선생님이 존재하지 않습니다"));
+
+        String path= String.format("%s/%s", BucketName.PROFILE_IMAGE.getBucketName(), teacher.getId());
+        if(!teacher.getUserProfileImageLink().isEmpty())
+        return fileStore.download(path, teacher.getUserProfileImageLink());
+        else
+            return new byte[0];
 
     }
-
     private Map<String, String> extractMetadata(MultipartFile file) {
         Map<String, String> metadata=new HashMap<>();
         metadata.put("Content-Type", file.getContentType());
@@ -119,4 +130,6 @@ public class TeacherService {
             throw new IllegalStateException("이미지가 비었습니다 ["+ file.getSize()+"]" );
         }
     }
+
+
 }

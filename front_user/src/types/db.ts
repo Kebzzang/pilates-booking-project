@@ -19,7 +19,8 @@ export interface IClass {
 export interface ITeacher {
   id: number;
   name: string;
-  image: string;
+  userProfileImageLink: string;
+  email: string;
 }
 export interface IClasses {
   count: number;

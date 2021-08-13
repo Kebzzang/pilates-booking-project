@@ -69,7 +69,7 @@ const Header: FC = ({ children }) => {
             </NavLink>
           </Nav>
           <Nav>
-            <button
+            <span
               style={{ paddingLeft: '0px', width: '50px', border: 'none', backgroundColor: 'transparent' }}
               onClick={onClickUserProfile}
             >
@@ -85,15 +85,11 @@ const Header: FC = ({ children }) => {
                   <LogOutButton onClick={onLogout}>Logout</LogOutButton>
                 </Menu>
               )}
-            </button>
+            </span>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      {/*<Switch>*/}
-      {/*  /!*<Route exact path="/booking" component={Header} />*!/*/}
-      {/*  /!*<Route exact path="/home/booking" component={Calendar} />*!/*/}
-      {/*  /!*<Route exact path="/home/myclass" component={MyClass} />*!/*/}
-      {/*  /!*<Route exact path="/home/teachers" component={Teachers} />*!/*/}
+
       <Switch>
         <Route exact path="/book" component={Calendar} />
         <Route exact path="/myclass" component={MyClass} />

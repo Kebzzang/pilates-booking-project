@@ -36,6 +36,9 @@ public class Teacher extends BaseTimeEntity {
     private String email;
     private String userProfileImageLink; //for s3
 
+    public void updateTeacherProfileImageLink(String userProfileImageLink){
+        this.userProfileImageLink=userProfileImageLink;
+    }
     public void update(String name, boolean working){
         this.name=name;
         this.working=working;
