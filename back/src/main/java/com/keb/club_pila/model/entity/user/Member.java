@@ -7,6 +7,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -56,6 +57,7 @@ public class Member extends BaseTimeEntity {
         System.out.println("certified"+certified+":::"+username);
         return 1L;
     }
+
 
 
 }

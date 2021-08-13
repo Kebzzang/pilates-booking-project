@@ -7,13 +7,11 @@ import com.keb.club_pila.model.response.ErrorResponse;
 import com.keb.club_pila.service.TeacherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PostAuthorize;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.security.RolesAllowed;
 import java.net.URI;
 import java.util.List;
 
@@ -25,7 +23,8 @@ public class TeacherApiController {
     /*
     1. 선생님 등록
     2. 선생님 삭제
-    3. 선생님 업데이트
+    3. 선생님 업데이트 (정보)
+    3-1. 선생님 사진 업데이트 <- 관리자용
     4. 선생님 읽기 - 모든 선생님, 특정 아이디 선생님 -> 딸린 수업까지 전부 ?
 
     */
@@ -48,6 +47,7 @@ public class TeacherApiController {
 
     }
   //  @PreAuthorize("hasRole('ROLE_ADMIN')")
+    //관리자용 선생님 리스트 쫙
     @GetMapping("/api/v1/admin/teacher")
     public ResponseEntity<? extends BasicResponse> findAllTeachers() {
         List<TeacherDto.TeacherResponseDto> teachers=teacherService.findAllTeachers();
@@ -58,6 +58,7 @@ public class TeacherApiController {
         return ResponseEntity.ok().body(new CommonResponse<>(teachers));
 
     }
+    //일반 유저용 선생님 리스트 쫙
     @GetMapping("/api/v1/user/teacher")
     public ResponseEntity<? extends BasicResponse> findAllTeachersSimple(){
         List<TeacherDto.TeacherResponseSimpleDto> teachers=teacherService.findAllTeachersSimple();
@@ -86,6 +87,12 @@ public class TeacherApiController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("잘못된 선생님 갱신 요청: "+id));
         }
         //성공시
+        return ResponseEntity.noContent().build();
+    }
+    @PostMapping(
+            path = "/api/v1/teacher/{id}/image/upload",consumes = MediaType.MULTIPART_FORM_DATA_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<? extends BasicResponse> uploadTeacherProfileImage(@PathVariable("id") Long id, @RequestParam("file") MultipartFile file){
+        teacherService.uploadTeacherProfileImage(id, file);
         return ResponseEntity.noContent().build();
     }
 }

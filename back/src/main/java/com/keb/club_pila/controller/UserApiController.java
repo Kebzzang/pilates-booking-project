@@ -8,9 +8,12 @@ import com.keb.club_pila.model.response.ErrorResponse;
 import com.keb.club_pila.service.JoinInfoService;
 import com.keb.club_pila.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.apache.http.protocol.ResponseServer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -62,6 +65,9 @@ public class UserApiController {
         }
         return ResponseEntity.ok().body(new CommonResponse<>(userResponseDto));
     }
+
+
+
     @PutMapping("/api/v1/user/{id}")
     public ResponseEntity<? extends BasicResponse> updateById(@PathVariable Long id, @RequestBody UserDto.UserUpdateDto userUpdateDto) {
         Long result = userService.updateById(id, userUpdateDto);

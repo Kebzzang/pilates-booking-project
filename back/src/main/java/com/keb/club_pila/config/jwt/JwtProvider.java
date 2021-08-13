@@ -1,7 +1,6 @@
 package com.keb.club_pila.config.jwt;
 
-import com.keb.club_pila.config.CustomUserDetails;
-import com.keb.club_pila.config.CustomUserDetailsService;
+import com.keb.club_pila.config.Custom.CustomUserDetails;
 import com.keb.club_pila.model.entity.user.Member;
 import io.jsonwebtoken.security.Keys;
 import org.slf4j.Logger;

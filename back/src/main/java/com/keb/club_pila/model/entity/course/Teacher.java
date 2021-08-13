@@ -10,6 +10,7 @@ import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -22,7 +23,7 @@ public class Teacher extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 10, nullable = false)
+    @Column(length = 20, nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "teachers",cascade=CascadeType.ALL)
@@ -31,6 +32,9 @@ public class Teacher extends BaseTimeEntity {
 
     @ColumnDefault("1")
     private boolean working;
+
+    private String email;
+    private String userProfileImageLink; //for s3
 
     public void update(String name, boolean working){
         this.name=name;

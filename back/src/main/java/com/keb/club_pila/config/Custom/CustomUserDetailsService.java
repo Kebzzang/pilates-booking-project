@@ -1,4 +1,5 @@
-package com.keb.club_pila.config;
+
+package com.keb.club_pila.config.Custom;
 
 import com.keb.club_pila.model.entity.user.Member;
 import com.keb.club_pila.repository.UserRepository;

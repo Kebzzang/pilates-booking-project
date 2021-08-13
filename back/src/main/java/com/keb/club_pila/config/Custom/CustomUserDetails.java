@@ -1,4 +1,4 @@
-package com.keb.club_pila.config;
+package com.keb.club_pila.config.Custom;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
