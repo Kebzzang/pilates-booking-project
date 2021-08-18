@@ -19,13 +19,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 public class FileStore {
-
+    public static final String CLOUDFRONT_DOMAIN_NAME="d1djtzszdq7pt7.cloudfront.net";
     private final AmazonS3 s3;
-
-//    public FileStore(AmazonS3 s3) {
-//        System.out.println("Problem comes up here");this.s3 = s3;
-//
-//    }
 
     public void save(String path, String fileName, Optional<Map<String, String>> optionalMetaData,
                     InputStream inputStream) //path will be bucketname
@@ -42,7 +37,7 @@ public class FileStore {
            throw new IllegalStateException("Failed to store file to s3", e);
        }
    }
-    public byte[] download(String path, String key) {
+    public byte[] downloadFromS3(String path, String key) {
         try {
             S3Object object = s3.getObject(path, key);
             return IOUtils.toByteArray(object.getObjectContent());

@@ -96,6 +96,7 @@ public class TeacherApiController {
         teacherService.uploadTeacherProfileImage(id, file);
         return ResponseEntity.noContent().build();
     }
+
     @GetMapping("/api/v1/teacher/{id}/download")
     public byte[] downloadTeacherProfileImage(@PathVariable("id") Long id){
 

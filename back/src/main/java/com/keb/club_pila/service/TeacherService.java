@@ -7,8 +7,6 @@ import com.keb.club_pila.model.entity.course.Teacher;
 import com.keb.club_pila.repository.TeacherRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.http.entity.ContentType;
-import org.springframework.security.access.prepost.PostAuthorize;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,6 +18,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class TeacherService {
+
     private final FileStore fileStore;
     private final TeacherRepository teacherRepository;
 
@@ -50,21 +49,19 @@ public class TeacherService {
     @Transactional(readOnly=true)
     public List<TeacherDto.TeacherResponseSimpleDto> findAllTeachersSimple(){
         List <Teacher> teachers=teacherRepository.findAll();
-        return teachers.stream().map(teacher->new TeacherDto.TeacherResponseSimpleDto(teacher)).collect(Collectors.toList());
+        return teachers.stream().map(TeacherDto.TeacherResponseSimpleDto::new).collect(Collectors.toList());
     }
 
     @Transactional(readOnly=true)
     public TeacherDto.TeacherResponseDto findById(Long id){
         Optional<Teacher> teacher=teacherRepository.findById(id);
-        if (teacher.isPresent()) {
-            return new TeacherDto.TeacherResponseDto(teacher.get());
-        } else return new TeacherDto.TeacherResponseDto();
+        return teacher.map(TeacherDto.TeacherResponseDto::new).orElseGet(TeacherDto.TeacherResponseDto::new);
     }
 
     @Transactional
     public Long updateById(Long id, TeacherDto.TeacherUpdateDto teacherUpdateDto){
         Optional<Teacher> teacher=teacherRepository.findById(id);
-        if(!teacher.isPresent())
+        if(teacher.isEmpty())
             return 0L;
         else{
             teacher.get().update(teacherUpdateDto.getName(), teacherUpdateDto.isWorking());
@@ -81,29 +78,28 @@ public class TeacherService {
         //3. this teacher exists in our db
         Teacher teacher=teacherRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 선생님이 존재하지 않습니다"));
 
-            //4. Grap some metadata from file if any
-            Map<String, String> metadata = extractMetadata(file);
-            //5. Store the iamge in s3 and update db with s3 image link
-            System.out.println("techer id: " +teacher.getId());
-            System.out.println("bucekt name: " +BucketName.PROFILE_IMAGE.getBucketName());
-            String path= String.format("%s/%s", BucketName.PROFILE_IMAGE.getBucketName(), teacher.getId());
-            System.out.println("path: "+path);
-            String filename=String.format("%s-%s", file.getOriginalFilename(), UUID.randomUUID());
-            try {
+        //4. Grap some metadata from file if any
+        Map<String, String> metadata = extractMetadata(file);
+        //5. Store the iamge in s3 and update db with s3 image link
+        String path= String.format("%s/%s", BucketName.PROFILE_IMAGE.getBucketName(), teacher.getId());
+        String filename=String.format("%s-%s", file.getOriginalFilename(), UUID.randomUUID());
+        try {
                 fileStore.save(path, filename, Optional.of(metadata), file.getInputStream());
                 teacher.updateTeacherProfileImageLink(filename);
-                System.out.println("updated Profile Image Link"+ " "+ filename);
-                System.out.println(":::"+teacher.getUserProfileImageLink());
             } catch (IOException e) {
                 throw new IllegalStateException(e);
             }
     }
     public byte[] downloadTeacherProfileImage(Long id) {
         Teacher teacher=teacherRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 선생님이 존재하지 않습니다"));
-
+      //  String path=String.format("%s/%s", BUcket, teacher.getId());
         String path= String.format("%s/%s", BucketName.PROFILE_IMAGE.getBucketName(), teacher.getId());
-        if(!teacher.getUserProfileImageLink().isEmpty())
-        return fileStore.download(path, teacher.getUserProfileImageLink());
+        System.out.println("path :::"+path);
+        System.out.println("getUserProfileLink:::"+teacher.getUserProfileImageLink().isEmpty());
+        if(!teacher.getUserProfileImageLink().isEmpty()) {
+            System.out.println("problem0:::");
+            return fileStore.downloadFromS3(path, teacher.getUserProfileImageLink());
+        }
         else
             return new byte[0];
 
