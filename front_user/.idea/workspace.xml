@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a6ddd42-9593-4d59-8dde-fcbe674fa081" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/TeacherApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/TeacherApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/course/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/course/Teacher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/TeacherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/TeacherService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Menu/Menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Menu/Menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Teachers/TeacherCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teachers/TeacherCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Teachers/Teachers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teachers/Teachers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/Main/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/Main/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/db.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/db.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/1KxqO6r.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/login/LogIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/LogIn.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/signup/SignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/signup/SignUp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/signup/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/signup/style.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +51,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../front_admin" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\h\IdeaProjects\club_pila\front_user\node_modules\prettier" />
@@ -63,11 +61,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\h\IdeaProjects\club_pila\front_user\src\img" />
       <recent name="C:\Users\h\IdeaProjects\club_pila\front\src\components\BookedClasses" />
       <recent name="C:\Users\h\IdeaProjects\club_pila\front\src\components\Calendar\Class" />
       <recent name="C:\Users\h\IdeaProjects\club_pila\front\src\components\Teachers" />
       <recent name="C:\Users\h\IdeaProjects\club_pila\front\src\hooks" />
-      <recent name="C:\Users\h\IdeaProjects\club_pila\front\src\font" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -159,7 +157,11 @@
       <workItem from="1628747295583" duration="108000" />
       <workItem from="1628836590395" duration="16000" />
       <workItem from="1628838419224" duration="2453000" />
-      <workItem from="1628841717333" duration="4243000" />
+      <workItem from="1628841717333" duration="4355000" />
+      <workItem from="1628913505719" duration="1182000" />
+      <workItem from="1629194149187" duration="1026000" />
+      <workItem from="1629256116852" duration="8349000" />
+      <workItem from="1629280826090" duration="8000" />
     </task>
     <servers />
   </component>

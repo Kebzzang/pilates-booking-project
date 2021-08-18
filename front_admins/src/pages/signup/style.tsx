@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import back from '../../img/background.jpg';
+import back from '../../img/background2.jpg';
 
 export const Header = styled.header`
   text-align: center;
@@ -22,11 +22,12 @@ export const Container = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 `;
 export const Container2 = styled.div`
   background: rgba(255, 255, 255, 0.8);
-  overflow: auto;
-  margin: auto;
   width: 500px;
   padding-top: 20px;
   padding-bottom: 10px;

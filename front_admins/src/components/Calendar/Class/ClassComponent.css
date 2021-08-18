@@ -1,0 +1,46 @@
+h6 {
+    padding-top: 0.25em;
+}
+.vertical-timeline::before{
+    background-color:  transparent;
+
+}
+
+.vertical-timeline-element-content{
+    box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.25),
+    0 0.4em 1.25em 0 rgba(0, 0, 0, 0.15) !important;
+    margin-left: 30px;
+    margin-bottom: 3px;
+    padding-top: 0.1em !important;
+
+}
+.vertical-timeline-element-title{
+    margin-top: 0.1em !important;
+}
+
+
+
+
+
+.date {
+    color:#282c34; font-family: 'Segoe UI', sans-serif;
+    font-weight: bolder;
+    margin-top: 5px;
+    font-size: 17px;
+}
+.teacher{
+    color: #282c34;
+    font-weight: bolder;
+    float: right;
+}
+.description {
+    font-family: 'Segoe UI', sans-serif;;
+
+}
+
+@media only screen and (min-width: 1170px) {
+    .vertical-timeline-element {
+        margin: 32px 0;
+    }
+
+}

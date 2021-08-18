@@ -19,7 +19,7 @@ const LogIn = () => {
       e.preventDefault();
       axios
         .post(
-          'http://localhost:8000/api/v1/auth',
+          'http://localhost:8000/api/v1/authadmin',
           {
             username,
             password,
@@ -48,8 +48,8 @@ const LogIn = () => {
   }
   return (
     <Container>
-      <Header>Pilas</Header>
       <Container2>
+        <Header>Pilas Admin</Header>
         <Form onSubmit={onSubmit}>
           <Label id="username-label">
             <span>Username</span>
@@ -62,9 +62,9 @@ const LogIn = () => {
             <div>
               <Input type="password" id="password" name="password" value={password} onChange={onChangePassword} />
             </div>
-            {logInError && <Error>Username & Password doesn't match</Error>}
+            {logInError && <Error>Check if you are an admin.</Error>}
           </Label>
-          <Button type="submit">LogIn</Button>
+          <Button type="submit">Sign In as Admin</Button>
         </Form>
         <LinkContainer>
           Don't you have account?&nbsp;
