@@ -11,7 +11,6 @@ import './style.css';
 import loadable from '@loadable/component';
 
 const Calendar = loadable(() => import('../../components/Calendar/Calendar'));
-const Home = loadable(() => import('../../components/Home'));
 const Teachers = loadable(() => import('../../components/Teachers/Teachers'));
 const MyClass = loadable(() => import('../../components/BookedClasses/MyClass'));
 const Header: FC = ({ children }) => {
@@ -58,13 +57,13 @@ const Header: FC = ({ children }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="m-auto">
-            <NavLink className="main-nav" activeClassName="main-nav-active" exact to="/book">
-              Booking
+            <NavLink className="main-nav" activeClassName="main-nav-active" to="/book">
+              Lessons
             </NavLink>{' '}
-            <NavLink className="main-nav" activeClassName="main-nav-active" exact to="/myclass">
-              My Class
+            <NavLink className="main-nav" activeClassName="main-nav-active" to="/myclass">
+              Members
             </NavLink>{' '}
-            <NavLink className="main-nav" activeClassName="main-nav-active" exact to="/teachers">
+            <NavLink className="main-nav" activeClassName="main-nav-active" to="/teachers">
               Instructors
             </NavLink>
           </Nav>

@@ -21,6 +21,9 @@ export interface ITeacher {
   name: string;
   userProfileImageLink: string;
   email: string;
+  about: string;
+  classes: IClass[];
+  working: boolean;
 }
 export interface IClasses {
   count: number;

@@ -9,7 +9,7 @@
 
 .Card-Container{
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 25px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -35,15 +35,19 @@ img{
     height: 300px;
     background: white;
     text-align: center;
+    width: 300px;
     font-family: 'Titillium Web', sans-serif;
-
+    display: block;
+}
+.update-icon{
+margin-right: 5px;
+    float: right;
 }
 
-.lower-container h3, p{
+
+.lower-container h3{
     margin:0;
     padding:0;
-}
-.lower-container h3{
     color: #2f2d2e;
     font-weight: 600;
     font-size:1.5rem;
@@ -53,6 +57,14 @@ img{
     font-family: sans-serif;
     color: #2f2d2e;
     margin: 1rem;
+    width: 270px;
+    height: 190px;
     font-size: 0.9rem;
     text-align: left;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    white-space: normal;
+    overflow: hidden;
+    -webkit-line-clamp: 9;
+    -webkit-box-orient: vertical;
 }
