@@ -9,7 +9,7 @@ import fetcher from '../../utils/fetcher';
 import Loading from '../../layouts/Loading';
 
 const SignUp = () => {
-  const { data } = useSWR('http://localhost::8000/api/v1/user/me', fetcher);
+  const { data } = useSWR('http://localhost:8000/api/v1/user/me', fetcher);
 
   const [username, onChangeUsername] = useInput('');
   const [email, onChangeEmail] = useInput('');
@@ -53,14 +53,11 @@ const SignUp = () => {
             password,
           })
           .then((response) => {
-            console.log(response);
             setSignUpSuccess(true);
             setLoading(false); //요청 성공 로딩 끝
             alert('SignUp Success! Login Please');
           }) //성공
           .catch((error) => {
-            // console.log(username, email, password);
-            // console.log(error.response);
             setSignUpError(error.response);
             setLoading(false); //에러 발생, 로딩 끝
           }) //실패

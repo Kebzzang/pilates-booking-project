@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import TeacherCard from './TeacherCard';
-import axios from 'axios';
-import { IClass, ITeacher } from '../../types/db';
+
+import { ITeacher } from '../../types/db';
 import useInput from '../../hooks/useInput';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Dropdown, DropdownButton, FormControl } from 'react-bootstrap';
 import useTeacherFetch from '../../hooks/useTeacherFetch';
-
-const Teachers = () => {
+import { Route, Switch, useParams, useRouteMatch, Link } from 'react-router-dom';
+import loadable from '@loadable/component';
+import { AiOutlineUserAdd } from 'react-icons/all';
+const TeacherCardDetail = loadable(() => import('./TeacherCardDetail'));
+const TeacherList = () => {
   const [myCategory, setMyCategory] = useState('employed');
   const profiles = useTeacherFetch();
   const [filteredProfiles, setFilteredProfiles] = useState<ITeacher[]>([]);
   const [mySearch, onChangeMySearch] = useInput('');
-
+  const { url, path } = useRouteMatch();
+  console.log(path);
   useEffect(() => {
     myCategory === 'all'
       ? setFilteredProfiles(profiles)
@@ -52,7 +56,10 @@ const Teachers = () => {
           <Dropdown.Item id="resigned" onClick={(e) => selectWorking(e.currentTarget.id)}>
             Resigned
           </Dropdown.Item>
-        </DropdownButton>
+        </DropdownButton>{' '}
+        <Link className="update-icon" to={`/teachers/save`}>
+          <AiOutlineUserAdd size="30" color="gray" style={{ marginLeft: '10px' }} />
+        </Link>
       </InputGroup>
       <div className="row Card-Container">
         {searchTeacher(filteredProfiles).map((profile) => (
@@ -63,4 +70,4 @@ const Teachers = () => {
   );
 };
 
-export default Teachers;
+export default TeacherList;

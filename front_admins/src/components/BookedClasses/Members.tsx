@@ -9,8 +9,8 @@ import axios from 'axios';
 import MyClassElement from './MyClassElement';
 import { IClass } from '../../types/db';
 import useFetchMyClasses from '../../hooks/useFetchMyClasses';
-//정렬 함수 만들어서 두 정렬? 아니면 선생님 별로 저열ㄹ 한 것들 모아서 모음 함수를 만들어주고 ...ㅠㅠ
-const MyClass = () => {
+// 회원 관리 메뉴
+const Members = () => {
   const { data: userData } = useSWR('http://localhost:8000/api/v1/user/me', fetcher, {
     dedupingInterval: 40000,
   });
@@ -86,4 +86,4 @@ const MyClass = () => {
   );
 };
 
-export default MyClass;
+export default Members;

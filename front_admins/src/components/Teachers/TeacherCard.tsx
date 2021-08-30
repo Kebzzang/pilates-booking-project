@@ -18,9 +18,6 @@ const TeacherCard: FC<PropsType> = ({ teacherData }) => {
           <img
             src={`http://d1djtzszdq7pt7.cloudfront.net/${teacherData.id}/${teacherData.userProfileImageLink}`}
             //src={`http://localhost:8000/api/v1/teacher/${teacherData.id}/download`}
-            alt=""
-            height="100px"
-            width="100px"
             onError={handleImgError}
           />
         </div>
@@ -30,7 +27,7 @@ const TeacherCard: FC<PropsType> = ({ teacherData }) => {
         <p>{teacherData.about}</p>
         <h5>{teacherData.email}</h5>
         <Link className="update-icon" to={`/teachers/${teacherData.id}`}>
-          <GiHamburgerMenu size="24" />
+          <GiHamburgerMenu color="black" size="24" style={{ marginRight: '10px' }} />
         </Link>
       </div>
     </div>

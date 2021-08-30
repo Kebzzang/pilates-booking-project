@@ -9,10 +9,13 @@ import { Button, Nav, Navbar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import loadable from '@loadable/component';
+import TeacherCardDetail from '../../components/Teachers/TeacherCardDetail';
+import TeacherUpdate from '../../components/Teachers/TeacherUpdate';
+import TeacherSaveForm from '../../components/Teachers/TeacherSaveForm';
 
-const Calendar = loadable(() => import('../../components/Calendar/Calendar'));
-const Teachers = loadable(() => import('../../components/Teachers/Teachers'));
-const MyClass = loadable(() => import('../../components/BookedClasses/MyClass'));
+const Lessons = loadable(() => import('../../components/Calendar/Lessons'));
+const Teachers = loadable(() => import('../../components/Teachers/TeacherList'));
+const Members = loadable(() => import('../../components/BookedClasses/Members'));
 const Header: FC = ({ children }) => {
   const [showUserMenu, setShowUserMenu] = useState(false);
 
@@ -57,10 +60,10 @@ const Header: FC = ({ children }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="m-auto">
-            <NavLink className="main-nav" activeClassName="main-nav-active" to="/book">
+            <NavLink className="main-nav" activeClassName="main-nav-active" to="/lessons">
               Lessons
             </NavLink>{' '}
-            <NavLink className="main-nav" activeClassName="main-nav-active" to="/myclass">
+            <NavLink className="main-nav" activeClassName="main-nav-active" to="/members">
               Members
             </NavLink>{' '}
             <NavLink className="main-nav" activeClassName="main-nav-active" to="/teachers">
@@ -88,11 +91,13 @@ const Header: FC = ({ children }) => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-
       <Switch>
-        <Route exact path="/book" component={Calendar} />
-        <Route exact path="/myclass" component={MyClass} />
+        <Route exact path="/lessons" component={Lessons} />
+        <Route exact path="/members" component={Members} />
         <Route exact path="/teachers" component={Teachers} />
+        <Route exact path="/teachers/save" component={TeacherSaveForm} />
+        <Route exact path="/teachers/:teacherId" component={TeacherCardDetail} />
+        <Route exact path="/teachers/:teacherid/update" component={TeacherUpdate} />
       </Switch>
     </div>
   );

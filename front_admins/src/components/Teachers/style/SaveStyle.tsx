@@ -1,46 +1,32 @@
 import styled from '@emotion/styled';
-import back from '../../img/background2.jpg';
 
-export const Header = styled.header`
-  text-align: center;
-  font-family: Slack-Larsseit, Helvetica Neue, Helvetica, Segoe UI, Tahoma, Arial, sans-serif;
-  font-weight: 700;
-  font-size: 48px;
-  color: #05495e;
-  line-height: 46px;
-  font-family: Lobster;
-  letter-spacing: -0.75px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-`;
-export const Container = styled.div`
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7) 40%, rgba(20, 20, 20, 0.7) 80%, rgba(20, 20, 20, 1)),
-    url(${back});
-  background-size: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-`;
-export const Container2 = styled.div`
-  background: rgba(255, 255, 255, 0.8);
+export const RegisterTeacherContainer = styled.div`
   width: 500px;
+  margin-top: 20px;
   padding-top: 20px;
   padding-bottom: 10px;
   border-radius: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  border: 2px solid #0c5460;
 `;
-
 export const Form = styled.form`
   margin: 0 auto;
-
   width: 400px;
   max-width: 400px;
 `;
-
+export const ImgContainer = styled.div`
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-bottom: 20px;
+`;
+export const ImgPreview = styled.img`
+  width: 150px;
+  height: 150px;
+  border: none;
+  border-radius: 50%;
+`;
 export const Label = styled.label`
   margin-bottom: 10px;
   width: 400px;
@@ -56,7 +42,7 @@ export const Label = styled.label`
 `;
 export const TextArea = styled.textarea`
   width: 400px;
-  height: 400px;
+  height: 150px;
   border: 2px solid var(--saf-0);
   border-radius: 4px;
   --saf-0: rgba(var(--sk_foreground_high_solid, 134, 134, 134), 1);
@@ -86,15 +72,15 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  margin-bottom: 12px;
-  width: 100%;
-  max-width: 100%;
   color: #fff;
-  background-color: #14a0a0;
+  background-color: #05495e;
   border: none;
   font-size: 18px;
   font-weight: 900;
   height: 44px;
+  margin-bottom: 12px;
+  width: 100%;
+  max-width: 100%;
   min-width: 96px;
   padding: 0 16px 3px;
   transition: all 80ms linear;
@@ -105,7 +91,7 @@ export const Button = styled.button`
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 
   &:hover {
-    background-color: rgba(40, 180, 180, 0.9);
+    background-color: #1683a5ff;
     border: none;
   }
 
@@ -119,27 +105,4 @@ export const Error = styled.div`
   color: #e01e5a;
   margin: 0px 0 16px;
   // font-weight: bold;
-`;
-
-export const Success = styled.div`
-  color: #2eb67d;
-  font-weight: bold;
-`;
-
-export const LinkContainer = styled.p`
-  font-size: 13px;
-  color: #000000;
-  margin: 0 auto 8px;
-  width: 400px;
-  max-width: 400px;
-
-  & a {
-    color: #1264a3;
-    text-decoration: none;
-    font-weight: 700;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
 `;

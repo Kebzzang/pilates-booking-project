@@ -11,7 +11,7 @@ import UseFetchMyJoinSimple from '../../hooks/UseFetchMyJoinSimple';
 import './style.css';
 import DatePicker from './DatePicker';
 import useClassFetch from '../../hooks/useClassFetch';
-const Calendar = () => {
+const Lessons = () => {
   const { data: userData } = useSWR('http://localhost:8000/api/v1/user/me', fetcher, {
     dedupingInterval: 2000,
   }); //내가 원할 때 요청하기!!
@@ -40,4 +40,4 @@ const Calendar = () => {
   );
 };
 
-export default Calendar;
+export default Lessons;
