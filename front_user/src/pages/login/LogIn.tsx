@@ -48,8 +48,9 @@ const LogIn = () => {
   }
   return (
     <Container>
-      <Header>Pilas</Header>
       <Container2>
+        {' '}
+        <Header>Pilas</Header>
         <Form onSubmit={onSubmit}>
           <Label id="username-label">
             <span>Username</span>

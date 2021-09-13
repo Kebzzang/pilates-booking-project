@@ -78,8 +78,8 @@ const SignUp = () => {
   }
   return (
     <Container>
-      <Header>Join Pilas</Header>
       <Container2>
+        <Header>Join Pilas</Header>
         <Form onSubmit={onSubmit}>
           <Label id="nickname-label">
             <span>Username</span>

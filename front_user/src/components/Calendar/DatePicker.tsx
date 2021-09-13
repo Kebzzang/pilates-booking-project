@@ -8,9 +8,9 @@ function DatePicker({ value, onChange }: { value: moment.Moment; onChange: any }
   const [allowNextWeek, setAllowNextWeek] = useState(true);
   const [calendar, setCalendar] = useState<moment.Moment[]>([]);
   useEffect(() => {
-    console.log(value);
+    console.log('DatePicker', value);
     setCalendar(calc(value));
-    if (today.weekday() <= 6) {
+    if (today.weekday() <= 5) {
       setAllowNextWeek(false);
     }
     console.log('오늘', today.weekday());
