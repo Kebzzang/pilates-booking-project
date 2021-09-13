@@ -21,8 +21,8 @@ const TeacherList = () => {
     myCategory === 'all'
       ? setFilteredProfiles(profiles)
       : myCategory === 'employed'
-      ? setFilteredProfiles(profiles.filter((teacher) => teacher.working === true))
-      : setFilteredProfiles(profiles.filter((teacher) => teacher.working === false));
+      ? setFilteredProfiles(profiles.filter((teacher) => teacher.working))
+      : setFilteredProfiles(profiles.filter((teacher) => !teacher.working));
   }, [myCategory, profiles]);
 
   function searchTeacher(ITeachers: ITeacher[]) {

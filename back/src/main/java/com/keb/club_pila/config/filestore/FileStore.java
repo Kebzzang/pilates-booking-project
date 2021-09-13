@@ -4,6 +4,7 @@ import com.amazonaws.AmazonServiceException;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.util.IOUtils;
@@ -43,6 +44,14 @@ public class FileStore {
             return IOUtils.toByteArray(object.getObjectContent());
         } catch (AmazonServiceException | IOException e) {
             throw new IllegalStateException("Failed to download file to s3", e);
+        }
+    }
+    public void delete(String path, String fileName){
+        try{
+            boolean isExistObject=s3.doesObjectExist(path, fileName);
+           if(isExistObject){s3.deleteObject(path, fileName);}
+        }catch(AmazonServiceException e){
+            throw new IllegalStateException("Failed to delete file from s3", e);
         }
     }
 }

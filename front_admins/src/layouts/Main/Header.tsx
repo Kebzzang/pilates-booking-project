@@ -97,7 +97,7 @@ const Header: FC = ({ children }) => {
         <Route exact path="/teachers" component={Teachers} />
         <Route exact path="/teachers/save" component={TeacherSaveForm} />
         <Route exact path="/teachers/:teacherId" component={TeacherCardDetail} />
-        <Route exact path="/teachers/:teacherid/update" component={TeacherUpdate} />
+        <Route exact path="/teachers/:teacherId/update" component={TeacherUpdate} />
       </Switch>
     </div>
   );

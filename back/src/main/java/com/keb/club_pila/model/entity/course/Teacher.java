@@ -23,7 +23,7 @@ public class Teacher extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 20, nullable = false)
+    @Column(length = 50, nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "teachers",cascade=CascadeType.ALL)
@@ -36,11 +36,16 @@ public class Teacher extends BaseTimeEntity {
     private String email;
     private String userProfileImageLink; //for s3
 
+    @Column(columnDefinition = "TEXT")
+    private String about;
+
     public void updateTeacherProfileImageLink(String userProfileImageLink){
         this.userProfileImageLink=userProfileImageLink;
     }
-    public void update(String name, boolean working){
+    public void update(String name, boolean working, String email, String about){
         this.name=name;
+        this.email=email;
+        this.about=about;
         this.working=working;
     }
 

@@ -42,10 +42,10 @@ public class CourseService {
     }
 
     @Transactional(readOnly = true)
-    public List<CourseDto.CourseTeacherResponseDto> findCourseBetween(LocalDateTime start, LocalDateTime end){
+    public List<CourseDto.CourseResponseDto> findCourseBetween(LocalDateTime start, LocalDateTime end){
         List<Course> courses=courseRepository.findAllByCourseDateTimeBetween(start, end);
         System.out.println("list 개수::"+courses.size());
-        return courses.stream().map(course->new CourseDto.CourseTeacherResponseDto(course)).collect(Collectors.toList());
+        return courses.stream().map(course->new CourseDto.CourseResponseDto(course)).collect(Collectors.toList());
     }
 
 

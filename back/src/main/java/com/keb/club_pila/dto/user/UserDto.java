@@ -16,9 +16,10 @@ public class UserDto {
     @NoArgsConstructor
     public static class UserResponseSimpleDto {
         private String username;
-
+        private Long id;
         public UserResponseSimpleDto(Member member) {
             this.username = member.getUsername();
+            this.id=member.getId();
         }
 
     }

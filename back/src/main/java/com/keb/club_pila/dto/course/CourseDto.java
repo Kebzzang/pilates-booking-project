@@ -23,11 +23,15 @@ public class CourseDto {
         private String content;
         private String teacher_name;
         private EquipmentType equipmentType;
+        private Long maxStudent;
+        private Long nowStudent;
         private Set<UserDto.UserResponseSimpleDto> users;
         @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
         private LocalDateTime courseDateTime;
         private String date;
         public CourseResponseDto(Course entity) { //entitiy->dto 로 convert!!
+            this.maxStudent=entity.getMaxStudent();
+            this.nowStudent=entity.getNowStudent();
             this.id = entity.getId();
             this.title = entity.getTitle();
             this.content = entity.getContent();
@@ -41,6 +45,7 @@ public class CourseDto {
 //new UserDto.UserResponseSimpleDto(joininfo.getMember().getUsername()))
 
     }
+
     @Getter
     @NoArgsConstructor
     public static class CourseTeacherResponseDto{

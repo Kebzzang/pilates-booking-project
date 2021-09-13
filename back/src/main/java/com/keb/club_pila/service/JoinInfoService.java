@@ -49,7 +49,7 @@ public class JoinInfoService {
                     .build();
                 course.get().courseJoin();
                 joinInfoRepository.save(joinInfo);
-                if(course.get().getNowStudent()==(course.get().getMaxStudent()))
+                if(course.get().getNowStudent().equals(course.get().getMaxStudent()))
                 {
                     //then..
                     course.get().isLocked();

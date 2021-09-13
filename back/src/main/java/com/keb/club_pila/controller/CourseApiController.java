@@ -42,7 +42,7 @@ public class CourseApiController {
         return ResponseEntity.ok().body(new CommonResponse<>(course));
     }
 
-
+//해당 회원이 신청한 수업 리스트 쫙 뜨기
     @GetMapping("/api/v1/course/me/{id}") //내가 들은 수업 리스트 쫙..
     public ResponseEntity<? extends BasicResponse> findMyCourses(@PathVariable Long id){
            List<CourseDto.CourseTeacherResponseDto> result= memberService.findCoursesById(id);
@@ -51,11 +51,13 @@ public class CourseApiController {
                return ResponseEntity.ok().body(new CommonResponse<>(result));
            }
            else {
-               return ResponseEntity.noContent().build();
+               return ResponseEntity.ok().body(new CommonResponse<>(result));
            }
 
     }
 
+
+    //기간 내 모든 수업 조회
     @GetMapping("/api/v1/course/search")
     public ResponseEntity<? extends BasicResponse> findCourseBetween(@RequestParam("start")
                                                                          @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -64,17 +66,11 @@ public class CourseApiController {
             LocalDateTime end){
         System.out.println("start:: "+ start);
         System.out.println("end:: "+ end);
-        List<CourseDto.CourseTeacherResponseDto> result=courseService.findCourseBetween(start, end);
-
-        if(!result.isEmpty()){
+        List<CourseDto.CourseResponseDto> result=courseService.findCourseBetween(start, end);
             return ResponseEntity.ok().body(new CommonResponse<>(result));
-        }else{
-            System.out.println("수업 없어용!!!");
-            return ResponseEntity.noContent().build();
-        }
     }
 
-
+//해당 아이디를 가진 수업 조회
     @GetMapping("/api/v1/course/{id}")
     public ResponseEntity<? extends BasicResponse> findById(@PathVariable Long id) {
 

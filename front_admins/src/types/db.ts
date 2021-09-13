@@ -22,7 +22,7 @@ export interface ITeacher {
   userProfileImageLink: string;
   email: string;
   about: string;
-  classes: IClass[];
+  courses: IClass[];
   working: boolean;
 }
 export interface IClasses {

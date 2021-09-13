@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.net.URI;
 import java.util.List;
 
@@ -29,12 +30,20 @@ public class TeacherApiController {
 
     */
 // @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("/api/v1/admin/teacher")
+    @PostMapping(path="/api/v1/admin/teacher",consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
    // @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
-    public ResponseEntity<? extends BasicResponse> save(@RequestBody TeacherDto.TeacherSaveRequestDto teacherSaveRequestDto) {
-     System.out.println("hello ther");Long result = teacherService.teacherSave(teacherSaveRequestDto);
-
+    public ResponseEntity<? extends BasicResponse> save(@RequestPart(value="key", required=false) TeacherDto.TeacherSaveRequestDto teacherSaveRequestDto,
+                                                        @RequestPart(value="file", required=true) MultipartFile file){
+        System.out.println(teacherSaveRequestDto.toString());
+        Long result = teacherService.teacherSave(teacherSaveRequestDto, file);
         return ResponseEntity.created(URI.create("/api/v1/teacher/" + result)).build();
+    }
+    //선생님 이미지 업로드용
+    @PostMapping(
+            path = "/api/v1/admin/teacher/{id}/image/upload",consumes = MediaType.MULTIPART_FORM_DATA_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<? extends BasicResponse> uploadTeacherProfileImage(@PathVariable("id") Long id, @RequestParam("file") MultipartFile file){
+        teacherService.uploadTeacherProfileImage(id, file);
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/api/v1/admin/teacher/{id}")
@@ -60,15 +69,15 @@ public class TeacherApiController {
     }
     //일반 유저용 선생님 리스트 쫙
     @GetMapping("/api/v1/user/teacher")
-    public ResponseEntity<? extends BasicResponse> findAllTeachersSimple(){
-        List<TeacherDto.TeacherResponseSimpleDto> teachers=teacherService.findAllTeachersSimple();
+    public ResponseEntity<? extends BasicResponse> findAllWorkingTeachersSimple(){
+        List<TeacherDto.TeacherResponseSimpleDto> teachers=teacherService.findAllWorkingTeachersSimple();
         if (teachers.isEmpty()) {
 
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok().body(new CommonResponse<>(teachers));
     }
-
+//get teacher info
     @GetMapping("/api/v1/teacher/{id}")
     public ResponseEntity<? extends BasicResponse> findById(@PathVariable Long id) {
         TeacherDto.TeacherResponseDto teacherResponseDto = teacherService.findById(id);
@@ -89,13 +98,7 @@ public class TeacherApiController {
         //성공시
         return ResponseEntity.noContent().build();
     }
-    //선생님 이미지 업로드용
-    @PostMapping(
-            path = "/api/v1/admin/teacher/{id}/image/upload",consumes = MediaType.MULTIPART_FORM_DATA_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<? extends BasicResponse> uploadTeacherProfileImage(@PathVariable("id") Long id, @RequestParam("file") MultipartFile file){
-        teacherService.uploadTeacherProfileImage(id, file);
-        return ResponseEntity.noContent().build();
-    }
+
 
     @GetMapping("/api/v1/teacher/{id}/download")
     public byte[] downloadTeacherProfileImage(@PathVariable("id") Long id){

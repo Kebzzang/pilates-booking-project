@@ -23,6 +23,7 @@
     "fontsource-roboto": "^4.0.0",
     "gravatar": "^1.8.1",
     "moment": "^2.29.1",
+    "random-gradient": "0.0.2",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",
     "react-dom": "^17.0.2",
@@ -61,6 +62,7 @@
   },
   "devDependencies": {
     "@types/loadable__component": "^5.13.3",
+    "@types/random-gradient": "0.0.0",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
     "@typescript-eslint/parser": "^4.22.0",

@@ -28,12 +28,13 @@ public class CorsConfig {
                 "http://210.99.231.107:3000/**",
                 "http://210.99.231.107:3000",
                 "http://210.99.231.107:3000/",
-
+                "http://211.221.181.6/**", "http://211.221.181.6:3000/",
                 "http://3.38.35.210:80/**","http://3.38.35.210:80","http://3.38.35.210/**","http://3.38.35.210",
                 "http://localhost:80/**", "http://localhost:80","http://localhost:3000", "http://localhost:3000/**");
         config.setAllowedOriginPatterns(allowOrigins);
         config.setAllowedMethods(singletonList("*"));
         config.setAllowedHeaders(singletonList("*"));
+        config.addExposedHeader("location");
         logger.info("hello new corsfilter here");
         source.registerCorsConfiguration("/api/v1/**", config);
         return new CorsFilter(source);

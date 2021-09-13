@@ -4,6 +4,8 @@ import { ITeacher } from '../../types/db';
 import defaultProfile from '../../img/defaultProfile.png';
 import { GiHamburgerMenu } from 'react-icons/all';
 import { Link } from 'react-router-dom';
+import gradient from 'random-gradient';
+import { GradientDiv } from './style/TeacherCard';
 interface PropsType {
   teacherData: ITeacher;
 }
@@ -13,7 +15,7 @@ const TeacherCard: FC<PropsType> = ({ teacherData }) => {
   };
   return (
     <div className="Card">
-      <div className="upper-container">
+      <GradientDiv degree={teacherData.id}>
         <div className="image-container">
           <img
             src={`http://d1djtzszdq7pt7.cloudfront.net/${teacherData.id}/${teacherData.userProfileImageLink}`}
@@ -21,7 +23,7 @@ const TeacherCard: FC<PropsType> = ({ teacherData }) => {
             onError={handleImgError}
           />
         </div>
-      </div>
+      </GradientDiv>
       <div className="lower-container">
         <h4>{teacherData.name}</h4>
         <p>{teacherData.about}</p>
