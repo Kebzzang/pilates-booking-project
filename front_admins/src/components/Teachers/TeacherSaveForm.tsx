@@ -27,12 +27,14 @@ const TeacherSaveForm = () => {
   const [userProfile, setUserProfile] = useState<any>(defaultProfile); //사진 미리보기 용
   const [file, setFile] = useState<File>(); //실제 api 에 보낼 사진 파일
   const history = useHistory();
+
   const onsubmit = useCallback(
     (e) => {
       e.preventDefault();
       setSaveSuccess(false);
       setLoading(true);
       if (file !== undefined) {
+        //사진 파일도 같이 변경하고 싶다면
         const formData = new FormData();
         const teacherInfo = {
           name: name,
@@ -51,7 +53,9 @@ const TeacherSaveForm = () => {
           })
           .then((response) => {
             setSaveSuccess(true);
-            history.push('/teacher/' + response.headers.location.slice(response.headers.location.lastIndexOf('/') + 1));
+            history.push(
+              '/teachers/' + response.headers.location.slice(response.headers.location.lastIndexOf('/') + 1),
+            );
             setLoading(false);
             alert('Save Success! See details');
           })
@@ -59,10 +63,15 @@ const TeacherSaveForm = () => {
             setSaveError(error.response);
             setLoading(false);
           });
+      } else {
+        //일반적으로 사진은 그대로이고 이름, 이메일, 강사설명만 바꾸고 싶다면!!
       }
     },
-    [name, email, about, file],
+    [file, name, email, about, history],
   );
+  const handleImgError = (e: any) => {
+    e.target.src = defaultProfile;
+  };
   const imageHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const reader = new FileReader();
@@ -81,9 +90,9 @@ const TeacherSaveForm = () => {
       <Form onSubmit={onsubmit}>
         <Label>
           <ImgContainer>
-            <ImgPreview src={userProfile} />
+            <ImgPreview src={userProfile} onError={handleImgError} />
           </ImgContainer>
-          <span>Profile Image</span>
+          <span>Profile Image (Recommends 1:1 ratio image)</span>
           <input type="file" accept="image/*" name="userprofileImage" onChange={imageHandler} required={true} />
         </Label>
         <Label id="name-label">

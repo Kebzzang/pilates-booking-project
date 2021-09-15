@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import loadable from '@loadable/component';
 import TeacherCardDetail from '../../components/Teachers/TeacherCardDetail';
-import TeacherUpdate from '../../components/Teachers/TeacherUpdate';
+import TeacherUpdateForm from '../../components/Teachers/TeacherUpdateForm';
 import TeacherSaveForm from '../../components/Teachers/TeacherSaveForm';
 
 const Lessons = loadable(() => import('../../components/Calendar/Lessons'));
@@ -97,7 +97,7 @@ const Header: FC = ({ children }) => {
         <Route exact path="/teachers" component={Teachers} />
         <Route exact path="/teachers/save" component={TeacherSaveForm} />
         <Route exact path="/teachers/:teacherId" component={TeacherCardDetail} />
-        <Route exact path="/teachers/:teacherId/update" component={TeacherUpdate} />
+        <Route exact path="/teachers/:teacherId/update" component={TeacherUpdateForm} />
       </Switch>
     </div>
   );

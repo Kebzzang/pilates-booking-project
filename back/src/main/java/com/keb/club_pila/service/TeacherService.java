@@ -43,32 +43,11 @@ public class TeacherService {
 
 
     }
-    @Transactional
-    public void uploadTeacherProfileImage(Long id, MultipartFile file) {
-        //1. check if imge is not empty
-        isFileEmpty(file);
-        //2. if file is an image
-        isImage(file);
-        //3. this teacher exists in our db
-        Teacher teacher=teacherRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 선생님이 존재하지 않습니다"));
 
-        //4. Grap some metadata from file if any
-        Map<String, String> metadata = extractMetadata(file);
-        //5. Store the iamge in s3 and update db with s3 image link
-        String path= String.format("%s/%s", BucketName.PROFILE_IMAGE.getBucketName(), teacher.getId());
-        String filename=String.format("%s-%s", file.getOriginalFilename(), UUID.randomUUID());
-        try {
-            fileStore.save(path, filename, Optional.of(metadata), file.getInputStream());
-            fileStore.delete(path, teacher.getUserProfileImageLink());
-            teacher.updateTeacherProfileImageLink(filename);
-        } catch (IOException e) {
-            throw new IllegalStateException(e);
-        }
-    }
     @Transactional
     public boolean deleteById(Long id) {
         Optional<Teacher> teacher = teacherRepository.findById(id);
-        if (!teacher.isPresent())
+        if (teacher.isEmpty())
             return false;
         teacherRepository.deleteById(id);
         return true;
@@ -93,14 +72,39 @@ public class TeacherService {
         Optional<Teacher> teacher=teacherRepository.findById(id);
         return teacher.map(TeacherDto.TeacherResponseDto::new).orElseGet(TeacherDto.TeacherResponseDto::new);
     }
+    //이미지 업데이트
+    @Transactional
+    public void uploadTeacherProfileImage(Long id, MultipartFile file) {
+        //1. 파일이 비었는가?
+        isFileEmpty(file);
+        //2. 이미지 파일인가?
+        isImage(file);
+        //3. 해당 아이디 유저가 존재하는가?
+        Teacher teacher=teacherRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 선생님이 존재하지 않습니다"));
+        //4. 파일로부터 메타데이터 획득
+        Map<String, String> metadata = extractMetadata(file);
+        //5. 이미지를 s3에 저장하고 db의 프로필 url을 변경시킴
+        String path= String.format("%s/%s", BucketName.PROFILE_IMAGE.getBucketName(), teacher.getId());
+        String filename=String.format("%s-%s", file.getOriginalFilename(), UUID.randomUUID());
+        if(teacher.getUserProfileImageLink()!=null) {
+            fileStore.delete(path, teacher.getUserProfileImageLink());
+        }
+        try {
+            fileStore.save(path, filename, Optional.of(metadata), file.getInputStream());
+            teacher.updateTeacherProfileImageLink(filename);
 
+        } catch (IOException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+    //이미지 외 정보를 업데이트하기
     @Transactional
     public Long updateById(Long id, TeacherDto.TeacherUpdateDto teacherUpdateDto){
         Optional<Teacher> teacher=teacherRepository.findById(id);
         if(teacher.isEmpty())
             return 0L;
         else{
-            teacher.get().update(teacherUpdateDto.getName(), teacherUpdateDto.isWorking(), teacherUpdateDto.getAbout(), teacherUpdateDto.getEmail());
+            teacher.get().update(teacherUpdateDto.getName(), teacherUpdateDto.isWorking(), teacherUpdateDto.getEmail(), teacherUpdateDto.getAbout());
             return id;
         }
     }
@@ -137,6 +141,7 @@ public class TeacherService {
         {
             throw new IllegalStateException("파일 형식은 PNG, GIF, JPEG만 가능합니다"+": "+file.getContentType());
         }
+
     }
 
     private void isFileEmpty(MultipartFile file) {

@@ -19,7 +19,6 @@ const TeacherCard: FC<PropsType> = ({ teacherData }) => {
         <div className="image-container">
           <img
             src={`http://d1djtzszdq7pt7.cloudfront.net/${teacherData.id}/${teacherData.userProfileImageLink}`}
-            //src={`http://localhost:8000/api/v1/teacher/${teacherData.id}/download`}
             onError={handleImgError}
           />
         </div>

@@ -15,6 +15,11 @@ export const Form = styled.form`
   width: 400px;
   max-width: 400px;
 `;
+export const DetailDiv = styled.div`
+  margin: 0 auto;
+  width: 400px;
+  max-width: 400px;
+`;
 export const ImgContainer = styled.div`
   justify-content: center;
   align-items: center;
@@ -40,6 +45,7 @@ export const Label = styled.label`
     font-weight: 700;
   }
 `;
+
 export const TextArea = styled.textarea`
   width: 400px;
   height: 150px;
@@ -47,7 +53,22 @@ export const TextArea = styled.textarea`
   border-radius: 4px;
   --saf-0: rgba(var(--sk_foreground_high_solid, 134, 134, 134), 1);
 `;
-
+export const Select = styled.select`
+  border-radius: 4px;
+  --saf-0: rgba(var(--sk_foreground_high_solid, 134, 134, 134), 1);
+  border: 2px solid var(--saf-0);
+  transition: border 80ms ease-out, box-shadow 80ms ease-out;
+  box-sizing: border-box;
+  margin: 0 0 10px;
+  width: 100%;
+  color: rgba(var(--sk_primary_foreground, 29, 28, 29), 1);
+  background-color: rgba(var(--sk_primary_background, 255, 255, 255), 1);
+  padding-left: 10px;
+  padding-bottom: 2px;
+  height: 44px;
+  font-size: 18px;
+  line-height: 1.33333333;
+`;
 export const Input = styled.input`
   border-radius: 4px;
   --saf-0: rgba(var(--sk_foreground_high_solid, 134, 134, 134), 1);
