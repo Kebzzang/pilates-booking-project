@@ -22,6 +22,7 @@ const MyClass = () => {
   const [sortedMyJoins, setSortedMyJoins] = useState<IClass[]>([]);
   const [myOption, setMyOption] = useState('ascending');
   const [mySearch, onChangeMySearch] = useInput('');
+
   useEffect(() => {
     if (myOption === 'ascending') {
       const _sortedMyJoins = [...myJoins].sort((a, b) => a.courseDateTime.localeCompare(b.courseDateTime));

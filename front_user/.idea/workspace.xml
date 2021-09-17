@@ -2,23 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a6ddd42-9593-4d59-8dde-fcbe674fa081" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/CorsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/CourseApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/CourseApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/TeacherApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/TeacherApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/dto/course/CourseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/dto/course/CourseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/dto/teacher/TeacherDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/dto/teacher/TeacherDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/dto/user/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/dto/user/UserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/course/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/course/Teacher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/repository/TeacherRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/repository/TeacherRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/CourseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/JoinInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/JoinInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/TeacherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/service/TeacherService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front_admins/src/components/Teachers/TeacherCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front_admins/src/components/Teachers/TeacherCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_admins/src/components/Member/Members.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front_admins/src/components/Member/Members.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../front_admins/src/components/Teachers/TeacherCardDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front_admins/src/components/Teachers/TeacherCardDetail.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front_admins/src/components/Teachers/teachercard.css" beforeDir="false" afterPath="$PROJECT_DIR$/../front_admins/src/components/Teachers/teachercard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front_admins/src/types/db.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../front_admins/src/types/db.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_admins/src/components/Teachers/TeacherList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front_admins/src/components/Teachers/TeacherList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_admins/src/components/Teachers/TeacherUpdateForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front_admins/src/components/Teachers/TeacherUpdateForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_admins/src/layouts/Main/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front_admins/src/layouts/Main/Header.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BookedClasses/MyClass.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BookedClasses/MyClass.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/db.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/db.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,6 +170,11 @@
       <workItem from="1631436614970" duration="707000" />
       <workItem from="1631497357245" duration="1615000" />
       <workItem from="1631499876155" duration="8000" />
+      <workItem from="1631710970922" duration="197000" />
+      <workItem from="1631711686480" duration="596000" />
+      <workItem from="1631721311795" duration="597000" />
+      <workItem from="1631759932230" duration="604000" />
+      <workItem from="1631854784315" duration="2045000" />
     </task>
     <servers />
   </component>

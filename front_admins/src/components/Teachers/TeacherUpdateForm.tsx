@@ -86,7 +86,7 @@ const TeacherUpdateForm = () => {
           <input type="file" accept="image/*" name="userProfileImageLink" onChange={imageHandler} />
         </Label>
         <Label id="working-label">
-          <span>State {working.toString()}</span>
+          <span>State</span>
           <div>
             <Select key={working.toString()} defaultValue={working.toString()} onChange={onChangeWorking}>
               <option value="true">Working</option>

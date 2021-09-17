@@ -37,6 +37,7 @@ export interface ITeacher {
   name: string;
   userProfileImageLink: string;
   email: string;
+  about: string;
 }
 export interface IClasses {
   count: number;

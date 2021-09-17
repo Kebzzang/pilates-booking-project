@@ -41,9 +41,6 @@ const TeacherCardDetail = () => {
         <Tabs id="controlled-tab-example" activeKey={key} onSelect={(eventKey) => setKey(eventKey)}>
           <Tab eventKey="Profile" title="Profile">
             <h4>{teacher.name}</h4>
-            <h5>
-              {teacher.userProfileImageLink} {teacher.working.toString()}
-            </h5>
             <h5>{teacher.email}</h5>
             <h6>{teacher.about}</h6>
           </Tab>

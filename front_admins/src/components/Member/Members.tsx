@@ -3,85 +3,60 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { VerticalTimeline } from 'react-vertical-timeline-component';
 import useInput from '../../hooks/useInput';
 import useSWR from 'swr';
-import fetcher from '../../utils/fetcher';
-import moment from 'moment';
-import axios from 'axios';
-import MyClassElement from './MyClassElement';
-import { IClass } from '../../types/db';
-import useFetchMyClasses from '../../hooks/useFetchMyClasses';
+
+import { Badge, Table } from 'react-bootstrap';
+import DataFetcher from '../../utils/DataFetcher';
+import { ITeacher, IUser } from '../../types/db';
+import Loading from '../../layouts/Loading';
 // 회원 관리 메뉴
+
 const Members = () => {
-  const { data: userData } = useSWR('http://localhost:8000/api/v1/user/me', fetcher, {
-    dedupingInterval: 40000,
-  });
-  const [cancel, setCancel] = useState(false);
-
-  const myJoins = useFetchMyClasses(userData.id, cancel);
-
-  const now = moment();
-  const [sortedMyJoins, setSortedMyJoins] = useState<IClass[]>([]);
-  const [myOption, setMyOption] = useState('ascending');
-  const [mySearch, onChangeMySearch] = useInput('');
-  useEffect(() => {
-    if (myOption === 'ascending') {
-      const _sortedMyJoins = [...myJoins].sort((a, b) => a.courseDateTime.localeCompare(b.courseDateTime));
-      setSortedMyJoins(_sortedMyJoins);
-    }
-    if (myOption === 'descending') {
-      const _sortedMyJoins = [...myJoins].sort((a, b) => b.courseDateTime.localeCompare(a.courseDateTime));
-      setSortedMyJoins(_sortedMyJoins);
-    }
-  }, [myOption, myJoins]);
-
-  const cancelCheck = useCallback(
-    (day: moment.Moment) => {
-      return day.subtract(1, 'day').isAfter(now);
-    },
-    [now],
-  );
-  function search(IClassRows: IClass[]) {
+  //데이터 끌고 오기 유저 리스트 쫙
+  const { data: users } = useSWR('http://localhost:8000/api/v1/admin/user', DataFetcher);
+  //유저 롤 변경 -> ROLE_ADMIN, ROLE_TEACHER, ROLE_TEACHER
+  const [mySearch, onChangeMySearch] = useInput(''); //유저 검색용
+  const [myCategory, setMyCategory] = useState('ROLE_USER'); //ROLE_ADMIN, ROLE_TEACHER, ROLE_USER
+  if (!users) {
+    return <Loading />;
+  }
+  function searchTeacher(Users: IUser[]) {
     let lowerMySearch = mySearch.toLowerCase();
-    return IClassRows.filter(
-      (IClassRow) =>
-        IClassRow.teacher_name.toLowerCase().indexOf(lowerMySearch) > -1 ||
-        IClassRow.title.toLowerCase().indexOf(lowerMySearch) > -1 ||
-        IClassRow.equipmentType.toLowerCase().indexOf(lowerMySearch) > -1,
+    return Users.filter(
+      (
+        User, //이름과 이메일로 찾기
+      ) =>
+        User.username.toLowerCase().indexOf(lowerMySearch) > -1 || User.email.toLowerCase().indexOf(lowerMySearch) > -1,
     );
   }
-  const cancelJoin = (course_id: number) => {
-    axios
-      .delete('http://localhost:8000/api/v1/user/course/cancel', {
-        withCredentials: true,
-        params: { course_id: course_id, user_id: userData.id },
-      })
-      .then((response) => {
-        console.log('성공');
-        setCancel(!cancel);
-      })
-      .catch((error) => {
-        alert('problem');
-      });
-  };
-
+  function selectWorking(value: string) {
+    setMyCategory(value);
+    console.log(myCategory);
+  }
   return (
-    <div style={{ width: '400px', marginLeft: 'auto', marginTop: '20px', marginRight: 'auto' }}>
-      <input
-        type="text"
-        value={mySearch}
-        onChange={onChangeMySearch}
-        placeholder="search"
-        style={{ width: '70%', height: '25px', marginRight: '10px' }}
-      />
-      <select defaultValue="ascending" onChange={(e) => setMyOption(e.target.value)}>
-        <option value="ascending">Ascending</option>
-        <option value="descending">Descending</option>
-      </select>
-
-      <VerticalTimeline layout={'1-column'}>
-        {search(sortedMyJoins).map((element) => (
-          <MyClassElement key={element.id} cancelCheck={cancelCheck} element={element} cancelJoin={cancelJoin} />
-        ))}
-      </VerticalTimeline>
+    <div style={{ width: '700px', marginLeft: 'auto', marginTop: '20px', marginRight: 'auto' }}>
+      <Table>
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Role</th>
+            <th>Email</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.data.map((element: IUser, index: number) => (
+            <tr>
+              <td>{element.username}</td>
+              <td>
+                <Badge pill variant="secondary">
+                  {element.role.slice(5)}
+                </Badge>
+              </td>
+              <td>{element.email}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
     </div>
   );
 };

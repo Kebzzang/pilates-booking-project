@@ -28,7 +28,9 @@ const TeacherList = () => {
   function searchTeacher(ITeachers: ITeacher[]) {
     let lowerMySearch = mySearch.toLowerCase();
     return ITeachers.filter(
-      (ITeacher) =>
+      (
+        ITeacher, //찾게 되면 0 해당 위치의 인덱스를 리턴한다
+      ) =>
         ITeacher.name.toLowerCase().indexOf(lowerMySearch) > -1 ||
         ITeacher.email.toLowerCase().indexOf(lowerMySearch) > -1 ||
         ITeacher.about.toLowerCase().indexOf(lowerMySearch) > -1,
