@@ -65,10 +65,24 @@ public class UserApiController {
         }
         return ResponseEntity.ok().body(new CommonResponse<>(userResponseDto));
     }
+    @GetMapping("/api/v1/admin/user")
+    public ResponseEntity<? extends BasicResponse> findAll() {
+        List<UserDto.UserResponseDto> userResponseDtoList= userService.findAllUsers();
 
+        return ResponseEntity.ok().body(new CommonResponse<>(userResponseDtoList));
+    }
 
-
-    @PutMapping("/api/v1/user/{id}")
+    //ROLE_ADMIN이 해당 유저의 ROLE 변경
+    @PutMapping("/api/v1/admin/user/{id}")
+    public ResponseEntity<? extends BasicResponse> updateUserRole(@PathVariable Long id, @RequestBody UserDto.UserRoleUpdateDto userRoleUpdateDto){
+        Long result=userService.updateUserRole(id, userRoleUpdateDto);
+        if(result==0L){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("잘못된 유저 갱신 요청: "+id));
+        }else{
+            return ResponseEntity.noContent().build();
+        }
+    }
+    @PutMapping("/api/v1/user/{id}") //비번 바꿀 수 있도록 함
     public ResponseEntity<? extends BasicResponse> updateById(@PathVariable Long id, @RequestBody UserDto.UserUpdateDto userUpdateDto) {
         Long result = userService.updateById(id, userUpdateDto);
         if (result==0L) { // 실패시

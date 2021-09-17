@@ -113,11 +113,8 @@ public class TeacherService {
 
     public byte[] downloadTeacherProfileImage(Long id) {
         Teacher teacher=teacherRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 선생님이 존재하지 않습니다"));
-      //  String path=String.format("%s/%s", BUcket, teacher.getId());
 
         String path= String.format("%s/%s", BucketName.PROFILE_IMAGE.getBucketName(), teacher.getId());
-        System.out.println("path :::"+path);
-        System.out.println("getUserProfileLink:::"+teacher.getUserProfileImageLink().isEmpty());
         if(!teacher.getUserProfileImageLink().isEmpty()) {
             System.out.println("problem0:::");
             return fileStore.downloadFromS3(path, teacher.getUserProfileImageLink());

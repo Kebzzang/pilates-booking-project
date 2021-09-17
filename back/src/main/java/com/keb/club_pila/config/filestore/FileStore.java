@@ -24,7 +24,7 @@ import java.util.Optional;
 @Service
 public class FileStore {
     //public static final String CLOUDFRONT_DOMAIN_NAME="d1djtzszdq7pt7.cloudfront.net";
-    
+
     private final AmazonS3 s3;
     /*s3 파일 저장*/
     public void save(String path, String fileName, Optional<Map<String, String>> optionalMetaData,

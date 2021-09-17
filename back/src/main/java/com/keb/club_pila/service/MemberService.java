@@ -30,10 +30,12 @@ public class MemberService {
     private final PasswordEncoder passwordEncoder;
     private final EmailService emailService;
     private final JwtProvider jwtProvider;
+
+    //유저 회원 가입
     @Transactional
     public Long userSave(UserDto.UserSaveRequestDto userSaveRequestDto) throws MessagingException {
         Optional<Member> user = userRepository.findByUsername(userSaveRequestDto.getUsername());
-        if (!user.isPresent()) {
+        if (user.isEmpty()) {
 
             Member entity = userSaveRequestDto.toEntity(passwordEncoder.encode(userSaveRequestDto.getPassword()));
 
@@ -45,7 +47,7 @@ public class MemberService {
         }
         return 0L;
     }
-
+    //oauth 관련 회원 가입
     @Transactional
     public String oauthUserSave(OAuthUserInfo oauthUser) {
 
@@ -69,24 +71,14 @@ public class MemberService {
             return jwtToken;
         }
         else{ //한번 로그인 해봤다면 DB에 저장되어 있음 -> 토큰만 발행시켜주면 된다.
-            String jwtToken = jwtProvider.generateTokenforOAuth(user.get());
-            return jwtToken;
+            return jwtProvider.generateTokenforOAuth(user.get());
         }
 
 
 
     }
 
-
-//Prior login logic
-//    public String userLogin(LoginDto loginDto){
-//        Optional<Member> user=userRepository.findUserByUsername(loginDto.getUsername());
-//        if(user.isPresent()&& passwordEncoder.matches(loginDto.getPassword(), user.get().getPassword())){
-//            return loginDto.getUsername();
-//        }
-//        return null;
-//    }
-
+    //지금 로그인한 유저 정보 찾아서 리턴
     @Transactional(readOnly = true)
     public UserDto.UserResponseDto getMyUserInfo() {
         return userRepository.findUserByUsername(SecurityUtil.getCurrentMemberUsername())
@@ -99,7 +91,7 @@ public class MemberService {
 //        return true;
 //        return false;
 //    }
-
+    //회원 삭제
     @Transactional
     public boolean deleteById(Long id) {
         Optional<Member> user = userRepository.findById(id);
@@ -109,7 +101,7 @@ public class MemberService {
         return true;
     }
 
-
+    //모든 회원 정보 출력
     @Transactional(readOnly = true)
     public List<UserDto.UserResponseDto> findAllUsers() {
         List<Member> members = userRepository.findAll();
@@ -117,7 +109,7 @@ public class MemberService {
                 new UserDto.UserResponseDto(user)
         ).collect(Collectors.toList());
     }
-
+    //특정 회원 정보 출력
     @Transactional(readOnly = true)
     public UserDto.UserResponseDto findById(Long id) {
         Optional<Member> users = userRepository.findById(id);
@@ -126,6 +118,7 @@ public class MemberService {
         } else return new UserDto.UserResponseDto();
     }
 
+    //특정 유저가 신청한 수업 목록 조회
     @Transactional(readOnly = true)
     public List<CourseDto.CourseTeacherResponseDto> findCoursesById(Long id){
         Optional<Member> users=userRepository.findById(id);
@@ -144,16 +137,30 @@ public class MemberService {
             return null;
         }
     }
+    //유저 롤 업데이트
+    @Transactional
+    public Long updateUserRole(Long id, UserDto.UserRoleUpdateDto userRoleUpdateDto){
+        Optional<Member> user=userRepository.findById(id);
+        if(user.isPresent()){
+            Member member=user.get();
+            member.updateRole( userRoleUpdateDto.getRole());
+            return 1L;
+        } //없으면 리턴 널
+        else{
+            return 0L;
+        }
 
+    }
     @Transactional(readOnly=true)
     public UserDto.UserResponseDto findByUsername(String username){
         return userRepository.findByUsername(username).map(UserDto.UserResponseDto::new).orElse(new UserDto.UserResponseDto());
     }
 
+
     @Transactional //이건 뭐...음...ㅎㅎ...
     public Long updateById(Long id, UserDto.UserUpdateDto userUpdateDto) {
         Optional<Member> user = userRepository.findById(id);
-        if (!user.isPresent())
+        if (user.isEmpty())
             return 0L;
         else {
             user.get().updatePassword(passwordEncoder.encode(userUpdateDto.getPassword()));

@@ -62,11 +62,9 @@ public class TeacherApiController {
     public ResponseEntity<? extends BasicResponse> findAllTeachers() {
         List<TeacherDto.TeacherResponseDto> teachers=teacherService.findAllTeachers();
         if (teachers.isEmpty()) {
-
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok().body(new CommonResponse<>(teachers));
-
     }
     //일반 유저용 선생님 리스트 쫙
     @GetMapping("/api/v1/user/teacher")
@@ -107,10 +105,9 @@ public class TeacherApiController {
     Long result=teacherService.updateById(id, teacherUpdateDto);
     if (result==0L) { // 실패시
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("잘못된 선생님 갱신 요청: "+id));
-        }
-        //성공시
+    }
+    //성공시
         return ResponseEntity.noContent().build();
-
 }
 
 

@@ -57,7 +57,7 @@ public class EmailService {
 
         helper.setFrom("PILAS");
         helper.setTo(toEmail);
-        helper.setSubject(subject); //메일 제ㅁ목
+        helper.setSubject(subject); //메일 제목
         helper.setText(message, true); //true->html
 
         javaMailSender.send(mimeMessage);

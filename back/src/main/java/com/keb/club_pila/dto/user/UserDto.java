@@ -91,4 +91,10 @@ public class UserDto {
     public static class UserUpdateDto {
         private String password;
     }
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class UserRoleUpdateDto {
+        private String role;
+    }
 }

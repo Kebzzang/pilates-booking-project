@@ -57,7 +57,9 @@ public class Member extends BaseTimeEntity {
         System.out.println("certified"+certified+":::"+username);
         return 1L;
     }
-
+    public void updateRole(String role){
+        this.role=RoleType.valueOf(role.toUpperCase());
+    }
 
 
 }

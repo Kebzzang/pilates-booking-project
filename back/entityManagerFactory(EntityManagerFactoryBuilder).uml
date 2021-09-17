@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>Persistence</ID>
+  <OriginalElement>JavaeeElement:/f8672137/entityManagerFactory/back/jpa/JPA/PersistenceModel</OriginalElement>
+  <nodes>
+    <node x="244.0" y="445.0">JoinInfo#file://C:/Users/h/IdeaProjects/club_pila/back/src/main/java/com/keb/club_pila/model/entity/join/JoinInfo.java</node>
+    <node x="10.5" y="390.0">Teacher#file://C:/Users/h/IdeaProjects/club_pila/back/src/main/java/com/keb/club_pila/model/entity/course/Teacher.java</node>
+    <node x="77.75" y="607.0">Member#file://C:/Users/h/IdeaProjects/club_pila/back/src/main/java/com/keb/club_pila/model/entity/user/Member.java</node>
+    <node x="107.0" y="129.0">Course#file://C:/Users/h/IdeaProjects/club_pila/back/src/main/java/com/keb/club_pila/model/entity/course/Course.java</node>
+    <node x="39.75" y="0.0">BaseTimeEntity#file://C:/Users/h/IdeaProjects/club_pila/back/src/main/java/com/keb/club_pila/model/entity/BaseTimeEntity.java</node>
+    <node x="393.0" y="0.0">AbstractPersistable#jar://C:/Users/h/.m2/repository/org/springframework/data/spring-data-jpa/2.4.6/spring-data-jpa-2.4.6.jar!/org/springframework/data/jpa/domain/AbstractPersistable.class</node>
+    <node x="616.0" y="12.0">null#null</node>
+    <node x="466.25" y="107.0">AbstractAuditable#jar://C:/Users/h/.m2/repository/org/springframework/data/spring-data-jpa/2.4.6/spring-data-jpa-2.4.6.jar!/org/springframework/data/jpa/domain/AbstractAuditable.class</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Teacher#file://C:/Users/h/IdeaProjects/club_pila/back/src/main/java/com/keb/club_pila/model/entity/course/Teacher.java" target="Course#file://C:/Users/h/IdeaProjects/club_pila/back/src/main/java/com/keb/club_pila/model/entity/course/Course.java">
+      <point x="51.0" y="-83.5" />
+      <point x="163.5" y="365.0" />
+      <point x="159.5" y="365.0" />
+      <point x="-52.5" y="105.5" />
+    </edge>
+    <edge source="Member#file://C:/Users/h/IdeaProjects/club_pila/back/src/main/java/com/keb/club_pila/model/entity/user/Member.java" target="BaseTimeEntity#file://C:/Users/h/IdeaProjects/club_pila/back/src/main/java/com/keb/club_pila/model/entity/BaseTimeEntity.java">
+      <point x="-36.0" y="-105.5" />
+      <point x="113.75" y="582.0" />
+      <point x="0.0" y="582.0" />
+      <point x="0.0" y="109.0" />
+      <point x="64.5" y="109.0" />
+      <point x="-74.25" y="39.5" />
+    </edge>
+    <edge source="AbstractAuditable#jar://C:/Users/h/.m2/repository/org/springframework/data/spring-data-jpa/2.4.6/spring-data-jpa-2.4.6.jar!/org/springframework/data/jpa/domain/AbstractAuditable.class" target="null#null">
+      <point x="46.25" y="-39.5" />
+      <point x="605.0" y="82.0" />
+      <point x="623.0" y="82.0" />
+      <point x="0.0" y="16.5" />
+    </edge>
+    <edge source="Teacher#file://C:/Users/h/IdeaProjects/club_pila/back/src/main/java/com/keb/club_pila/model/entity/course/Teacher.java" target="BaseTimeEntity#file://C:/Users/h/IdeaProjects/club_pila/back/src/main/java/com/keb/club_pila/model/entity/BaseTimeEntity.java">
+      <point x="-51.0" y="-83.5" />
+      <point x="61.5" y="365.0" />
+      <point x="81.0" y="365.0" />
+      <point x="81.0" y="109.0" />
+      <point x="114.0" y="109.0" />
+      <point x="-24.75" y="39.5" />
+    </edge>
+    <edge source="Member#file://C:/Users/h/IdeaProjects/club_pila/back/src/main/java/com/keb/club_pila/model/entity/user/Member.java" target="JoinInfo#file://C:/Users/h/IdeaProjects/club_pila/back/src/main/java/com/keb/club_pila/model/entity/join/JoinInfo.java">
+      <point x="36.0" y="-105.5" />
+      <point x="185.75" y="582.0" />
+      <point x="296.0" y="582.0" />
+      <point x="0.0" y="28.5" />
+    </edge>
+    <edge source="JoinInfo#file://C:/Users/h/IdeaProjects/club_pila/back/src/main/java/com/keb/club_pila/model/entity/join/JoinInfo.java" target="BaseTimeEntity#file://C:/Users/h/IdeaProjects/club_pila/back/src/main/java/com/keb/club_pila/model/entity/BaseTimeEntity.java">
+      <point x="26.0" y="-28.5" />
+      <point x="322.0" y="365.0" />
+      <point x="327.5" y="365.0" />
+      <point x="327.5" y="99.0" />
+      <point x="213.0" y="99.0" />
+      <point x="74.25" y="39.5" />
+    </edge>
+    <edge source="Course#file://C:/Users/h/IdeaProjects/club_pila/back/src/main/java/com/keb/club_pila/model/entity/course/Course.java" target="BaseTimeEntity#file://C:/Users/h/IdeaProjects/club_pila/back/src/main/java/com/keb/club_pila/model/entity/BaseTimeEntity.java">
+      <point x="0.0" y="-105.5" />
+      <point x="212.0" y="109.0" />
+      <point x="163.5" y="109.0" />
+      <point x="24.75" y="39.5" />
+    </edge>
+    <edge source="AbstractAuditable#jar://C:/Users/h/.m2/repository/org/springframework/data/spring-data-jpa/2.4.6/spring-data-jpa-2.4.6.jar!/org/springframework/data/jpa/domain/AbstractAuditable.class" target="AbstractPersistable#jar://C:/Users/h/.m2/repository/org/springframework/data/spring-data-jpa/2.4.6/spring-data-jpa-2.4.6.jar!/org/springframework/data/jpa/domain/AbstractPersistable.class">
+      <point x="-46.25" y="-39.5" />
+      <point x="512.5" y="82.0" />
+      <point x="494.5" y="82.0" />
+      <point x="0.0" y="28.5" />
+    </edge>
+    <edge source="JoinInfo#file://C:/Users/h/IdeaProjects/club_pila/back/src/main/java/com/keb/club_pila/model/entity/join/JoinInfo.java" target="Course#file://C:/Users/h/IdeaProjects/club_pila/back/src/main/java/com/keb/club_pila/model/entity/course/Course.java">
+      <point x="-26.0" y="-28.5" />
+      <point x="270.0" y="365.0" />
+      <point x="264.5" y="365.0" />
+      <point x="52.5" y="105.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="326.0" y="409.0" />
+  <SelectedNodes>
+    <node>BaseTimeEntity#file://C:/Users/h/IdeaProjects/club_pila/back/src/main/java/com/keb/club_pila/model/entity/BaseTimeEntity.java</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Embeddables</Category>
+    <Category>Superclasses</Category>
+  </Categories>
+</Diagram>
+
