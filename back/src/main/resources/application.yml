@@ -36,7 +36,7 @@ spring:
             enable: true
 
   datasource:
-    driver-class-name: ENC(iGyaTZG85xqxwqhxqRxT4gL7Jq1+D7bzSGAghLmsZoBHFRvPJ/G06aOYGNWHKJNg0esDwOTHaQgC8xXpkBSIaw==)
+    driver-class-name: org.mariadb.jdbc.Driver
 #    url: jdbc:mariadb://localhost:3306/pila
 #    username: root
 #    password: root
