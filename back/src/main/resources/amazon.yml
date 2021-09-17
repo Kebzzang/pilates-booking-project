@@ -7,5 +7,7 @@ cloud:
     stack:
       auto: false
     credentials:
-      accessKey: ENC(4iEszH9mtpefYOxkZsMod5m0zcA4/a3Sx/1cGxzsiCASAT+nmmSEGWT08OQ6joUa3k54dJRDnko1N3hZmB7QBQ==)
-      secretKey: ENC(LYaNJAjqw/hG7j4/JvCa7zaV/nbzmTBepTzOGBZCS5GUd/W03ruDqmBYzSPu9j9NRWk/pNkNPAHpFzAauexVf+Ib6fUoBhabIb/HkY5uepc=)
+#      accessKey: ENC(4iEszH9mtpefYOxkZsMod5m0zcA4/a3Sx/1cGxzsiCASAT+nmmSEGWT08OQ6joUa3k54dJRDnko1N3hZmB7QBQ==)
+#      secretKey: ENC(LYaNJAjqw/hG7j4/JvCa7zaV/nbzmTBepTzOGBZCS5GUd/W03ruDqmBYzSPu9j9NRWk/pNkNPAHpFzAauexVf+Ib6fUoBhabIb/HkY5uepc=)
+      accessKey: AKIARLCIO6OQLGFLV2W3
+      secretKey: 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
