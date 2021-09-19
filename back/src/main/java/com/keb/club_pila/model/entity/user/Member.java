@@ -32,11 +32,11 @@ public class Member extends BaseTimeEntity {
     @Column(nullable=false, length=100)
     private String certified;
 
-    @Column(nullable = false, length = 100, unique = true)
+    @Column(nullable = false, length = 100, unique = false)
     private String email;
 
     @Enumerated(EnumType.STRING)
-    private RoleType role; //두 가지 롤 : USER, ADMIN
+    private RoleType role; //세 가지 롤 : USER, ADMIN, TEACHER<-선생님은 일반 가입 후 어드민이 롤 변경
 
     @Column(nullable = false, length = 100)
     private String password;

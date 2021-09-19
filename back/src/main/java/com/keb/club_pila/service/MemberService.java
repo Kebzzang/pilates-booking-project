@@ -33,17 +33,18 @@ public class MemberService {
 
     //유저 회원 가입
     @Transactional
-    public Long userSave(UserDto.UserSaveRequestDto userSaveRequestDto) throws MessagingException {
+    public Long userSave(UserDto.UserSaveRequestDto userSaveRequestDto)  {
         Optional<Member> user = userRepository.findByUsername(userSaveRequestDto.getUsername());
+
         if (user.isEmpty()) {
 
             Member entity = userSaveRequestDto.toEntity(passwordEncoder.encode(userSaveRequestDto.getPassword()));
 
-            userRepository.save(entity).getId();
+            userRepository.save(entity);
 
             //회원 가입 시 입력한 이메일로 인증메일 보냄
         //    emailService.sendEmail(entity.getEmail(), entity.getUsername(), entity.getCertified());
-            return entity.getId();
+            return 1L;
         }
         return 0L;
     }

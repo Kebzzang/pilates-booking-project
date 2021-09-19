@@ -88,6 +88,7 @@ public class CourseDto {
             return Course.builder()
                     .isLocked(false)
                     .maxStudent(maxStudent)
+                    .nowStudent(0L)
                     .title(title)
                     .content(content)
                     .courseDateTime(courseDateTime)

@@ -59,6 +59,7 @@ public class AuthApiController {
         }
 
     }
+    //관리자용은 따로 auth 요청하는 것이 좋다?
     @PostMapping("/api/v1/authadmin")
     public  ResponseEntity<? extends BasicResponse> authAdmin(@RequestBody LoginDto loginDto, HttpServletResponse res){
         UserDto.UserResponseDto user=userService.findByUsername(loginDto.getUsername());
@@ -79,7 +80,7 @@ public class AuthApiController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("관리자 계정 정보가 없습니다"));
         }
     }
-
+    //로그아웃이면 그냥 빈 쿠키를 날려준다
     @PostMapping("/api/v1/logout")
     public ResponseEntity<? extends BasicResponse> logout(HttpServletResponse res) {
         Cookie cookie = new Cookie("accessToken", "");
@@ -117,10 +118,10 @@ public class AuthApiController {
 
     //일반 회원가입 요청
     @PostMapping("/api/v1/signup")
-    public ResponseEntity<? extends BasicResponse> joinUser(@RequestBody UserDto.UserSaveRequestDto userSaveRequestDto) throws MessagingException {
+    public ResponseEntity<? extends BasicResponse> joinUser(@RequestBody UserDto.UserSaveRequestDto userSaveRequestDto){
         Long result = userService.userSave(userSaveRequestDto);
         if (result != 0) {
-            return ResponseEntity.created(URI.create("/api/v1/user/" + result)).build();
+            return ResponseEntity.noContent().build();
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("이미 사용 중인 유저네임입니다."));
     }

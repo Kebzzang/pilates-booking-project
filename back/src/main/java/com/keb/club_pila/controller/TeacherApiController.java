@@ -31,7 +31,6 @@ public class TeacherApiController {
     */
 // @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(path="/api/v1/admin/teacher",consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
-   // @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
     public ResponseEntity<? extends BasicResponse> save(@RequestPart(value="key") TeacherDto.TeacherSaveRequestDto teacherSaveRequestDto,
                                                         @RequestPart(value="file") MultipartFile file){
         System.out.println(teacherSaveRequestDto.toString());
