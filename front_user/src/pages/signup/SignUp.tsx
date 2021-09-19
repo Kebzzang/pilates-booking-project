@@ -19,7 +19,6 @@ const SignUp = () => {
   const [mismatchError, setMismatchError] = useState(false);
   const [signUpError, setSignUpError] = useState('');
   const [signUpSuccess, setSignUpSuccess] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const onChangePassword = useCallback(
     (e) => {
@@ -41,7 +40,7 @@ const SignUp = () => {
     (e) => {
       e.preventDefault();
       //console.log(email, username, password);
-      setLoading(true); //요청 시작 -> 로딩 시작 트루로 변경
+      //   setLoading(true); //요청 시작 -> 로딩 시작 트루로 변경
       if (!mismatchError) {
         console.log('서버로 회원가입 gogo');
         setSignUpError('');
@@ -55,14 +54,14 @@ const SignUp = () => {
           .then((response) => {
             console.log(response);
             setSignUpSuccess(true);
-            setLoading(false); //요청 성공 로딩 끝
+            //   setLoading(false); //요청 성공 로딩 끝
             alert('SignUp Success! Login Please');
           }) //성공
           .catch((error) => {
             // console.log(username, email, password);
-            // console.log(error.response);
-            setSignUpError(error.response);
-            setLoading(false); //에러 발생, 로딩 끝
+            console.log(error.response.data.errorMsg);
+            setSignUpError(error.response.data.errorMsg);
+            //   setLoading(false); //에러 발생, 로딩 끝
           }) //실패
           .finally(() => {}); //무조건 실행
       }
@@ -123,7 +122,7 @@ const SignUp = () => {
           Already have an account?&nbsp;
           <Link to="/login">Log In</Link>
         </LinkContainer>
-        {loading ? <Loading /> : ''}
+        {/*{loading ? <Loading /> : ''}*/}
       </Container2>
     </Container>
   );

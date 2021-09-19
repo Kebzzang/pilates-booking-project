@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 interface dayStyle {
   dayStyle: string;
+  //dayStyle에 따라 캘린더 날짜 스타일을 다르게 줌
 }
 export const DayPicker = styled.button<dayStyle>`
   width: 60px;

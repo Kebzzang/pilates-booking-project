@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a6ddd42-9593-4d59-8dde-fcbe674fa081" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../front_admins/src/components/Member/Members.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front_admins/src/components/Member/Members.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front_admins/src/components/Teachers/TeacherCardDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front_admins/src/components/Teachers/TeacherCardDetail.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front_admins/src/components/Teachers/TeacherList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front_admins/src/components/Teachers/TeacherList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front_admins/src/components/Teachers/TeacherUpdateForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front_admins/src/components/Teachers/TeacherUpdateForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front_admins/src/layouts/Main/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front_admins/src/layouts/Main/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/AuthApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/AuthApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/user/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/user/Member.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BookedClasses/MyClass.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BookedClasses/MyClass.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/db.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/db.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Calendar/DatePicker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar/DatePicker.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Calendar/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar/style.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Teachers/TeacherCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teachers/TeacherCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Teachers/Teachers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teachers/Teachers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/signup/SignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/signup/SignUp.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,6 +177,8 @@
       <workItem from="1631721311795" duration="597000" />
       <workItem from="1631759932230" duration="604000" />
       <workItem from="1631854784315" duration="2045000" />
+      <workItem from="1631879726582" duration="593000" />
+      <workItem from="1632025192811" duration="5882000" />
     </task>
     <servers />
   </component>
@@ -199,6 +203,12 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/index.tsx</url>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/Calendar/DatePicker.tsx</url>
+          <line>6</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
