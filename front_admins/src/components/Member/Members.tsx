@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
-
+import { RoleBadge } from './style';
 import { VerticalTimeline } from 'react-vertical-timeline-component';
 import useInput from '../../hooks/useInput';
 import useSWR from 'swr';
 
-import { Badge, Table } from 'react-bootstrap';
+import { Badge, Button, Table } from 'react-bootstrap';
 import DataFetcher from '../../utils/DataFetcher';
 import { ITeacher, IUser } from '../../types/db';
 import Loading from '../../layouts/Loading';
@@ -40,7 +40,7 @@ const Members = () => {
             <th>Username</th>
             <th>Role</th>
             <th>Email</th>
-            <th></th>
+            <th />
           </tr>
         </thead>
         <tbody>
@@ -48,11 +48,12 @@ const Members = () => {
             <tr>
               <td>{element.username}</td>
               <td>
-                <Badge pill variant="secondary">
-                  {element.role.slice(5)}
-                </Badge>
+                <RoleBadge roleStyle={element.role}>{element.role.slice(5)}</RoleBadge>
               </td>
               <td>{element.email}</td>
+              <td>
+                <Button>Edit</Button>
+              </td>
             </tr>
           ))}
         </tbody>
