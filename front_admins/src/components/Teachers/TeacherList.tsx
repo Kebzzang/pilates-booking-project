@@ -6,7 +6,7 @@ import useInput from '../../hooks/useInput';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Dropdown, DropdownButton, FormControl } from 'react-bootstrap';
 import useTeacherFetch from '../../hooks/useTeacherFetch';
-import { Route, Switch, useParams, useRouteMatch, Link } from 'react-router-dom';
+import { useRouteMatch, Link } from 'react-router-dom';
 import loadable from '@loadable/component';
 import { AiOutlineUserAdd } from 'react-icons/all';
 const TeacherCardDetail = loadable(() => import('./TeacherCardDetail'));
@@ -15,7 +15,7 @@ const TeacherList = () => {
   const profiles = useTeacherFetch();
   const [filteredProfiles, setFilteredProfiles] = useState<ITeacher[]>([]);
   const [mySearch, onChangeMySearch] = useInput('');
-  const { url, path } = useRouteMatch();
+  const { path } = useRouteMatch();
   console.log(path);
   useEffect(() => {
     myCategory === 'all'

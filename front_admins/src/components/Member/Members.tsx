@@ -4,22 +4,42 @@ import { VerticalTimeline } from 'react-vertical-timeline-component';
 import useInput from '../../hooks/useInput';
 import useSWR from 'swr';
 
-import { Badge, Button, Table } from 'react-bootstrap';
+import { Badge, Button, Dropdown, DropdownButton, FormControl, Table } from 'react-bootstrap';
 import DataFetcher from '../../utils/DataFetcher';
 import { ITeacher, IUser } from '../../types/db';
 import Loading from '../../layouts/Loading';
+import InputGroup from 'react-bootstrap/InputGroup';
+import { Link } from 'react-router-dom';
+import { AiOutlineUserAdd } from 'react-icons/all';
 // 회원 관리 메뉴
 
 const Members = () => {
   //데이터 끌고 오기 유저 리스트 쫙
   const { data: users } = useSWR('http://localhost:8000/api/v1/admin/user', DataFetcher);
   //유저 롤 변경 -> ROLE_ADMIN, ROLE_TEACHER, ROLE_TEACHER
+  const [filteredMembers, setFilteredMembers] = useState<IUser[]>([]);
   const [mySearch, onChangeMySearch] = useInput(''); //유저 검색용
-  const [myCategory, setMyCategory] = useState('ROLE_USER'); //ROLE_ADMIN, ROLE_TEACHER, ROLE_USER
-  if (!users) {
-    return <Loading />;
-  }
-  function searchTeacher(Users: IUser[]) {
+  const [myCategory, setMyCategory] = useState('All'); //ROLE_ADMIN, ROLE_TEACHER, ROLE_USER
+
+  useEffect(() => {
+    switch (myCategory) {
+      case 'All':
+        // console.log(users.data);
+        setFilteredMembers(users.data);
+        break;
+      case 'ADMIN':
+        setFilteredMembers(users.data.filter((user: IUser) => user.role === 'ROLE_ADMIN'));
+        break;
+      case 'TEACHER':
+        setFilteredMembers(users.data.filter((user: IUser) => user.role === 'ROLE_TEACHER'));
+        break;
+      case 'USER':
+        setFilteredMembers(users.data.filter((user: IUser) => user.role === 'ROLE_USER'));
+        break;
+    }
+  }, [myCategory, users]);
+
+  function searchUser(Users: IUser[]) {
     let lowerMySearch = mySearch.toLowerCase();
     return Users.filter(
       (
@@ -28,12 +48,34 @@ const Members = () => {
         User.username.toLowerCase().indexOf(lowerMySearch) > -1 || User.email.toLowerCase().indexOf(lowerMySearch) > -1,
     );
   }
-  function selectWorking(value: string) {
+  function selectRole(value: string) {
     setMyCategory(value);
-    console.log(myCategory);
+  }
+  if (!users) {
+    return <Loading />;
   }
   return (
     <div style={{ width: '700px', marginLeft: 'auto', marginTop: '20px', marginRight: 'auto' }}>
+      <InputGroup
+        className="mb-3"
+        style={{ width: '400px', marginLeft: 'auto', marginTop: '20px', marginRight: 'auto' }}
+      >
+        <FormControl onChange={onChangeMySearch} aria-label="Text input with dropdown button" placeholder="Search" />
+        <DropdownButton variant="outline-secondary" title={myCategory} id="input-group-dropdown-2">
+          <Dropdown.Item id="All" onClick={(e) => selectRole(e.currentTarget.id)}>
+            all
+          </Dropdown.Item>
+          <Dropdown.Item id="ADMIN" onClick={(e) => selectRole(e.currentTarget.id)}>
+            Admin
+          </Dropdown.Item>
+          <Dropdown.Item id="TEACHER" onClick={(e) => selectRole(e.currentTarget.id)}>
+            Teacher
+          </Dropdown.Item>
+          <Dropdown.Item id="USER" onClick={(e) => selectRole(e.currentTarget.id)}>
+            User
+          </Dropdown.Item>
+        </DropdownButton>{' '}
+      </InputGroup>{' '}
       <Table>
         <thead>
           <tr>
@@ -44,7 +86,7 @@ const Members = () => {
           </tr>
         </thead>
         <tbody>
-          {users.data.map((element: IUser, index: number) => (
+          {searchUser(filteredMembers).map((element: IUser) => (
             <tr>
               <td>{element.username}</td>
               <td>
@@ -52,7 +94,7 @@ const Members = () => {
               </td>
               <td>{element.email}</td>
               <td>
-                <Button>Edit</Button>
+                <Button size="sm">Edit</Button>
               </td>
             </tr>
           ))}
