@@ -41,14 +41,12 @@ const ClassComponent: FC<ClassInfoProps> = ({ userData, selectedDate }) => {
   if (error) return <div>failed to load</div>;
   if (!classes) return <Loading />;
 
-  const onClickJoins = async (course_id: number, user_id: number) => {
-    await axios.post(
-      'http://localhost:8000/api/v1/user/course/join',
-      { course_id, user_id },
-      { withCredentials: true },
-    );
-    await mutate();
+  const onClickJoins = (course_id: number, user_id: number) => {
+    axios
+      .post('http://localhost:8000/api/v1/user/course/join', { course_id, user_id }, { withCredentials: true })
+      .then(() => mutate());
   };
+  //해당 회원이 해당 수업들에 포함되었는지 안포함되었는지 체크하기
   function checkUserJoin(data: ISimpleUser[]) {
     let result;
     data.map((user) => {

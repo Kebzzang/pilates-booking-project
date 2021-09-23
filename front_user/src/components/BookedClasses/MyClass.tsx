@@ -15,7 +15,8 @@ const MyClass = () => {
     dedupingInterval: 40000,
   });
   const [cancel, setCancel] = useState(false);
-
+  //캔슬 state에 변화가 있으면 다시 fetch해오도록 함 <- 정말 이렇게 해야하나?
+  //그냥 이것도 swr 써서 mutate 해와도 될까?
   const myJoins = useFetchMyClasses(userData.id, cancel);
 
   const now = moment();

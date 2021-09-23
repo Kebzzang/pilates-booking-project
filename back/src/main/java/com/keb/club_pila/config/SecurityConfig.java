@@ -33,7 +33,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
 
                 .exceptionHandling()
+                //
                 .authenticationEntryPoint(jwtAuthenticationEntryPoint)
+                //요구되는 권한 없이 접근하려 들 때 403 에러
                 .accessDeniedHandler(jwtAccessDeniedHandler)
 
                 .and()
@@ -41,9 +43,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .authorizeRequests()
+                //어드민 롤만 가능한 api들
                 .antMatchers("/api/v1/admin/**").hasRole("ADMIN")
+                //인증 정보 없이 api 요청 가능함: 로그인한 정보 요청, 로그인아웃, 그 외 등등
                 .antMatchers("/api/v1/user/me", "/api/v1/logout","/api/v1/signup","/api/v1/authadmin", "/api/v1/auth", "/api/v1/user/email/certified", "/api/v1/oauth/google"
     ).permitAll()
+                //그 외는 어드민이든 티처이든 유저이든 인증되면 리퀘스트할 수 있다.
                 .anyRequest().authenticated()
 
                 .and()

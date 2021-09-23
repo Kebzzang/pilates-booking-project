@@ -2,16 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a6ddd42-9593-4d59-8dde-fcbe674fa081" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/AuthApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/AuthApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/user/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/model/entity/user/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/jwt/CookieUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/jwt/CookieUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/jwt/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/config/jwt/JwtFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/UserApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/keb/club_pila/controller/UserApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Calendar/DatePicker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar/DatePicker.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BookedClasses/MyClass.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BookedClasses/MyClass.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Calendar/Class/ClassComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar/Class/ClassComponent.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Calendar/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar/style.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Teachers/TeacherCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teachers/TeacherCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Teachers/Teachers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teachers/Teachers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/signup/SignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/signup/SignUp.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +49,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/utils" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\h\IdeaProjects\club_pila\front_user\node_modules\prettier" />
@@ -179,6 +178,11 @@
       <workItem from="1631854784315" duration="2045000" />
       <workItem from="1631879726582" duration="593000" />
       <workItem from="1632025192811" duration="5882000" />
+      <workItem from="1632120214566" duration="3052000" />
+      <workItem from="1632138746894" duration="2824000" />
+      <workItem from="1632311624345" duration="600000" />
+      <workItem from="1632312297722" duration="51000" />
+      <workItem from="1632379632397" duration="444000" />
     </task>
     <servers />
   </component>
@@ -207,7 +211,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/Calendar/DatePicker.tsx</url>
           <line>6</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

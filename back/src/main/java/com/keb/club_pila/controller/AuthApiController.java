@@ -87,7 +87,7 @@ public class AuthApiController {
         System.out.println("here logout");
         cookie.setPath("/");
         cookie.setSecure(false);
-        cookie.setMaxAge(0);
+        cookie.setMaxAge(0); //유효시간이 0
         cookie.setHttpOnly(true);
         res.setHeader("Access-Control-Allow-Credentials", "true");
         res.addCookie(cookie);
@@ -96,7 +96,7 @@ public class AuthApiController {
     }
 
 
-    //구글 소셜 로그인 요청 시
+    //구글 소셜 로그인 요청 시 현재 사용 x
     @PostMapping("/api/v1/oauth/google")
     public ResponseEntity<? extends BasicResponse> oauth(@RequestBody Map<String, Object> data, HttpServletResponse res) {
         System.out.println("jwt oauth");

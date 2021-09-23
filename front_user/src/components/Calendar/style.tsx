@@ -17,10 +17,12 @@ export const DayPicker = styled.button<dayStyle>`
   margin-left: 3px;
   font-size: 17px;
   font-weight: bold;
+  /*수업 신청 불가능한 버튼일 때*/
   :disabled {
     background-color: white;
     color: darkgray;
   }
+  /*수업 신청 가능한 버튼에 호버할 때*/
   &:hover:enabled {
     background-color: #1e5b6e;
     color: white;

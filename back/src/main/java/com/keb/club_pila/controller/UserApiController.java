@@ -65,6 +65,7 @@ public class UserApiController {
         }
         return ResponseEntity.ok().body(new CommonResponse<>(userResponseDto));
     }
+
     @GetMapping("/api/v1/admin/user")
     public ResponseEntity<? extends BasicResponse> findAll() {
         List<UserDto.UserResponseDto> userResponseDtoList= userService.findAllUsers();

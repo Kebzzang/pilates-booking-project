@@ -21,6 +21,9 @@ import static org.springframework.util.StringUtils.hasText;
 
 @RequiredArgsConstructor
 @Component
+//spring은 필터에서 spring config 설정 정보를 쉽게 처리하기 위한 GenericFilterBean을 제공한다.
+//필터가 중첩 호출한 경우 매번 필터의 내용이 중첩 수행되는 것을 방지하기 위해 GenericFilterBean을 상속한 OncePerRequestFilter도 있음
+
 public class JwtFilter extends GenericFilterBean {
  //   private static final Logger logger = LoggerFactory.getLogger(JwtFilter.class);
     public static final String AUTHORIZATION_HEADER = "Authorization";
@@ -30,8 +33,11 @@ public class JwtFilter extends GenericFilterBean {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-
+        //모든 리퀘스트는 여기를 거쳐간다. 토큰 가지고 왔니? 체크
+        //가지고 왔다면 우리 컨텍스트에 이 토큰이 유효한 것인지 확인
+        System.out.println("*****JWT Filter Comes up*****");
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
+        //jwt토큰 초기화
         String jwt = null;
         Cookie cookie = cookieUtil.getCookie(httpServletRequest, "accessToken");
         //쿠키에 토큰 정보를 들고 온다면 => 이미 로그인한 사람이니까
@@ -42,7 +48,7 @@ public class JwtFilter extends GenericFilterBean {
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
         }
-
+        //필터 걸어주기
         filterChain.doFilter(servletRequest, servletResponse);
 
        /* logger.debug("do filter...");
