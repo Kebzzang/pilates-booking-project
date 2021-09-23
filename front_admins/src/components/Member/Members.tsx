@@ -1,16 +1,14 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RoleBadge } from './style';
-import { VerticalTimeline } from 'react-vertical-timeline-component';
 import useInput from '../../hooks/useInput';
 import useSWR from 'swr';
 
-import { Badge, Button, Dropdown, DropdownButton, FormControl, Table } from 'react-bootstrap';
+import { Button, Dropdown, DropdownButton, FormControl, Table } from 'react-bootstrap';
 import DataFetcher from '../../utils/DataFetcher';
-import { ITeacher, IUser } from '../../types/db';
+import { IUser } from '../../types/db';
 import Loading from '../../layouts/Loading';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { Link } from 'react-router-dom';
-import { AiOutlineUserAdd } from 'react-icons/all';
+import axios from 'axios';
 // 회원 관리 메뉴
 
 const Members = () => {
@@ -20,22 +18,24 @@ const Members = () => {
   const [filteredMembers, setFilteredMembers] = useState<IUser[]>([]);
   const [mySearch, onChangeMySearch] = useInput(''); //유저 검색용
   const [myCategory, setMyCategory] = useState('All'); //ROLE_ADMIN, ROLE_TEACHER, ROLE_USER
+  console.log('Users::::', users);
 
   useEffect(() => {
-    switch (myCategory) {
-      case 'All':
-        // console.log(users.data);
-        setFilteredMembers(users.data);
-        break;
-      case 'ADMIN':
-        setFilteredMembers(users.data.filter((user: IUser) => user.role === 'ROLE_ADMIN'));
-        break;
-      case 'TEACHER':
-        setFilteredMembers(users.data.filter((user: IUser) => user.role === 'ROLE_TEACHER'));
-        break;
-      case 'USER':
-        setFilteredMembers(users.data.filter((user: IUser) => user.role === 'ROLE_USER'));
-        break;
+    if (users) {
+      switch (myCategory) {
+        case 'All':
+          setFilteredMembers(users.data);
+          break;
+        case 'ADMIN':
+          setFilteredMembers(users.data.filter((user: IUser) => user.role === 'ROLE_ADMIN'));
+          break;
+        case 'TEACHER':
+          setFilteredMembers(users.data.filter((user: IUser) => user.role === 'ROLE_TEACHER'));
+          break;
+        case 'USER':
+          setFilteredMembers(users.data.filter((user: IUser) => user.role === 'ROLE_USER'));
+          break;
+      }
     }
   }, [myCategory, users]);
 
@@ -90,6 +90,7 @@ const Members = () => {
             <tr>
               <td>{element.username}</td>
               <td>
+                {/*유저 롤은 ROLE_**이므로 슬라이스해서 뱃지의 props로 넘겨줌*/}
                 <RoleBadge roleStyle={element.role}>{element.role.slice(5)}</RoleBadge>
               </td>
               <td>{element.email}</td>

@@ -35,7 +35,7 @@ const TeacherUpdateForm = () => {
   const [file, setFile] = useState<File>(); //실제 api 에 보낼 사진 파일
   const history = useHistory();
   const onUpdateSubmit = useCallback(
-    async (e) => {
+    (e) => {
       e.preventDefault();
       const teacherInfo = {
         name: name,
@@ -45,16 +45,14 @@ const TeacherUpdateForm = () => {
       };
       const formData = new FormData();
       if (file) {
-        console.log(file.toString());
         formData.append('file', file);
       }
       formData.append('key', new Blob([JSON.stringify(teacherInfo)], { type: 'application/json' }));
-
-      await axios.put(`http://localhost:8000/api/v1/admin/teacher/${teacherId}`, formData, { withCredentials: true });
-      await mutate();
-      history.push(`/teachers/${teacherId}`);
+      axios
+        .put(`http://localhost:8000/api/v1/admin/teacher/${teacherId}`, formData, { withCredentials: true })
+        .then(() => history.push(`/teachers/${teacherId}`));
     },
-    [about, email, file, history, mutate, name, teacherId, working],
+    [about, email, file, history, name, teacherId, working],
   );
   const imageHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();

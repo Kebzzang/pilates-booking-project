@@ -7,9 +7,8 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { Dropdown, DropdownButton, FormControl } from 'react-bootstrap';
 import useTeacherFetch from '../../hooks/useTeacherFetch';
 import { useRouteMatch, Link } from 'react-router-dom';
-import loadable from '@loadable/component';
+
 import { AiOutlineUserAdd } from 'react-icons/all';
-const TeacherCardDetail = loadable(() => import('./TeacherCardDetail'));
 const TeacherList = () => {
   const [myCategory, setMyCategory] = useState('employed');
   const profiles = useTeacherFetch();
