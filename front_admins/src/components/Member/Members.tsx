@@ -9,6 +9,8 @@ import { IUser } from '../../types/db';
 import Loading from '../../layouts/Loading';
 import InputGroup from 'react-bootstrap/InputGroup';
 import axios from 'axios';
+import { GiHamburgerMenu } from 'react-icons/all';
+import { Link } from 'react-router-dom';
 // 회원 관리 메뉴
 
 const Members = () => {
@@ -18,7 +20,6 @@ const Members = () => {
   const [filteredMembers, setFilteredMembers] = useState<IUser[]>([]);
   const [mySearch, onChangeMySearch] = useInput(''); //유저 검색용
   const [myCategory, setMyCategory] = useState('All'); //ROLE_ADMIN, ROLE_TEACHER, ROLE_USER
-  console.log('Users::::', users);
 
   useEffect(() => {
     if (users) {
@@ -54,6 +55,7 @@ const Members = () => {
   if (!users) {
     return <Loading />;
   }
+
   return (
     <div style={{ width: '700px', marginLeft: 'auto', marginTop: '20px', marginRight: 'auto' }}>
       <InputGroup
@@ -74,8 +76,8 @@ const Members = () => {
           <Dropdown.Item id="USER" onClick={(e) => selectRole(e.currentTarget.id)}>
             User
           </Dropdown.Item>
-        </DropdownButton>{' '}
-      </InputGroup>{' '}
+        </DropdownButton>
+      </InputGroup>
       <Table>
         <thead>
           <tr>
@@ -95,7 +97,9 @@ const Members = () => {
               </td>
               <td>{element.email}</td>
               <td>
-                <Button size="sm">Edit</Button>
+                <Link to={{ pathname: `/members/${element.id}`, state: element }}>
+                  <GiHamburgerMenu color="gray" />
+                </Link>
               </td>
             </tr>
           ))}

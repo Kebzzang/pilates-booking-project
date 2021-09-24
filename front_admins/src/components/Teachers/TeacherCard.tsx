@@ -4,8 +4,8 @@ import { ITeacher } from '../../types/db';
 import defaultProfile from '../../img/defaultProfile.png';
 import { GiHamburgerMenu } from 'react-icons/all';
 import { Link } from 'react-router-dom';
-import gradient from 'random-gradient';
 import { GradientDiv } from './style/TeacherCard';
+
 interface PropsType {
   teacherData: ITeacher;
 }

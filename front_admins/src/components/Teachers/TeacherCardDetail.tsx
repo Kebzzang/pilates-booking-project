@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaUserEdit } from 'react-icons/all';
-import { Link, useHistory, useParams, useRouteMatch } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 
 import { IClass } from '../../types/db';
 import fetcher from '../../utils/fetcher';
@@ -12,6 +12,8 @@ import Loading from '../../layouts/Loading';
 import { CourseListItem } from './CourseListItem';
 import defaultProfile from '../../img/defaultProfile.png';
 import { ImgPreview, ImgContainer, RegisterTeacherContainer, DetailDiv } from './style/SaveStyle';
+import { DetailTitle } from './style/DetailStyle';
+import { NoClass } from '../Calendar/style';
 const TeacherCardDetail = () => {
   const history = useHistory();
   const { teacherId } = useParams<{ teacherId: string }>();
@@ -40,13 +42,22 @@ const TeacherCardDetail = () => {
         </button>
         <Tabs id="controlled-tab-example" activeKey={key} onSelect={(eventKey) => setKey(eventKey)}>
           <Tab eventKey="Profile" title="Profile">
-            <h4>{teacher.name}</h4>
-            <h5>{teacher.email}</h5>
-            <h6>{teacher.about}</h6>
+            <DetailTitle>
+              <h2>{teacher.name}</h2>
+              <h5>{teacher.email}</h5>
+            </DetailTitle>
+            <p style={{ wordBreak: 'break-all' }}>{teacher.about}</p>
           </Tab>
           <Tab eventKey="Lessons" title="Lessons">
-            {teacher.courses &&
-              teacher.courses.map((element: IClass) => <CourseListItem key={element.id} courseData={element} />)}
+            {teacher.courses.length !== 0 ? (
+              teacher.courses.map((element: IClass) => (
+                <Link style={{ margin: '0px' }} to={`/lessons/${element.id}`}>
+                  <CourseListItem key={element.id} courseData={element} />
+                </Link>
+              ))
+            ) : (
+              <NoClass>No Class</NoClass>
+            )}
           </Tab>
         </Tabs>
       </DetailDiv>

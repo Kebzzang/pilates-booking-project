@@ -16,6 +16,7 @@ import TeacherSaveForm from '../../components/Teachers/TeacherSaveForm';
 const Lessons = loadable(() => import('../../components/Calendar/Lessons'));
 const Teachers = loadable(() => import('../../components/Teachers/TeacherList'));
 const Members = loadable(() => import('../../components/Member/Members'));
+const MemberDetail = loadable(() => import('../../components/Member/MemberDetail'));
 const Header: FC = ({ children }) => {
   const [showUserMenu, setShowUserMenu] = useState(false);
 
@@ -94,6 +95,7 @@ const Header: FC = ({ children }) => {
       <Switch>
         <Route exact path="/lessons" component={Lessons} />
         <Route exact path="/members" component={Members} />
+        <Route exact path="/members/:memberId" component={MemberDetail} />
         <Route exact path="/teachers" component={Teachers} />
         <Route exact path="/teachers/save" component={TeacherSaveForm} />
         <Route exact path="/teachers/:teacherId" component={TeacherCardDetail} />
