@@ -21,3 +21,28 @@ export const RoleBadge = styled.span<roleStyle>`
   font-size: small;
   padding: 3px 8px 3px 8px;
 `;
+
+export const FlexDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const Clickable = styled.div`
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const IconButton = styled.button`
+  background-color: transparent;
+  border: none;
+`;
+
+export const RoleSelect = styled.select`
+  height: 25px;
+`;
+export const RoleSelectForm = styled.form`
+  width: 162.41px;
+  display: flex;
+  justify-content: space-between;
+`;

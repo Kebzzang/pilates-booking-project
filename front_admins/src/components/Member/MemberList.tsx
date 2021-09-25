@@ -11,9 +11,10 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import axios from 'axios';
 import { GiHamburgerMenu } from 'react-icons/all';
 import { Link } from 'react-router-dom';
+import MemberListItem from './MemberListItem';
 // 회원 관리 메뉴
 
-const Members = () => {
+const MemberList = () => {
   //데이터 끌고 오기 유저 리스트 쫙
   const { data: users } = useSWR('http://localhost:8000/api/v1/admin/user', DataFetcher);
   //유저 롤 변경 -> ROLE_ADMIN, ROLE_TEACHER, ROLE_TEACHER
@@ -89,19 +90,7 @@ const Members = () => {
         </thead>
         <tbody>
           {searchUser(filteredMembers).map((element: IUser) => (
-            <tr>
-              <td>{element.username}</td>
-              <td>
-                {/*유저 롤은 ROLE_**이므로 슬라이스해서 뱃지의 props로 넘겨줌*/}
-                <RoleBadge roleStyle={element.role}>{element.role.slice(5)}</RoleBadge>
-              </td>
-              <td>{element.email}</td>
-              <td>
-                <Link to={{ pathname: `/members/${element.id}`, state: element }}>
-                  <GiHamburgerMenu color="gray" />
-                </Link>
-              </td>
-            </tr>
+            <MemberListItem element={element} />
           ))}
         </tbody>
       </Table>
@@ -109,4 +98,4 @@ const Members = () => {
   );
 };
 
-export default Members;
+export default MemberList;

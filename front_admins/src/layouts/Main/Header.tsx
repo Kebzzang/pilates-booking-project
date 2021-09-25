@@ -15,7 +15,7 @@ import TeacherSaveForm from '../../components/Teachers/TeacherSaveForm';
 
 const Lessons = loadable(() => import('../../components/Calendar/Lessons'));
 const Teachers = loadable(() => import('../../components/Teachers/TeacherList'));
-const Members = loadable(() => import('../../components/Member/Members'));
+const Members = loadable(() => import('../../components/Member/MemberList'));
 const MemberDetail = loadable(() => import('../../components/Member/MemberDetail'));
 const Header: FC = ({ children }) => {
   const [showUserMenu, setShowUserMenu] = useState(false);

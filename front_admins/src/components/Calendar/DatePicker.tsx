@@ -5,21 +5,19 @@ import { HR, DayPicker, YearMonth, DateInfo } from './style';
 //value 선택한 날짜
 function DatePicker({ value, onChange }: { value: moment.Moment; onChange: any }) {
   const today = moment();
-  const [allowNextWeek, setAllowNextWeek] = useState(true);
+  const [allowNextWeek, setAllowNextWeek] = useState(false);
   const [calendar, setCalendar] = useState<moment.Moment[]>([]);
   useEffect(() => {
-    console.log(value);
     setCalendar(calc(value));
-    if (today.weekday() <= 6) {
-      setAllowNextWeek(false);
+    if (today.format('dddd') === 'Sunday' || today.format('dddd') === 'Saturday') {
+      setAllowNextWeek(true);
     }
-    console.log('오늘', today.weekday());
   }, []);
 
   const dayStyles = useCallback(
     (day: moment.Moment) => {
       if (day.isBefore(new Date(), 'day')) {
-        return 'before';
+        return 'before'; //선택한 날이 오늘 이전이면
       }
 
       if (value.isSame(day, 'day')) {
