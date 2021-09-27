@@ -1,12 +1,13 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
-import { useParams, useLocation, useHistory } from 'react-router-dom';
-import { Button, DetailDiv, Form, Input, Label, RegisterTeacherContainer, Select } from '../Teachers/style/SaveStyle';
+import { useParams, useLocation, Link } from 'react-router-dom';
+import { Button, DetailDiv, RegisterTeacherContainer, Select } from '../Teachers/style/SaveStyle';
 import { IClass, IUser } from '../../types/db';
 import { DetailTitle } from '../Teachers/style/DetailStyle';
-import { RoleBadge } from './style';
-import useInput from '../../hooks/useInput';
-import { Tab, Tabs } from 'react-bootstrap';
+
 import axios from 'axios';
+import { CourseListItem } from '../Teachers/CourseListItem';
+import { RoleBadge } from './style';
+import { Table } from 'react-bootstrap';
 
 const MemberDetail = () => {
   const { memberId } = useParams<{ memberId: string }>();
@@ -21,11 +22,31 @@ const MemberDetail = () => {
   }, [memberId, userData.role]);
 
   return (
-    <div>
-      {data.map((element) => (
-        <div>{element.title}</div>
-      ))}
-    </div>
+    <RegisterTeacherContainer>
+      <DetailDiv>
+        <DetailTitle>
+          <h2>{userData.username}</h2>{' '}
+          <h5>
+            {userData.email} / <RoleBadge roleStyle={userData.role}>{userData.role.slice(5)}</RoleBadge>
+          </h5>
+        </DetailTitle>{' '}
+        <Table style={{ textAlign: 'center' }} borderless>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Type</th>
+              <th style={{ textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>Instructor</th>
+              <th>Quota</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((element) => (
+              <CourseListItem key={element.id} courseData={element} />
+            ))}
+          </tbody>
+        </Table>
+      </DetailDiv>
+    </RegisterTeacherContainer>
   );
 };
 

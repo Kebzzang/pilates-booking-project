@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import TeacherCard from './TeacherCard';
 import axios from 'axios';
-import t1 from '../../img/t1.jpg';
-import t2 from '../../img/t2.jpg';
-import t3 from '../../img/t3.jpg';
 import { ITeacher } from '../../types/db';
 import useInput from '../../hooks/useInput';
 import { FormControl } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
+
 const Teachers = () => {
   const [profiles, setProfiles] = useState<ITeacher[]>([]);
   const [mySearch, onChangeMySearch] = useInput('');

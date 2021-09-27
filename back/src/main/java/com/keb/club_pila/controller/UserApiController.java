@@ -8,7 +8,6 @@ import com.keb.club_pila.model.response.ErrorResponse;
 import com.keb.club_pila.service.JoinInfoService;
 import com.keb.club_pila.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.apache.http.protocol.ResponseServer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,8 +25,6 @@ public class UserApiController {
 
     @PostMapping("/api/v1/user/course/join") //수업 참여 포스트 매핑 -> 학생만 가능. 가능한 학생 수 넘어서면
     public ResponseEntity<? extends BasicResponse> joinCourse(@RequestBody JoinInfoDto.JoinInfoSaveCancelRequestDto joinInfoSaveCancelRequestDto) {
-
-        System.out.println("JoinInfo problem here1");
         Long result=joinInfoService.joininfoSave(joinInfoSaveCancelRequestDto);
         if(result!=0){
             return ResponseEntity.ok().body(new CommonResponse<>("신청 완료"));
@@ -83,6 +80,7 @@ public class UserApiController {
             return ResponseEntity.noContent().build();
         }
     }
+
     @PutMapping("/api/v1/user/{id}") //비번 바꿀 수 있도록 함
     public ResponseEntity<? extends BasicResponse> updateById(@PathVariable Long id, @RequestBody UserDto.UserUpdateDto userUpdateDto) {
         Long result = userService.updateById(id, userUpdateDto);

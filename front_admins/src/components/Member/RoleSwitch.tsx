@@ -1,11 +1,9 @@
 import React, { FC, useCallback } from 'react';
-import { Form } from '../Teachers/style/SaveStyle';
 import { IUser } from '../../types/db';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
 import useInput from '../../hooks/useInput';
 import { FcCheckmark, MdClose } from 'react-icons/all';
-import { FlexDiv, IconButton, RoleSelect, RoleSelectForm } from './style';
+import { IconButton, RoleSelect, RoleSelectForm } from './style';
 import { mutate } from 'swr';
 interface Props {
   element: IUser;
@@ -13,6 +11,8 @@ interface Props {
 }
 const RoleSwitch: FC<Props> = ({ element, show }) => {
   const [role, onChangeRole] = useInput(element.role);
+  //업데이트 요청 성공시 swr은 다시 최신 정보로 유저들에 대한 정보를 업데이트한다.
+  //업데이트 요청이 성공하든 실패하든 showRoles는 false로 변경되어 일반적인 유저 롤 정보를 보여준다.
   const onUpdateSubmit = useCallback(
     (e) => {
       e.preventDefault();
@@ -21,7 +21,7 @@ const RoleSwitch: FC<Props> = ({ element, show }) => {
         .then(() => mutate('http://localhost:8000/api/v1/admin/user'))
         .finally(show());
     },
-    [element.id, history, role],
+    [element.id, role, show],
   );
 
   return (

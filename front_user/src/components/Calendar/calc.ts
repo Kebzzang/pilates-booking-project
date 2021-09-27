@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 
+//날짜리스트 반환
+//2주짜리 날짜 정보 리스트 반환
 const calc = (value: moment.Moment) => {
   const startOfWeek2 = value.clone().startOf('isoWeek');
   const endOfWeek2 = startOfWeek2.clone().add(13, 'days');

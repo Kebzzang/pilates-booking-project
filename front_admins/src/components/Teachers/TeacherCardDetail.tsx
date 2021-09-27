@@ -4,7 +4,7 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 
 import { IClass } from '../../types/db';
 import fetcher from '../../utils/fetcher';
-import { Tab, Tabs } from 'react-bootstrap';
+import { Tab, Table, Tabs } from 'react-bootstrap';
 
 import './teachercard.css';
 import useSWR from 'swr';
@@ -50,11 +50,21 @@ const TeacherCardDetail = () => {
           </Tab>
           <Tab eventKey="Lessons" title="Lessons">
             {teacher.courses.length !== 0 ? (
-              teacher.courses.map((element: IClass) => (
-                <Link style={{ margin: '0px' }} to={`/lessons/${element.id}`}>
-                  <CourseListItem key={element.id} courseData={element} />
-                </Link>
-              ))
+              <Table style={{ textAlign: 'center', marginTop: '10px' }} hover>
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Type</th>
+                    <th>Instructor</th>
+                    <th>Quota</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {teacher.courses.map((element: IClass) => (
+                    <CourseListItem key={element.id} courseData={element} />
+                  ))}
+                </tbody>
+              </Table>
             ) : (
               <NoClass>No Class</NoClass>
             )}
