@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//DI
 @RequiredArgsConstructor
 @RestController
 public class UserApiController {
@@ -43,7 +44,6 @@ public class UserApiController {
 
     }
 
-        // @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/api/v1/user/me")
     public ResponseEntity<? extends BasicResponse> getMyUserInfo(){
         UserDto.UserResponseDto result=userService.getMyUserInfo();
@@ -52,6 +52,7 @@ public class UserApiController {
         else
         { return ResponseEntity.ok().body(new CommonResponse<>(false));}
     }
+    //특정 id의 유저 정보 출력
     @GetMapping("/api/v1/admin/user/{id}")
     public ResponseEntity<? extends BasicResponse> findById(@PathVariable Long id) {
 
@@ -62,7 +63,7 @@ public class UserApiController {
         }
         return ResponseEntity.ok().body(new CommonResponse<>(userResponseDto));
     }
-
+    //모든 유저 정보 출력
     @GetMapping("/api/v1/admin/user")
     public ResponseEntity<? extends BasicResponse> findAll() {
         List<UserDto.UserResponseDto> userResponseDtoList= userService.findAllUsers();

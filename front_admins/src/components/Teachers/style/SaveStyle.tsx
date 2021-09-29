@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const RegisterTeacherContainer = styled.div`
-  width: 500px;
+  width: 700px;
   margin-top: 20px;
   padding-top: 20px;
   padding-bottom: 10px;
@@ -16,9 +16,10 @@ export const Form = styled.form`
   max-width: 400px;
 `;
 export const DetailDiv = styled.div`
-  margin: 0 auto;
-  width: 400px;
-  max-width: 400px;
+  margin-top: 0;
+  margin-left: 20px;
+  margin-right: 20px;
+  //width: 400px;
 `;
 export const ImgContainer = styled.div`
   justify-content: center;

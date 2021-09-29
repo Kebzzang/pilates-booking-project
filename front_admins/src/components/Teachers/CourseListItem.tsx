@@ -8,15 +8,16 @@ import React from 'react';
 export function CourseListItem(props: { courseData: IClass }) {
   const courseData = props.courseData;
   const history = useHistory();
-  let coruseDateTime = courseData.courseDateTime.slice(0, 10) + ' ' + courseData.courseDateTime.slice(11, 16);
+  let datetime = courseData.courseDateTime.slice(0, 10) + ' ' + courseData.courseDateTime.slice(11, 16);
   return (
-    <tr title={coruseDateTime} style={{ cursor: 'pointer' }} onClick={() => history.push(`/lessons/${courseData.id}`)}>
+    <tr title={datetime} style={{ cursor: 'pointer' }} onClick={() => history.push(`/lessons/${courseData.id}`)}>
       <td>{courseData.title}</td>
       <td>{courseData.equipmentType}</td>
       <td style={{}}>{courseData.teacher_name}</td>
       <td>
         {courseData.nowStudent}/{courseData.maxStudent}
       </td>
+      <td>{datetime}</td>
     </tr>
   );
 }

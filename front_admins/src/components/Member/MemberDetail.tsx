@@ -8,6 +8,7 @@ import axios from 'axios';
 import { CourseListItem } from '../Teachers/CourseListItem';
 import { RoleBadge } from './style';
 import { Table } from 'react-bootstrap';
+import { NoClass } from '../Calendar/style';
 
 const MemberDetail = () => {
   const { memberId } = useParams<{ memberId: string }>();
@@ -30,21 +31,26 @@ const MemberDetail = () => {
             {userData.email} / <RoleBadge roleStyle={userData.role}>{userData.role.slice(5)}</RoleBadge>
           </h5>
         </DetailTitle>{' '}
-        <Table style={{ textAlign: 'center' }} borderless>
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Type</th>
-              <th style={{ textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>Instructor</th>
-              <th>Quota</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((element) => (
-              <CourseListItem key={element.id} courseData={element} />
-            ))}
-          </tbody>
-        </Table>
+        {data.length !== 0 ? (
+          <Table style={{ textAlign: 'center' }}>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Type</th>
+                <th style={{ textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>Instructor</th>
+                <th>Quota</th>
+                <th>DateTime</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((element) => (
+                <CourseListItem key={element.id} courseData={element} />
+              ))}
+            </tbody>
+          </Table>
+        ) : (
+          <NoClass>No lessons</NoClass>
+        )}
       </DetailDiv>
     </RegisterTeacherContainer>
   );

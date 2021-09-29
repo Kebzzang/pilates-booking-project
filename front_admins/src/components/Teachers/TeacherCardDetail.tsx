@@ -18,7 +18,7 @@ const TeacherCardDetail = () => {
   const history = useHistory();
   const { teacherId } = useParams<{ teacherId: string }>();
   const { data: teacher, error } = useSWR(`http://localhost:8000/api/v1/teacher/${teacherId}`, fetcher);
-  const [key, setKey] = useState<string | null>('Profile');
+
   if (!teacher) return <Loading />;
 
   const handleImgError = (e: any) => {
@@ -40,36 +40,35 @@ const TeacherCardDetail = () => {
         <button className="update-icon" onClick={updateTeacher}>
           <FaUserEdit size="24" />
         </button>
-        <Tabs id="controlled-tab-example" activeKey={key} onSelect={(eventKey) => setKey(eventKey)}>
-          <Tab eventKey="Profile" title="Profile">
-            <DetailTitle>
-              <h2>{teacher.name}</h2>
-              <h5>{teacher.email}</h5>
-            </DetailTitle>
-            <p style={{ wordBreak: 'break-all' }}>{teacher.about}</p>
-          </Tab>
-          <Tab eventKey="Lessons" title="Lessons">
-            {teacher.courses.length !== 0 ? (
-              <Table style={{ textAlign: 'center', marginTop: '10px' }} hover>
-                <thead>
-                  <tr>
-                    <th>Title</th>
-                    <th>Type</th>
-                    <th>Instructor</th>
-                    <th>Quota</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {teacher.courses.map((element: IClass) => (
-                    <CourseListItem key={element.id} courseData={element} />
-                  ))}
-                </tbody>
-              </Table>
-            ) : (
-              <NoClass>No Class</NoClass>
-            )}
-          </Tab>
-        </Tabs>
+
+        <DetailTitle>
+          <h2>{teacher.name}</h2>
+          <h5>{teacher.email}</h5>
+        </DetailTitle>
+        <p style={{ wordBreak: 'break-all' }}>{teacher.about}</p>
+
+        {teacher.courses.length !== 0 ? (
+          <Table style={{ textAlign: 'center', marginTop: '10px' }} hover>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Type</th>
+                <th>Instructor</th>
+                <th>Quota</th>
+                <th>DateTime</th>
+              </tr>
+            </thead>
+            <tbody>
+              {teacher.courses
+                .sort((a: IClass, b: IClass) => a.courseDateTime.localeCompare(b.courseDateTime))
+                .map((element: IClass) => (
+                  <CourseListItem key={element.id} courseData={element} />
+                ))}
+            </tbody>
+          </Table>
+        ) : (
+          <NoClass>No lessons</NoClass>
+        )}
       </DetailDiv>
     </RegisterTeacherContainer>
   );
