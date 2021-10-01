@@ -12,7 +12,8 @@ import loadable from '@loadable/component';
 import TeacherCardDetail from '../../components/Teachers/TeacherCardDetail';
 import TeacherUpdateForm from '../../components/Teachers/TeacherUpdateForm';
 import TeacherSaveForm from '../../components/Teachers/TeacherSaveForm';
-
+const LessonDetail = loadable(() => import('../../components/Calendar/LessonDetail'));
+const LessonSaveForm = loadable(() => import('../../components/Calendar/LessonSaveForm'));
 const Lessons = loadable(() => import('../../components/Calendar/Lessons'));
 const Teachers = loadable(() => import('../../components/Teachers/TeacherList'));
 const Members = loadable(() => import('../../components/Member/MemberList'));
@@ -94,6 +95,8 @@ const Header: FC = ({ children }) => {
       </Navbar>
       <Switch>
         <Route exact path="/lessons" component={Lessons} />
+        <Route exact path="/lessons/save" component={LessonSaveForm} />
+        <Route exact path="/lessons/:lessonId" component={LessonDetail} />
         <Route exact path="/members" component={Members} />
         <Route exact path="/members/:memberId" component={MemberDetail} />
         <Route exact path="/teachers" component={Teachers} />
