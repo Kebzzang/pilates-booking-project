@@ -25,7 +25,6 @@ import static org.springframework.util.StringUtils.hasText;
 //필터가 중첩 호출한 경우 매번 필터의 내용이 중첩 수행되는 것을 방지하기 위해 GenericFilterBean을 상속한 OncePerRequestFilter도 있음
 
 public class JwtFilter extends GenericFilterBean {
- //   private static final Logger logger = LoggerFactory.getLogger(JwtFilter.class);
     public static final String AUTHORIZATION_HEADER = "Authorization";
 
     private final JwtProvider jwtProvider;
@@ -39,6 +38,7 @@ public class JwtFilter extends GenericFilterBean {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         //jwt토큰 초기화
         String jwt = null;
+        //accessToken 이라는 쿠키 정보 가져오기
         Cookie cookie = cookieUtil.getCookie(httpServletRequest, "accessToken");
         //쿠키에 토큰 정보를 들고 온다면 => 이미 로그인한 사람이니까
        if (cookie != null && jwtProvider.validateToken(cookie.getValue())) {

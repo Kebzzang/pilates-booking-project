@@ -57,7 +57,7 @@ public class JwtProvider implements InitializingBean {
 
     public String generateToken(Authentication authentication) { //Authentication authentication으로 해보기
         long now = (new Date()).getTime();
-        String authorities = authentication.getAuthorities().stream()
+        String authorities = authentication.getAuthorities().stream() //만약 여러개라면 
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(","));
         Date validity = new Date(now + this.tokenValidityInMilliseconds);

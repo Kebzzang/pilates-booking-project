@@ -72,7 +72,7 @@ public class CourseApiController {
     }
 
 //해당 아이디를 가진 수업 조회
-    @GetMapping("/api/v1/course/{id}")
+    @GetMapping("/api/v1/admin/course/{id}")
     public ResponseEntity<? extends BasicResponse> findById(@PathVariable Long id) {
 
         CourseDto.CourseResponseDto courseResponseDto = courseService.findById(id);
