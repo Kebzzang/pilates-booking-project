@@ -34,9 +34,7 @@ spring:
 #    password: root
     #url: jdbc:mariadb://pilas-webservice-springboot.ctq1affhd18k.ap-northeast-2.rds.amazonaws.com:3306/pilas_webservice_springboot
     url: ENC(oxgTzUH2N4SLwpkvMdHZEDNjwCUb9sU9WPotBPblYsvK+/8h12AVcT9y5yVHlvu5t4iMv9GtM7QsDf5vXLuEZtcQ9wF6fj/LchKSP+wzOagV+mS8XVU8EVZMdR6CkFKlWW42iO5uTQ23NjW7O+mCI7ulE6pPykK3+P9Gd1Z67eDV/xMbt1PLS14lQh+xmihMMQTtpKe5Z2l7nvFoQsZ/7w==)
-    #username: ENC(ptdeuL9DR2tUX7GrklXLmyYcBVwIW8eeMDMHdutnR2Ag/AUTULnwhojlTWICdU52)
     username: ENC(0JUuskmYcqjpJrrEThYShbxGCxLXQH4udxJEMaudVXj9DQeCovDQMSf+ImxiHmT+)
-    #password: ENC(X5PD7M1/OExZYRohhOcTQqP7ao6+lOF3TNc/l787RDWNJ6/EZUukY+Yt7iIe2Xpv)
     password: ENC(2FiBRM1glJ1smU0XTYHXD4MRNrRZ1OcgfAhDgz4fAEDkkkuEqNjpr0FVKCBXvF6x)
 
 
@@ -59,7 +57,10 @@ spring:
   http:
     encoding:
 
-
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
 #  security:
 #    oauth2:
 #      client:
