@@ -6,7 +6,6 @@ server:
     encoding:
       charset: UTF-8
 
-
 spring:
   servlet:
     multipart:
@@ -57,10 +56,7 @@ spring:
   http:
     encoding:
 
-jasypt:
-  encryptor:
-    algorithm: PBEWithMD5AndDES
-    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+
 #  security:
 #    oauth2:
 #      client:
@@ -79,3 +75,9 @@ jwt:
 logging:
   level:
     com.keb: DEBUG
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+    property:
+      prefix: ENC(
+      suffix: )
